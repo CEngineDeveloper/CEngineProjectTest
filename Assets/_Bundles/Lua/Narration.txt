@@ -1,0 +1,14 @@
+-- AddNarration{
+--     TDID="Narration_开篇",
+--     IsShowOnce = false,
+-- 	Fragments=
+-- 	{
+-- 		{IsNewPage=true,Icon="IS_1"},
+-- 		{IsNewPage=false,Icon="IS_1"},
+-- 		{IsNewPage=false,Icon="IS_1"},
+-- 		{IsNewPage=false},
+-- 		{IsNewPage=false,Icon="IS_1"},
+-- 		{IsNewPage=true,Icon="IS_1"},
+-- 		{IsNewPage=false},
+-- 	},
+-- }

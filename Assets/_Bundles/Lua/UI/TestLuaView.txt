@@ -1,0 +1,90 @@
+TestLuaView = {}
+
+TestLuaView.TitleKey = "测试"
+
+-- function TestLuaView:GetTitle()
+--     return GetStr("Test测试")
+-- end    
+
+function TestLuaView:OnCreatedView()
+
+    --bntSave
+    local bntSave = self.Get("BntSave")
+    bntSave.Data.NameKey = "还原"
+    bntSave.Data.OnClick = function()
+        Log("Test Click")
+    end
+
+    --bntRevert
+    local bntRevert = self.Get("BntRevert")
+    bntRevert.Data.NameKey = "保存";
+    bntRevert.Data.OnClick = function()
+        SettingsView.Show()
+    end
+    
+    --dpButton 
+    local dpButton = self.Get("DPButton")
+    dpButton.Create(4)
+    dpButton[0].Data.NameKey = "Bnt1"
+    dpButton[0].Data.OnClick = function()
+        Cyan("Test Bnt1 Click")
+    end
+    dpButton[1].Data.NameKey = "Bnt2"
+    dpButton[1].Data.OnClick = function()
+        Cyan(PlanetMgr)
+        PlanetMgr.TestMgr()
+    end    
+    dpButton[2].Data.NameKey = "Bnt3"
+    dpButton[3].Data.NameKey = "Bnt4"
+
+    --checkBox
+    local isOn = false
+    local checkBox = self.Get("Check")  
+    checkBox.Data.NameKey = "背景音乐"
+    checkBox.Data.IsOn = function()
+        return isOn
+    end  
+    checkBox.Data.OnValueChanged = function(b)
+        isOn = b
+    end
+
+    --dropbox
+    local lanType = 0
+    local dropbox = self.Get("Dropdown")  
+    dropbox.Data.NameKey = "多语言"
+    dropbox.Data.Opts = function()
+        return {"中文","英文","其他"}
+    end
+    dropbox.Data.Value = function()
+        return lanType
+    end  
+    dropbox.Data.OnValueChanged = function(b)
+        lanType = b
+    end    
+
+    --slider
+    local sliderVal = 0
+    local slider = self.Get("Slider")
+    slider.Data.NameKey = "镜头移动速度"
+    slider.Data.Value = function()
+        return sliderVal
+    end
+    slider.Data.OnValueChanged = function(b)
+        sliderVal = b
+    end
+
+    --scroll
+    local scroll = self.Get("Scroll")
+    scroll.Data.GetCustomDatas = function()
+        return UIUtil.GetTestScrollData(30)
+    end
+    scroll.Data.OnRefreshItem = function(press,data)
+        press.NameText1 = "Test1"
+    end
+
+    --collect
+    local collect = self.Get("Collects")
+    collect.Items1.Text.NameText = "Collect1"
+end
+
+return TestLuaView;

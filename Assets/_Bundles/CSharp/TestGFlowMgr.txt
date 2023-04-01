@@ -1,0 +1,21 @@
+//------------------------------------------------------------------------------
+// TestGFlowMgr.cs
+// Copyright 2021 2021/9/15 
+// Created by CYM on 2021/9/15
+// Owner: CYM
+// 填写类的描述...
+//------------------------------------------------------------------------------
+
+namespace Gamelogic
+{
+    using UnityEngine;
+    using CYM; 
+    public class TestGFlowMgr : BaseGFlowMgr 
+    {
+        public override void OnBeAdded(IMono mono)
+        {
+            base.OnBeAdded(mono);
+            CLog.Yellow("TestGFlowMgr Added!!");
+        }        
+    }
+}

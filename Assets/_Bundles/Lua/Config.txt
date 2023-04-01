@@ -1,0 +1,5 @@
+Config=
+{
+    -- StartDateTime = {2257,6,1},
+	-- StartDateTimeAgeType = "BC",
+}

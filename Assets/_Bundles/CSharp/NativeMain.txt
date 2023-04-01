@@ -1,0 +1,31 @@
+//------------------------------------------------------------------------------
+// CSharp.cs
+// Copyright 2021 2021/9/15 
+// Created by CYM on 2021/9/15
+// Owner: CYM
+// 填写类的描述...
+//------------------------------------------------------------------------------
+
+namespace Gamelogic
+{
+    using UnityEngine;
+    using CYM;   
+    public class NativeMain : BaseMainCS 
+    {
+        public static TestGFlowMgr TestGFlowMgr;
+
+        protected override void OnAllLoadEnd1() 
+        {
+            CLog.Green("C# OnAllLoadEnd1");
+            TestGFlowMgr = AddComponent<TestGFlowMgr>();
+        }
+
+        protected override void OnAllLoadEnd2() 
+        {
+            CLog.Green("C# OnAllLoadEnd2");
+            CLog.Green(Global.LoaderMgr.ToString());
+            CLog.Green(Global.GRMgr.ToString());
+            CLog.Green(Global.LogoMgr.ToString());
+        }
+    }
+}

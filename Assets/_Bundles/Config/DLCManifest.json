@@ -1,0 +1,711 @@
+{
+    "Data": [
+        {
+            "DLCName": "Native",
+            "BundleName": "native_shared/07d4676eb39eeb47d6c95cd9f6b8107f",
+            "IsShared": true,
+            "AssetFullPaths": [
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Button/Bnt-Wide.png",
+                    "FileName": "Bnt-Wide",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Button/Bnt-Normal.png",
+                    "FileName": "Bnt-Normal",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Button/Close-Normal.png",
+                    "FileName": "Close-Normal",
+                    "Category": ""
+                }
+            ]
+        },
+        {
+            "DLCName": "Native",
+            "BundleName": "native_shared/fc1dd5f16c61d91916c42dc49f9ed621",
+            "IsShared": true,
+            "AssetFullPaths": [
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Misc/Label.png",
+                    "FileName": "Label",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Misc/Borders.png",
+                    "FileName": "Borders",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Misc/RectangleSel1.png",
+                    "FileName": "RectangleSel1",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Misc/Heading Main Bar.png",
+                    "FileName": "Heading Main Bar",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Misc/Rectangle1.png",
+                    "FileName": "Rectangle1",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Misc/LineH.png",
+                    "FileName": "LineH",
+                    "Category": ""
+                }
+            ]
+        },
+        {
+            "DLCName": "Native",
+            "BundleName": "native_shared/cd3b55ed584aed295a05e9904e587c4b",
+            "IsShared": true,
+            "AssetFullPaths": [
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Panel/Tittle.png",
+                    "FileName": "Tittle",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Panel/InputBG.png",
+                    "FileName": "InputBG",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Panel/Right Plate.png",
+                    "FileName": "Right Plate",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Panel/CarvingBG.png",
+                    "FileName": "CarvingBG",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Panel/Plate BG.png",
+                    "FileName": "Plate BG",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Panel/ItemLiteBar.png",
+                    "FileName": "ItemLiteBar",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Panel/ColEntry.png",
+                    "FileName": "ColEntry",
+                    "Category": ""
+                }
+            ]
+        },
+        {
+            "DLCName": "Native",
+            "BundleName": "native_shared/2ee39f89c9a804d81ae4a0127d950d20",
+            "IsShared": true,
+            "AssetFullPaths": [
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Scroll/Empty.png",
+                    "FileName": "Empty",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Scroll/Up.png",
+                    "FileName": "Up",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Scroll/Down.png",
+                    "FileName": "Down",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Scroll/MP.png",
+                    "FileName": "MP",
+                    "Category": ""
+                }
+            ]
+        },
+        {
+            "DLCName": "Native",
+            "BundleName": "native_shared/1e732b5b40fba14e0aa14924cda62747",
+            "IsShared": true,
+            "AssetFullPaths": [
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Dropdown/Path BG.png",
+                    "FileName": "Path BG",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Dropdown/Normal.png",
+                    "FileName": "Normal",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Dropdown/Slider Normal.png",
+                    "FileName": "Slider Normal",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Dropdown/Highlight.png",
+                    "FileName": "Highlight",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Dropdown/DD.png",
+                    "FileName": "DD",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Dropdown/DD Vector.png",
+                    "FileName": "DD Vector",
+                    "Category": ""
+                }
+            ]
+        },
+        {
+            "DLCName": "Native",
+            "BundleName": "native_shared/3f47b9e2962883c85f65e6f2f81fc6ec",
+            "IsShared": true,
+            "AssetFullPaths": [
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Check/Check.png",
+                    "FileName": "Check",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Check/Checked.png",
+                    "FileName": "Checked",
+                    "Category": ""
+                }
+            ]
+        },
+        {
+            "DLCName": "Native",
+            "BundleName": "native_shared/324d1b6e6f64f032c7eef1857350c963",
+            "IsShared": true,
+            "AssetFullPaths": [
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Slider/SlideHandle.png",
+                    "FileName": "SlideHandle",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Slider/Empty.png",
+                    "FileName": "Empty",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/UI/Slider/Fill.png",
+                    "FileName": "Fill",
+                    "Category": ""
+                }
+            ]
+        },
+        {
+            "DLCName": "Native",
+            "BundleName": "native_icon",
+            "IsShared": false,
+            "AssetFullPaths": [
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Attr/ClassTrainerMarker.png",
+                    "FileName": "ClassTrainerMarker",
+                    "Category": "attr"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Attr/EntranceInstance.png",
+                    "FileName": "EntranceInstance",
+                    "Category": "attr"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Attr/FlightPath.png",
+                    "FileName": "FlightPath",
+                    "Category": "attr"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Attr/ObjectiveMarker.png",
+                    "FileName": "ObjectiveMarker",
+                    "Category": "attr"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Attr/ProfessionsTrainerMarker.png",
+                    "FileName": "ProfessionsTrainerMarker",
+                    "Category": "attr"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Attr/QuestAvailable.png",
+                    "FileName": "QuestAvailable",
+                    "Category": "attr"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Attr/QuestPending.png",
+                    "FileName": "QuestPending",
+                    "Category": "attr"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Attr/Vault.png",
+                    "FileName": "Vault",
+                    "Category": "attr"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Attr/Vendor.png",
+                    "FileName": "Vendor",
+                    "Category": "attr"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Logo/Common.png",
+                    "FileName": "Common",
+                    "Category": "logo"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Logo/GameIcon.png",
+                    "FileName": "GameIcon",
+                    "Category": "logo"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Logo/Logo.png",
+                    "FileName": "Logo",
+                    "Category": "logo"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Logo/Logo_EN.png",
+                    "FileName": "Logo_EN",
+                    "Category": "logo"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/MainAttr/医药.png",
+                    "FileName": "医药",
+                    "Category": "mainattr"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/MainAttr/威望.png",
+                    "FileName": "威望",
+                    "Category": "mainattr"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/MainAttr/材料.png",
+                    "FileName": "材料",
+                    "Category": "mainattr"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/MainAttr/能量.png",
+                    "FileName": "能量",
+                    "Category": "mainattr"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/MainAttr/食物.png",
+                    "FileName": "食物",
+                    "Category": "mainattr"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/MainAttr/黄金.png",
+                    "FileName": "黄金",
+                    "Category": "mainattr"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Menu/Menu1.png",
+                    "FileName": "Menu1",
+                    "Category": "menu"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Menu/Menu2.png",
+                    "FileName": "Menu2",
+                    "Category": "menu"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Menu/Menu3.png",
+                    "FileName": "Menu3",
+                    "Category": "menu"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Menu/Menu4.png",
+                    "FileName": "Menu4",
+                    "Category": "menu"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Menu/Menu5.png",
+                    "FileName": "Menu5",
+                    "Category": "menu"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Menu/Menu6.png",
+                    "FileName": "Menu6",
+                    "Category": "menu"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Menu/Menu7.png",
+                    "FileName": "Menu7",
+                    "Category": "menu"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Menu/Menu8.png",
+                    "FileName": "Menu8",
+                    "Category": "menu"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Menu/Menu9.png",
+                    "FileName": "Menu9",
+                    "Category": "menu"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/MiniMap/MinimapOption1.png",
+                    "FileName": "MinimapOption1",
+                    "Category": "minimap"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/MiniMap/MinimapOption2.png",
+                    "FileName": "MinimapOption2",
+                    "Category": "minimap"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/MiniMap/MinimapOption3.png",
+                    "FileName": "MinimapOption3",
+                    "Category": "minimap"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/MiniMap/MinimapOption4.png",
+                    "FileName": "MinimapOption4",
+                    "Category": "minimap"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Nation/Nation1.png",
+                    "FileName": "Nation1",
+                    "Category": "nation"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Nation/Nation1_Sel.png",
+                    "FileName": "Nation1_Sel",
+                    "Category": "nation"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Nation/Nation2.png",
+                    "FileName": "Nation2",
+                    "Category": "nation"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Nation/Nation2_Sel.png",
+                    "FileName": "Nation2_Sel",
+                    "Category": "nation"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Nation/Nation3.png",
+                    "FileName": "Nation3",
+                    "Category": "nation"
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Assets/_Bundles/Icon/Nation/Nation3_Sel.png",
+                    "FileName": "Nation3_Sel",
+                    "Category": "nation"
+                }
+            ]
+        },
+        {
+            "DLCName": "Native",
+            "BundleName": "native_illustration",
+            "IsShared": false,
+            "AssetFullPaths": [
+                {
+                    "BuildRuleName": "illustration",
+                    "SourceBundleName": "illustration",
+                    "FullPath": "Assets/_Bundles/Illustration/IS_1.png",
+                    "FileName": "IS_1",
+                    "Category": ""
+                }
+            ]
+        },
+        {
+            "DLCName": "Native",
+            "BundleName": "native_music",
+            "IsShared": false,
+            "AssetFullPaths": [
+                {
+                    "BuildRuleName": "music",
+                    "SourceBundleName": "music",
+                    "FullPath": "Assets/_Bundles/Music/MainMenu/NewHorizons.wav",
+                    "FileName": "NewHorizons",
+                    "Category": "mainmenu"
+                }
+            ]
+        },
+        {
+            "DLCName": "Native",
+            "BundleName": "native_ui",
+            "IsShared": false,
+            "AssetFullPaths": [
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Assets/_Bundles/UI/AlertBarView.prefab",
+                    "FileName": "AlertBarView",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Assets/_Bundles/UI/BattleMenuView.prefab",
+                    "FileName": "BattleMenuView",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Assets/_Bundles/UI/LoadingView.prefab",
+                    "FileName": "LoadingView",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Assets/_Bundles/UI/MainMenuView.prefab",
+                    "FileName": "MainMenuView",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Assets/_Bundles/UI/ModalBoxView.prefab",
+                    "FileName": "ModalBoxView",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Assets/_Bundles/UI/NarrationView.prefab",
+                    "FileName": "NarrationView",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Assets/_Bundles/UI/SaveOrLoadView.prefab",
+                    "FileName": "SaveOrLoadView",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Assets/_Bundles/UI/TestLuaView.prefab",
+                    "FileName": "TestLuaView",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Assets/_Bundles/UI/BattleMainView/BattleAttrItem.prefab",
+                    "FileName": "BattleAttrItem",
+                    "Category": "battlemainview"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Assets/_Bundles/UI/BattleMainView/BattleMainView.prefab",
+                    "FileName": "BattleMainView",
+                    "Category": "battlemainview"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Assets/_Bundles/UI/BattleMainView/BattleMapItem.prefab",
+                    "FileName": "BattleMapItem",
+                    "Category": "battlemainview"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Assets/_Bundles/UI/BattleMainView/BattleMenuItem.prefab",
+                    "FileName": "BattleMenuItem",
+                    "Category": "battlemainview"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Assets/_Bundles/UI/SettingsView/CheckboxDP.prefab",
+                    "FileName": "CheckboxDP",
+                    "Category": "settingsview"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Assets/_Bundles/UI/SettingsView/DropdownDP.prefab",
+                    "FileName": "DropdownDP",
+                    "Category": "settingsview"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Assets/_Bundles/UI/SettingsView/SettingsView.prefab",
+                    "FileName": "SettingsView",
+                    "Category": "settingsview"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Assets/_Bundles/UI/SettingsView/SliderDP.prefab",
+                    "FileName": "SliderDP",
+                    "Category": "settingsview"
+                }
+            ]
+        },
+        {
+            "DLCName": "Native",
+            "BundleName": "native_system",
+            "IsShared": false,
+            "AssetFullPaths": [
+                {
+                    "BuildRuleName": "system",
+                    "SourceBundleName": "system",
+                    "FullPath": "Assets/_Bundles/System/CursorConfig.asset",
+                    "FileName": "CursorConfig",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "system",
+                    "SourceBundleName": "system",
+                    "FullPath": "Assets/_Bundles/System/GameConfig.asset",
+                    "FileName": "GameConfig",
+                    "Category": ""
+                }
+            ]
+        }
+    ]
+}
