@@ -701,8 +701,43 @@
                 {
                     "BuildRuleName": "system",
                     "SourceBundleName": "system",
+                    "FullPath": "Assets/_Bundles/System/DLCConfig.asset",
+                    "FileName": "DLCConfig",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "system",
+                    "SourceBundleName": "system",
                     "FullPath": "Assets/_Bundles/System/GameConfig.asset",
                     "FileName": "GameConfig",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "system",
+                    "SourceBundleName": "system",
+                    "FullPath": "Assets/_Bundles/System/ImportConfig.asset",
+                    "FileName": "ImportConfig",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "system",
+                    "SourceBundleName": "system",
+                    "FullPath": "Assets/_Bundles/System/LogConfig.asset",
+                    "FileName": "LogConfig",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "system",
+                    "SourceBundleName": "system",
+                    "FullPath": "Assets/_Bundles/System/PluginConfig.asset",
+                    "FileName": "PluginConfig",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "system",
+                    "SourceBundleName": "system",
+                    "FullPath": "Assets/_Bundles/System/UIConfig.asset",
+                    "FileName": "UIConfig",
                     "Category": ""
                 }
             ]
