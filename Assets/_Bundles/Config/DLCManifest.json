@@ -79,20 +79,6 @@
         },
         {
             "DLCName": "Native",
-            "BundleName": "native_shared/c83e2295897c7ac2630c2367d484e40c",
-            "IsShared": true,
-            "AssetFullPaths": [
-                {
-                    "BuildRuleName": "",
-                    "SourceBundleName": "",
-                    "FullPath": "Assets/_Arts/Fonts/Normal-S.otf",
-                    "FileName": "Normal-S",
-                    "Category": ""
-                }
-            ]
-        },
-        {
-            "DLCName": "Native",
             "BundleName": "native_shared/cd3b55ed584aed295a05e9904e587c4b",
             "IsShared": true,
             "AssetFullPaths": [

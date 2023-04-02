@@ -261,7 +261,7 @@ namespace CYM
 
         #region Engine Dir
         //public static readonly string RPath_CEngine = $"Assets/{Dir_Plugins}/{Dir_CEngine}/";
-        public static readonly string RPath_CEngine = $"Packages/{Dir_CEngine}/";
+        public static readonly string RPath_CEngine = $"Packages/com.cym.cengine/";
         public static readonly string RPath_InternalBundle = Path.Combine(RPath_CEngine, Dir_Bundles);
         public static readonly string RPath_TempCYMMonobehaviour = Path.Combine(RPath_CEngine, "_Res/Configs/TemplateFiles/CYMMonobehaviour.asset");
         public static readonly string RPath_TempMonobehaviour = Path.Combine(RPath_CEngine, "_Res/Configs/TemplateFiles/Monobehaviour.asset");
