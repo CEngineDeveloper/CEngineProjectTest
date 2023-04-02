@@ -72,6 +72,14 @@
         "com.cengine.core": "1.0.0"
       }
     },
+    "com.cengine.sense": {
+      "version": "file:CEngine.Sense",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.cengine.core": "1.0.0"
+      }
+    },
     "com.cengine.slgenvirom": {
       "version": "file:CEngine.SLGEnvirom",
       "depth": 0,
