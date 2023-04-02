@@ -209,5 +209,13 @@ MonoBehaviour:
     m_Id: c2e6e6dd-aa8f-41a1-96ff-d375ebe16503
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 788b13a3-0116-4470-a9c3-51df9d5a6723
+      m_Path: <Keyboard>/f1
+      m_Interactions: Tap
+      m_Processors: 
+      m_Groups: 
+      m_Action: Toggle Key
+      m_Flags: 0
     m_Flags: 0
