@@ -48,12 +48,28 @@
         "com.cengine.core": "1.0.0"
       }
     },
+    "com.cengine.extenui": {
+      "version": "file:CEngine.ExtentUI",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.cengine.core": "1.0.0"
+      }
+    },
     "com.cengine.nodecanvas": {
       "version": "file:CEngine.NodeCanvas",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
         "com.cengine.ai": "1.0.0"
+      }
+    },
+    "com.cengine.person": {
+      "version": "file:CEngine.Person",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.cengine.core": "1.0.0"
       }
     },
     "com.cengine.plot": {
