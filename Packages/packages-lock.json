@@ -72,6 +72,14 @@
         "com.cengine.core": "1.0.0"
       }
     },
+    "com.cengine.pathfinding": {
+      "version": "file:CEngine.Pathfinding",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.cengine.core": "1.0.0"
+      }
+    },
     "com.cengine.person": {
       "version": "file:CEngine.Person",
       "depth": 0,
