@@ -12,7 +12,15 @@ namespace CYM
         #endregion
 
         #region set
-
+        protected override void OnInit()
+        {
+            base.OnInit();
+            var plugins = PluginConfig.Ins.Datas;
+            foreach (var item in plugins)
+            { 
+            
+            }
+        }
         #endregion
 
     }

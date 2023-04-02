@@ -129,6 +129,7 @@ namespace CYM
         public static bool IsDestroy { get; private set; }
         public override LayerData LayerData => SysConst.Layer_System;
         public override MonoType MonoType => MonoType.Global;
+        public virtual bool IsLoadLua => true;         //是否加载Lua脚本,有些情况需要屏蔽lua脚本
         protected virtual void OnReplaceInnerComponet()
         { 
         
@@ -239,7 +240,6 @@ namespace CYM
             BaseLuaMgr.RegisterStatic(typeof(CLog));
             BaseLuaMgr.RegisterStatic(typeof(UIUtil));
             BaseLuaMgr.RegisterStatic(typeof(FileUtil));
-            BaseLuaMgr.RegisterStatic(typeof(FormulaUtil));
             BaseLuaMgr.RegisterStatic(typeof(HTTPUtil));
             BaseLuaMgr.RegisterStatic(typeof(IDUtil));
             BaseLuaMgr.RegisterStatic(typeof(IMUIUtil));

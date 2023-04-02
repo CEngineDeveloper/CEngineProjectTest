@@ -64,7 +64,8 @@ namespace CYM
             EnsureLanguge();
             EnsureProjectFiles();
             RefreshSceneNames();
-            DLCConfig.RefreshDLC();
+            PluginConfig.Refresh();
+            DLCConfig.Refresh();
             HybridCLRInstallerController = new InstallerController();
             HybridCLRGlobalSettings = Resources.Load<HybridCLRGlobalSettings>(nameof(HybridCLRGlobalSettings));
             Ins.titleContent = new GUIContent("Build");
@@ -204,7 +205,7 @@ namespace CYM
                 EditorGUILayout.EndToggleGroup();
                 if (preSimu != LocalConfig.IsSimulationEditor)
                 {
-                    DLCConfig.RefreshDLC();
+                    DLCConfig.Refresh();
                 }
                 BuildConfig.IsShowLogo = EditorGUILayout.Toggle("Is Show Logo", BuildConfig.IsShowLogo);
                 BuildConfig.IgnoreChecker = EditorGUILayout.Toggle("Is Ignore Checker", BuildConfig.IgnoreChecker);
@@ -359,7 +360,7 @@ namespace CYM
                 }
                 if (GUILayout.Button("RefreshDLC"))
                 {
-                    DLCConfig.RefreshDLC();
+                    DLCConfig.Refresh();
                 }
                 EditorGUILayout.EndVertical();
             }
@@ -407,7 +408,7 @@ namespace CYM
                 }
                 if (preResBuildType != Version.RealResBuildType)
                 {
-                    DLCConfig.RefreshDLC();
+                    DLCConfig.Refresh();
                 }
                 BuildConfig.IsDiscreteShared = EditorGUILayout.Toggle("Is Discrete Shared", BuildConfig.IsDiscreteShared);
                 BuildConfig.IsForceBuild = EditorGUILayout.Toggle("Is Force Build", BuildConfig.IsForceBuild);

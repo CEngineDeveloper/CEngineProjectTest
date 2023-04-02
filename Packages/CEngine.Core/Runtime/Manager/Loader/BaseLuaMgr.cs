@@ -375,7 +375,7 @@ namespace CYM
         public IEnumerator Load()
         {
             Callback_OnParseStart?.Invoke();
-            if (!SysConsole.IsNoLoadLua)
+            if (BaseGlobal.Ins.IsLoadLua)
             {
                 SafeDic<int, List<string>> ExcuteStrDic = new SafeDic<int, List<string>>();
                 //加载DLC Lua

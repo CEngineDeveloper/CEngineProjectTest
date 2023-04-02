@@ -455,8 +455,6 @@ namespace CYM
         //KeyCode ToggleKey = KeyCode.F1;
         [FoldoutGroup("Core"), ShowInInspector]
         public static bool IsIgnoreCondition = false;
-        [FoldoutGroup("Core"), ShowInInspector]
-        public static bool IsNoLoadLua = false;         //是否加载Lua脚本,有些情况需要屏蔽lua脚本
         #endregion
     }
 }

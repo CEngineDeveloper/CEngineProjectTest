@@ -13,6 +13,8 @@ using Sirenix.OdinInspector;
 using System.IO;
 using System.Linq;
 using System;
+using UnityEditor;
+
 namespace CYM
 {
     public class PluginConfig : ScriptConfig<PluginConfig>
@@ -42,6 +44,12 @@ namespace CYM
                 var data = new Item { Name = newItem, Url = "",Path = item.ToPackagePath() };
                 Datas.Add(newItem, data);
             }
+#if UNITY_EDITOR
+            if (EditorUtility.IsDirty(Ins))
+            {
+                AssetDatabase.SaveAssets();
+            }
+#endif
         }
     }
 }

@@ -89,16 +89,16 @@ namespace CYM
         public override void OnCreate()
         {
             base.OnCreate();
-            RefreshDLC();
+            Refresh();
         }
         //DLC加载的时候刷新一次
         public override void OnInited()
         {
             base.OnInited();
-            RefreshDLC();
+            Refresh();
         }
-        [Button(nameof(RefreshDLC))]
-        public void RefreshDLC()
+        [Button(nameof(Refresh))]
+        public void Refresh()
         {
             InnerBuildRule.Clear();
             RuntimeCopyDirectory.Clear();
@@ -249,12 +249,12 @@ namespace CYM
         public void RemoveDLC(string name)
         {
             DLC.RemoveAll(x => x.Name == name);
-            RefreshDLC();
+            Refresh();
         }
         public void AddDLC(string name)
         {
             DLC.Add(new DLCItemConfig(name));
-            RefreshDLC();
+            Refresh();
         }
         #endregion
 

@@ -1,5 +1,5 @@
 //------------------------------------------------------------------------------
-// GlobalTutorial.cs
+// TutorialUIMgr.cs
 // Copyright 2022 2022/11/5 
 // Created by CYM on 2022/11/5
 // Owner: CYM
@@ -11,12 +11,14 @@ using CYM;
 using CYM.UI;
 namespace CYM.Example
 {
-    public class Example : BaseGlobalT<BaseUnit, SysConfig,DBBaseSettings, Example> 
+    public class ExampleUIMgr : BaseMainUIMgr 
     {
-        protected override void OnAttachComponet()
+        public static UExampleView TutorialView { get; private set; }
+
+        protected override void OnCreateUIView1()
         {
-            base.OnAttachComponet();
-            AddComponent<ExampleUIMgr>();
+            base.OnCreateUIView1();
+            TutorialView = CreateView<UExampleView>("Packages:com.cengine.example/Sampler/UExampleView");
         }
     }
 }

@@ -40,10 +40,10 @@ namespace CYM.Example
         protected override void OnCreatedView()
         {
             base.OnCreatedView();
-            UImage.Init(new UImageData { IconStr = "Empty" });
+            UImage.Init(new UImageData { IconStr = "" });
             UText.Init(new UTextData { Name =()=> "Name" });
             UBgText.Init(new UTextData { Name = ()=> "这是一段测试文字" });
-            UIconAttr.Init(new UCustomData { Icon1 = ()=>"Empty".GetIcon(),Name1 = ()=>"生命",Name2 = ()=>"10".Green() });
+            UIconAttr.Init(new UCustomData { Icon1 = ()=>null,Name1 = ()=>"生命",Name2 = ()=>"10".Green() });
             UButton.Init(new UButtonData { NameKey = "点击按钮" });
             UDropdown.Init(new UDropdownData { Opts =()=>new string[] { "选项1","水果","香蕉","娃哈哈" } });
             UCheck.Init(new UCheckData { NameKey = "背景音乐" });

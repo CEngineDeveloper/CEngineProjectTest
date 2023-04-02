@@ -1,4 +1,5 @@
 ﻿using CYM.UI.Particle;
+using DG.Tweening.Plugins.Core.PathCore;
 using MoonSharp.Interpreter;
 using System.Collections.Generic;
 using UnityEngine;
@@ -123,11 +124,18 @@ namespace CYM.UI
             GameObject tempGo;
             GameObject tempPrefab = null;
             //从编辑器加载
-            if (path.StartsWith("Editor:"))
+            if (path.StartsWith("Assets:"))
             {
 #if UNITY_EDITOR
-                var subPath = path.Split(":")[1];
+                var subPath = System.IO.Path.Combine("Assets", path.Split(":")[1]);
                 tempPrefab = UnityEditor.AssetDatabase.LoadAssetAtPath(subPath+".prefab", typeof(GameObject)) as GameObject;
+#endif
+            }
+            else if (path.StartsWith("Packages:"))
+            {
+#if UNITY_EDITOR
+                var subPath =System.IO.Path.Combine("Packages", path.Split(":")[1]);
+                tempPrefab = UnityEditor.AssetDatabase.LoadAssetAtPath(subPath + ".prefab", typeof(GameObject)) as GameObject;
 #endif
             }
             //从Resources加载

@@ -40,21 +40,22 @@ namespace CYM
             {
                 m_instance = this as T;
             }
-            Init();
+            OnInit();
         }
         void OnDestroy()
         {
             m_instance = null;
         }
 
-        protected virtual void Init()
+        protected virtual void OnInit()
         {
 
         }
 
-        public virtual void Dispose()
+        public static T Init()
         {
-
+            var ret = Ins;
+            return ret;
         }
 
     }
