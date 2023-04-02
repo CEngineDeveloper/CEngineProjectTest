@@ -24,6 +24,14 @@
         "com.unity.textmeshpro": "3.0.6"
       }
     },
+    "com.cengine.cshap": {
+      "version": "file:CEngine.CSharp",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.cengine.core": "1.0.0"
+      }
+    },
     "com.cengine.example": {
       "version": "file:CEngine.Example",
       "depth": 0,
@@ -38,6 +46,14 @@
       "source": "embedded",
       "dependencies": {
         "com.cengine.ai": "1.0.0"
+      }
+    },
+    "com.cengine.steam": {
+      "version": "file:CEngine.Steam",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.cengine.core": "1.0.0"
       }
     },
     "com.focus-creative-games.hybridclr_unity": {
