@@ -81,9 +81,8 @@
         public const string CursorConfig = "CursorConfig";
         public const string DLCConfig = "DLCConfig";
         public const string GameConfig = "GameConfig";
-        public const string ImportConfig = "ImportConfig";
         public const string LogConfig = "LogConfig";
-        public const string PluginConfig = "PluginConfig";
         public const string UIConfig = "UIConfig";
+        public const string TestAI = "TestAI";
     }
 }

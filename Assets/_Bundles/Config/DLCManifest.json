@@ -771,22 +771,8 @@
                 {
                     "BuildRuleName": "system",
                     "SourceBundleName": "system",
-                    "FullPath": "Assets/_Bundles/System/ImportConfig.asset",
-                    "FileName": "ImportConfig",
-                    "Category": ""
-                },
-                {
-                    "BuildRuleName": "system",
-                    "SourceBundleName": "system",
                     "FullPath": "Assets/_Bundles/System/LogConfig.asset",
                     "FileName": "LogConfig",
-                    "Category": ""
-                },
-                {
-                    "BuildRuleName": "system",
-                    "SourceBundleName": "system",
-                    "FullPath": "Assets/_Bundles/System/PluginConfig.asset",
-                    "FileName": "PluginConfig",
                     "Category": ""
                 },
                 {
@@ -795,6 +781,13 @@
                     "FullPath": "Assets/_Bundles/System/UIConfig.asset",
                     "FileName": "UIConfig",
                     "Category": ""
+                },
+                {
+                    "BuildRuleName": "system",
+                    "SourceBundleName": "system",
+                    "FullPath": "Assets/_Bundles/System/AI/TestAI.asset",
+                    "FileName": "TestAI",
+                    "Category": "ai"
                 }
             ]
         }
