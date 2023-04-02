@@ -1,0 +1,17 @@
+{
+    "name": "CEngine.NodeCanvas",
+    "rootNamespace": "",
+    "references": [
+        "GUID:37c7be5c33b1a0941833141788850526",
+        "GUID:b134867f3cd9e37428b652f97bf28b72"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

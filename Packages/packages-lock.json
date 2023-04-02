@@ -32,6 +32,14 @@
         "com.cengine.core": "1.0.0"
       }
     },
+    "com.cengine.nodecanvas": {
+      "version": "file:CEngine.NodeCanvas",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.cengine.ai": "1.0.0"
+      }
+    },
     "com.focus-creative-games.hybridclr_unity": {
       "version": "https://gitee.com/focus-creative-games/hybridclr_unity.git",
       "depth": 0,
