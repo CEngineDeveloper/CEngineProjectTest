@@ -62,9 +62,6 @@ namespace CYM
         #endregion
 
         #region dlc config JSON配置文件
-        BuildConfig BuildConfig => BuildConfig.Ins;
-        //内部DLC
-        public DLCItemConfig ConfigInternal { get; private set; }
         //默认DLC
         public DLCItemConfig ConfigNative { get; private set; }
         //扩展DLC 不包含 Native
@@ -73,11 +70,9 @@ namespace CYM
         #endregion
 
         #region editor dlc item DLC配置资源,由配置文件生成
-        public DLCItem EditorInternal { get; private set; }
         public DLCItem EditorNative { get; private set; }
         public List<DLCItem> EditorExtend { get; private set; } = new List<DLCItem>();
         public List<DLCItem> EditorAll { get; private set; } = new List<DLCItem>();
-        public List<DLCItem> EditorInner { get; private set; } = new List<DLCItem>();
         #endregion
 
         #region runtime 资源打包规则
@@ -131,7 +126,6 @@ namespace CYM
             ConfigAll.Clear();
             EditorExtend.Clear();
             EditorAll.Clear();
-            EditorInner.Clear();
 
             //添加BuildConfig
             foreach (var item in InnerBuildRule)
@@ -139,10 +133,6 @@ namespace CYM
             //添加IgnoreConst
             foreach (var item in IgnoreConst)
                 AddIgnoreConst(item);
-
-            //加载内部dlc
-            ConfigInternal = new DLCItemConfig(SysConst.STR_InternalDLC);
-            EditorInternal = new DLCItem(ConfigInternal);
 
             //加载原生dlc
             ConfigNative = new DLCItemConfig(SysConst.STR_NativeDLC);
@@ -158,18 +148,13 @@ namespace CYM
 
             ConfigAll = new List<DLCItemConfig>(ConfigExtend)
             {
-                ConfigInternal,
                 ConfigNative
             };
 
             EditorAll = new List<DLCItem>(EditorExtend)
             {
-                EditorInternal,
                 EditorNative
             };
-
-            EditorInner.Add(EditorInternal);
-            EditorInner.Add(EditorNative);
 
 #if UNITY_EDITOR
             if (!Application.isPlaying)

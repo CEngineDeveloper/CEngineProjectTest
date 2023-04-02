@@ -133,7 +133,7 @@ namespace CYM
                 GUILayout.FlexibleSpace();
                 if (GUILayout.Button(EditorGUIUtility.IconContent("d_RotateTool On"), GUILayout.Width(buttonWidth)))
                 {
-                    Builder.BuildInnerManifest();
+                    Builder.BuildNativeManifest();
                     BuildWindow.Compilation();
                 }
                 if (GUILayout.Button(EditorGUIUtility.IconContent("d_KeyboardShortcutsDisabled"), GUILayout.Width(buttonWidth)))

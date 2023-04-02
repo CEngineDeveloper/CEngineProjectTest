@@ -89,7 +89,6 @@ namespace CYM
         public const string STR_Base = "Base";
         public const string STR_ABManifest = "AssetBundleManifest";
         public const string STR_NativeDLC = "Native";
-        public const string STR_InternalDLC = "Internal";
         public const string STR_DLCManifest = "DLCManifest";
         public const string STR_DLCItem = "DLCItem";
         public const string STR_Custom = "Custom";
@@ -262,10 +261,6 @@ namespace CYM
         #region Engine Dir
         //public static readonly string RPath_CEngine = $"Assets/{Dir_Plugins}/{Dir_CEngine}/";
         public static readonly string RPath_CEngine = $"Packages/com.cym.cengine/";
-        public static readonly string RPath_InternalBundle = Path.Combine(RPath_CEngine, Dir_Bundles);
-        public static readonly string RPath_TempCYMMonobehaviour = Path.Combine(RPath_CEngine, "_Res/Configs/TemplateFiles/CYMMonobehaviour.asset");
-        public static readonly string RPath_TempMonobehaviour = Path.Combine(RPath_CEngine, "_Res/Configs/TemplateFiles/Monobehaviour.asset");
-        public static readonly string RPath_TempCSharp = Path.Combine(RPath_CEngine, "_Res/Configs/TemplateFiles/CSharp.asset");
         #endregion
 
         #region 工程目录的相对路径

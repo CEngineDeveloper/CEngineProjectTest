@@ -45,6 +45,14 @@
     {
         public const string IS_1 = "IS_1";
     }
+    public partial class CAudio
+    {
+        public const string AppTab = "AppTab";
+        public const string BntHover = "BntHover";
+        public const string Error = "Error";
+        public const string Event = "Event";
+        public const string Tabclick = "Tabclick";
+    }
     public partial class CMusic
     {
         public const string NewHorizons = "NewHorizons";

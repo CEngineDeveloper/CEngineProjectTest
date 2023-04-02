@@ -34,10 +34,6 @@ namespace CYM
         /// </summary>
         static Dictionary<string, string> AllAssetsBuildRuleName { get; set; } = new Dictionary<string, string>();
         /// <summary>
-        /// 已经决定被打包的Internal资源,防止重复打包
-        /// </summary>
-        static HashSet<string> PackedAssets_Internal { get; set; } = new HashSet<string>();
-        /// <summary>
         /// 已经决定被打包的Navite资源,防止重复打包
         /// </summary>
         static HashSet<string> PackedAssets_Native { get; set; } = new HashSet<string>();
@@ -65,7 +61,6 @@ namespace CYM
         static List<AssetBundleBuild> AssetBundleBuildsCache = new List<AssetBundleBuild>();
         static BuildConfig BuildConfig => BuildConfig.Ins;
         static DLCItem Native => DLCConfig.EditorNative;
-        static DLCItem Internal => DLCConfig.EditorInternal;
         static DLCConfig DLCConfig => DLCConfig.Ins;
         #endregion
 
@@ -73,7 +68,6 @@ namespace CYM
         internal static void BuildManifest(DLCItem dlc)
         {
             //清除缓存
-            PackedAssets_Internal.Clear();
             PackedAssets_Native.Clear();
             PackedAssets_DLC.Clear();
             Builds.Clear();
@@ -83,11 +77,8 @@ namespace CYM
             AllAssets.Clear();
             AllBundles.Clear();
             AllSharedBundles.Clear();
-            //永远提前打包Internal
-            if (!dlc.IsInternal) 
-                _BuildManifest(Internal);
             //如果不是NativeDLC则先BuildNativeDLC,防止资源被其他DLC重复打包
-            if (!dlc.IsInternal && !dlc.IsNative) 
+            if (!dlc.IsNative) 
                 _BuildManifest(Native);
             _BuildManifest(dlc);
         }
@@ -97,15 +88,12 @@ namespace CYM
             _BuildEXE();
             OnPostBuild();
         }
-        internal static void BuildInnerBundle()
+        internal static void BuildNativeBundle()
         {
-            BuildInnerManifest();
-            foreach (var item in DLCConfig.EditorInner)
-            {
-                Builder.BuildBundle(item);
-            }
+            Builder.BuildManifest(DLCConfig.EditorNative);
+            Builder.BuildBundle(DLCConfig.EditorNative);
         }
-        internal static void BuildInnerManifest()
+        internal static void BuildNativeManifest()
         {
             Builder.BuildManifest(DLCConfig.EditorNative);
         }
@@ -359,9 +347,7 @@ namespace CYM
         /// <returns></returns>
         static List<AssetBundleBuild> GenerateAssetBundleBuildData(DLCItem dlc)
         {
-            if (dlc.IsInternal) 
-                PackedAssets_Internal.Clear();
-            else if (dlc.IsNative) 
+            if (dlc.IsNative) 
                 PackedAssets_Native.Clear();
             PackedAssets_DLC.Clear();
             Builds.Clear();
@@ -411,14 +397,12 @@ namespace CYM
         }
         static void AddToPackedAssets(string path)
         {
-            PackedAssets_Internal.Add(path);
             PackedAssets_Native.Add(path);
             PackedAssets_DLC.Add(path);
         }
         static bool IsContainInPackedAssets(string path)
         {
-            if (PackedAssets_Internal.Contains(path) ||
-                PackedAssets_Native.Contains(path) ||
+            if (PackedAssets_Native.Contains(path) ||
                 PackedAssets_DLC.Contains(path))
                 return true;
             return false;

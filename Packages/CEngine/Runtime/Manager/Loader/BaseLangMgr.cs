@@ -234,6 +234,10 @@ namespace CYM
         private void OnAddDynamicDic() { }
         public IEnumerator Load()
         {
+            //Load Resources Language
+            var textAssets = Resources.Load<TextAsset>("SysLanguage");
+            LoadLanguageData(textAssets.bytes);
+
             //加载DLC 的 Language
             foreach (var dlc in DLCManager.LoadedDLCItems.Values)
             {

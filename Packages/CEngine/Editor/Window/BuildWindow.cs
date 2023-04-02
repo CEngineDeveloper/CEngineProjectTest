@@ -416,7 +416,7 @@ namespace CYM
 
                 if (GUILayout.Button("Build Manifest"))
                 {
-                    Builder.BuildInnerManifest();
+                    Builder.BuildNativeManifest();
                     AssetDatabase.Refresh();
                 }
                 if (GUILayout.Button("Build Bundle"))
@@ -426,7 +426,7 @@ namespace CYM
                     if (!CheckAuthority()) return;
                     if (!CheckKey()) return;
                     RefreshData();
-                    Builder.BuildInnerBundle();
+                    Builder.BuildNativeBundle();
                     EditorUtility.DisplayDialog("提示!", $"恭喜! 程序构建已经打包完成!!", "确定");
                     CLog.Green($"恭喜! 程序构建已经打包完成!!");
                 }
@@ -448,7 +448,7 @@ namespace CYM
                     if (!CheckAuthority()) return;
                     if (!CheckKey()) return;
                     RefreshData();
-                    Builder.BuildInnerBundle();
+                    Builder.BuildNativeBundle();
                     Builder.BuildEXE();
                     EditorUtility.DisplayDialog("提示!", $"恭喜! 一键打包已经打包完成!!", "确定");
                     CLog.Green($"恭喜! 一键打包已经打包完成!!");
@@ -545,7 +545,7 @@ namespace CYM
 
                         BuildHotFix();
 
-                        Builder.BuildInnerBundle();
+                        Builder.BuildNativeBundle();
                         Builder.BuildEXE();
                         SaveDownloadFile();
                         EditorUtility.DisplayDialog("提示!", $"恭喜! 一键打包已经打包完成!!", "确定");

@@ -292,12 +292,7 @@ namespace CYM.DLC
             if (IsEditorMode || force)
             {
                 string editorDLCPath = "";
-                if (IsInternal)
-                {
-                    editorDLCPath = SysConst.RPath_InternalBundle;
-                    return editorDLCPath;
-                }
-                else if (IsNative)
+                if (IsNative)
                 {
                     editorDLCPath = SysConst.RPath_Bundles;
                     return editorDLCPath;
@@ -315,7 +310,6 @@ namespace CYM.DLC
 
         #region is
         public bool IsNative => Name == SysConst.STR_NativeDLC;
-        public bool IsInternal => Name == SysConst.STR_InternalDLC;
         #endregion
     }
 

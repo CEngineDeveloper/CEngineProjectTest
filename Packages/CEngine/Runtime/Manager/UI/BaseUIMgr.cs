@@ -25,7 +25,7 @@ namespace CYM.UI
         protected int SortOrder = 0;
         // 根界面:画布
         public UView RootView { get; private set; }
-        protected virtual string RootViewPrefab => "URootView";
+        protected virtual string RootViewPrefab => "Res:Root/URootView";
         protected virtual string ViewName => "RootView";
         protected virtual bool IsUseUIParticleSystem => false;
         #endregion
@@ -133,8 +133,8 @@ namespace CYM.UI
             //从Resources加载
             else if (path.StartsWith("Res:"))
             {
-                var subPath = path.Split(":")[0];
-                tempPrefab = Resources.Load(subPath + ".prefab") as GameObject;
+                var subPath = path.Split(":")[1];
+                tempPrefab = Resources.Load<GameObject>(subPath);
             }
             //从Bundle加载
             else

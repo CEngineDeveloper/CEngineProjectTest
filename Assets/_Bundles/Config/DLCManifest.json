@@ -79,6 +79,20 @@
         },
         {
             "DLCName": "Native",
+            "BundleName": "native_shared/c83e2295897c7ac2630c2367d484e40c",
+            "IsShared": true,
+            "AssetFullPaths": [
+                {
+                    "BuildRuleName": "",
+                    "SourceBundleName": "",
+                    "FullPath": "Assets/_Arts/Fonts/Normal-S.otf",
+                    "FileName": "Normal-S",
+                    "Category": ""
+                }
+            ]
+        },
+        {
+            "DLCName": "Native",
             "BundleName": "native_shared/cd3b55ed584aed295a05e9904e587c4b",
             "IsShared": true,
             "AssetFullPaths": [
@@ -549,6 +563,48 @@
                     "SourceBundleName": "illustration",
                     "FullPath": "Assets/_Bundles/Illustration/IS_1.png",
                     "FileName": "IS_1",
+                    "Category": ""
+                }
+            ]
+        },
+        {
+            "DLCName": "Native",
+            "BundleName": "native_audio",
+            "IsShared": false,
+            "AssetFullPaths": [
+                {
+                    "BuildRuleName": "audio",
+                    "SourceBundleName": "audio",
+                    "FullPath": "Assets/_Bundles/Audio/AppTab.wav",
+                    "FileName": "AppTab",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "audio",
+                    "SourceBundleName": "audio",
+                    "FullPath": "Assets/_Bundles/Audio/BntHover.wav",
+                    "FileName": "BntHover",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "audio",
+                    "SourceBundleName": "audio",
+                    "FullPath": "Assets/_Bundles/Audio/Error.wav",
+                    "FileName": "Error",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "audio",
+                    "SourceBundleName": "audio",
+                    "FullPath": "Assets/_Bundles/Audio/Event.wav",
+                    "FileName": "Event",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "audio",
+                    "SourceBundleName": "audio",
+                    "FullPath": "Assets/_Bundles/Audio/Tabclick.wav",
+                    "FileName": "Tabclick",
                     "Category": ""
                 }
             ]
