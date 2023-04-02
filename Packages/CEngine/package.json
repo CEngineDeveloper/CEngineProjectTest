@@ -1,5 +1,5 @@
 {
-    "name": "com.cym.cengine",
+    "name": "com.cengine.core",
     "version": "1.0.0",
     "displayName": "CEngine",
     "description": "CEngine 核心库",
