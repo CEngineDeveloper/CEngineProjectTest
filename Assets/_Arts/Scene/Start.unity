@@ -202,14 +202,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3db9364f135e0d419495eff0664dd0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsOnlyPlayerAI: 0
-  IsLockCamera: 0
-  IsFastPersonDeath: 0
-  IsNoPlot: 0
-  IsAllAlert: 0
-  IsNoEvent: 0
-  IsMustEvent: 0
-  ToggleKey: 282
-  IsIgnoreCondition: 0
-  IsNoLoadLua: 0
-  IsTest: 0
+  ToggleKey:
+    m_Name: Toggle Key
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: c2e6e6dd-aa8f-41a1-96ff-d375ebe16503
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0

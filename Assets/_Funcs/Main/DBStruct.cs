@@ -4,7 +4,7 @@
 // 填写类的描述...
 //------------------------------------------------------------------------------
 using CYM;
-using CYM.Unit;
+//using CYM.Unit;
 using System;
 using System.Collections.Generic;
 namespace Gamelogic
@@ -34,7 +34,7 @@ namespace Gamelogic
         //属性
         public Dictionary<CrewAttr, float> Attrs = new Dictionary<CrewAttr, float>();
         //Buff
-        public List<DBBaseBuff> Buffs = new List<DBBaseBuff>();
+        //public List<DBBaseBuff> Buffs = new List<DBBaseBuff>();
     }
     [Serializable]
     public class DBChara : DBBaseUnit

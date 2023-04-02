@@ -1,0 +1,19 @@
+{
+    "name": "CEngine.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:37c7be5c33b1a0941833141788850526",
+        "GUID:2373f786d14518f44b0f475db77ba4de"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

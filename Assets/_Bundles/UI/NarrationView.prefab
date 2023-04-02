@@ -667,7 +667,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4917673492567329896}
   - component: {fileID: 4915286462307747814}
-  - component: {fileID: 5095463173693431970}
   m_Layer: 5
   m_Name: NarrationView
   m_TagString: Untagged
@@ -706,59 +705,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5127257875359394484}
   m_CullTransparentMesh: 0
---- !u!114 &5095463173693431970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5127257875359394484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebaed421df87b2d458bd3ecd5ac80c1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Group: 0
-  IsExclusive: 0
-  IsReturn: 0
-  IsMutextAll: 0
-  IsFullScreen: 1
-  IsAddBlocker: 1
-  IsBlockerClose: 1
-  IsShowDefault: 0
-  IsActiveByShow: 1
-  IsDragable: 0
-  IsRecord: 0
-  IsReset: 0
-  IsSameTime: 1
-  IsScale: 0
-  IsMove: 0
-  Duration: 0.3
-  InTime: 0.3
-  OutTime: 0.3
-  TweenScale:
-    IsReset: 1
-    InEase: 27
-    OutEase: 26
-  TweenMove:
-    IsReset: 1
-    InEase: 27
-    OutEase: 26
-    StartPos: {x: 0, y: 0}
-  IsFocus: 1
-  IsLayoutRebuild: 0
-  AlphaAnimator: []
-  PosAnimator: []
-  ScaleAnimator: []
-  BntInfo: {fileID: 0}
-  BntClose: {fileID: 0}
-  Title: {fileID: 0}
-  LuaScript: 
-  Desc: {fileID: 8361567784917371325}
-  CanvasGroup: {fileID: 4900083441832878056}
-  Bg: {fileID: 0}
-  Image: {fileID: 5095761360363109936}
-  KeyTip: {fileID: 0}
 --- !u!1 &5127339292574170950
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,319 @@
+{
+    "Data": [
+        {
+            "DLCName": "Internal",
+            "BundleName": "internal_icon",
+            "IsShared": false,
+            "AssetFullPaths": [
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Packages/CEngine/_Bundles/Icon/Empty.png",
+                    "FileName": "Empty",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "icon",
+                    "SourceBundleName": "icon",
+                    "FullPath": "Packages/CEngine/_Bundles/Icon/EmptySkill.png",
+                    "FileName": "EmptySkill",
+                    "Category": ""
+                }
+            ]
+        },
+        {
+            "DLCName": "Internal",
+            "BundleName": "internal_audio",
+            "IsShared": false,
+            "AssetFullPaths": [
+                {
+                    "BuildRuleName": "audio",
+                    "SourceBundleName": "audio",
+                    "FullPath": "Packages/CEngine/_Bundles/Audio/AppTab.wav",
+                    "FileName": "AppTab",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "audio",
+                    "SourceBundleName": "audio",
+                    "FullPath": "Packages/CEngine/_Bundles/Audio/BntHover.wav",
+                    "FileName": "BntHover",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "audio",
+                    "SourceBundleName": "audio",
+                    "FullPath": "Packages/CEngine/_Bundles/Audio/Error.wav",
+                    "FileName": "Error",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "audio",
+                    "SourceBundleName": "audio",
+                    "FullPath": "Packages/CEngine/_Bundles/Audio/Event.wav",
+                    "FileName": "Event",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "audio",
+                    "SourceBundleName": "audio",
+                    "FullPath": "Packages/CEngine/_Bundles/Audio/Tabclick.wav",
+                    "FileName": "Tabclick",
+                    "Category": ""
+                }
+            ]
+        },
+        {
+            "DLCName": "Internal",
+            "BundleName": "internal_material",
+            "IsShared": false,
+            "AssetFullPaths": [
+                {
+                    "BuildRuleName": "material",
+                    "SourceBundleName": "material",
+                    "FullPath": "Packages/CEngine/_Bundles/Material/CircleGuidanceMat.mat",
+                    "FileName": "CircleGuidanceMat",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "material",
+                    "SourceBundleName": "material",
+                    "FullPath": "Packages/CEngine/_Bundles/Material/ImageGrey.mat",
+                    "FileName": "ImageGrey",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "material",
+                    "SourceBundleName": "material",
+                    "FullPath": "Packages/CEngine/_Bundles/Material/RectGuidanceMat.mat",
+                    "FileName": "RectGuidanceMat",
+                    "Category": ""
+                },
+                {
+                    "BuildRuleName": "material",
+                    "SourceBundleName": "material",
+                    "FullPath": "Packages/CEngine/_Bundles/Material/UIBlur.mat",
+                    "FileName": "UIBlur",
+                    "Category": ""
+                }
+            ]
+        },
+        {
+            "DLCName": "Internal",
+            "BundleName": "internal_ui",
+            "IsShared": false,
+            "AssetFullPaths": [
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/HUDItem/UDamageJumpFont.prefab",
+                    "FileName": "UDamageJumpFont",
+                    "Category": "huditem"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/HUDItem/UStateJumpFont.prefab",
+                    "FileName": "UStateJumpFont",
+                    "Category": "huditem"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/HUDItem/UTextBubble.prefab",
+                    "FileName": "UTextBubble",
+                    "Category": "huditem"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/HUDItem/UTreatmentJumpFont.prefab",
+                    "FileName": "UTreatmentJumpFont",
+                    "Category": "huditem"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/Presenter/UBgText.prefab",
+                    "FileName": "UBgText",
+                    "Category": "presenter"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/Presenter/UButton.prefab",
+                    "FileName": "UButton",
+                    "Category": "presenter"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/Presenter/UCheck.prefab",
+                    "FileName": "UCheck",
+                    "Category": "presenter"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/Presenter/UDropdown.prefab",
+                    "FileName": "UDropdown",
+                    "Category": "presenter"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/Presenter/UDupplicate.prefab",
+                    "FileName": "UDupplicate",
+                    "Category": "presenter"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/Presenter/UIconAttr.prefab",
+                    "FileName": "UIconAttr",
+                    "Category": "presenter"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/Presenter/UImage.prefab",
+                    "FileName": "UImage",
+                    "Category": "presenter"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/Presenter/UInput.prefab",
+                    "FileName": "UInput",
+                    "Category": "presenter"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/Presenter/UProgress.prefab",
+                    "FileName": "UProgress",
+                    "Category": "presenter"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/Presenter/UScroll.prefab",
+                    "FileName": "UScroll",
+                    "Category": "presenter"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/Presenter/UScrollbar.prefab",
+                    "FileName": "UScrollbar",
+                    "Category": "presenter"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/Presenter/UScrollRect.prefab",
+                    "FileName": "UScrollRect",
+                    "Category": "presenter"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/Presenter/USlider.prefab",
+                    "FileName": "USlider",
+                    "Category": "presenter"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/Presenter/UText.prefab",
+                    "FileName": "UText",
+                    "Category": "presenter"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/Raw/Blur.prefab",
+                    "FileName": "Blur",
+                    "Category": "raw"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/Raw/Image.prefab",
+                    "FileName": "Image",
+                    "Category": "raw"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/Raw/Proto.prefab",
+                    "FileName": "Proto",
+                    "Category": "raw"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/Raw/RawImage.prefab",
+                    "FileName": "RawImage",
+                    "Category": "raw"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/Root/UHUDView.prefab",
+                    "FileName": "UHUDView",
+                    "Category": "root"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/Root/URootView.prefab",
+                    "FileName": "URootView",
+                    "Category": "root"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/Root/UWorldRootView.prefab",
+                    "FileName": "UWorldRootView",
+                    "Category": "root"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/View/UGuideView.prefab",
+                    "FileName": "UGuideView",
+                    "Category": "view"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/View/ULoadingView.prefab",
+                    "FileName": "ULoadingView",
+                    "Category": "view"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/View/UModalBoxView.prefab",
+                    "FileName": "UModalBoxView",
+                    "Category": "view"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/View/UTestView.prefab",
+                    "FileName": "UTestView",
+                    "Category": "view"
+                },
+                {
+                    "BuildRuleName": "ui",
+                    "SourceBundleName": "ui",
+                    "FullPath": "Packages/CEngine/_Bundles/UI/View/UTooltipView.prefab",
+                    "FileName": "UTooltipView",
+                    "Category": "view"
+                }
+            ]
+        }
+    ]
+}
