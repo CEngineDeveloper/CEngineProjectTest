@@ -46,7 +46,7 @@ namespace CYM
                 //下载资源
                 await DLCDownloader.StartDownload();
                 //加载配置文件
-                ScriptConfigManager.Load();
+                ScriptConfigHub.Load();
                 //加载热更代码
                 LoadHotFixScript();
                 //初始化Console

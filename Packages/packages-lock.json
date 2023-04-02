@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.cengine.core": {
-      "version": "file:CEngine",
+      "version": "file:CEngine.Core",
       "depth": 0,
       "source": "embedded",
       "dependencies": {

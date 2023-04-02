@@ -15,7 +15,7 @@ using UnityEditor;
 
 namespace CYM
 {
-    public static class ScriptConfigManager
+    public static class ScriptConfigHub
     {
 #if UNITY_EDITOR
         public static Dictionary<SerializedScriptableObject, Editor> ConfigWindows { get; private set; } = new Dictionary<SerializedScriptableObject, Editor>();

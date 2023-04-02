@@ -50,6 +50,12 @@ namespace CYM
             mp = mp.Replace('\\', '/');
             return mp;
         }
+        public static string ToPackagePath(this string mp)
+        {
+            mp = mp.Substring(mp.IndexOf("Packages"));
+            mp = mp.Replace('\\', '/');
+            return mp;
+        }
         #endregion
         public static string Truncate(this string value, int maxLength, string truncateString = "...")
         {

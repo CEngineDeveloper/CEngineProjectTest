@@ -258,13 +258,17 @@ namespace CYM
         public static readonly string Path_TemplateConfig = Path.Combine(Path_CEngine, "_Res/Configs/TemplateFiles");
         #endregion
 
+        #region Root dir
+        public static readonly string RPath_Assets = "Assets/";
+        public static readonly string RPath_Packages = "Packages/";
+        #endregion
+
         #region Engine Dir
         //public static readonly string RPath_CEngine = $"Assets/{Dir_Plugins}/{Dir_CEngine}/";
-        public static readonly string RPath_CEngine = $"Packages/com.cym.cengine/";
+        public static readonly string RPath_CEngine = $"Packages/com.cengine.core/";
         #endregion
 
         #region 工程目录的相对路径
-        public static readonly string RPath_Assets = "Assets/";
         public static readonly string RPath_Resources = $"Assets/{Dir_Resources}/";
         public static readonly string RPath_Funcs = $"Assets/{Dir_Funcs}/";
         public static readonly string RPath_CustomTempScript = Path.Combine(RPath_Resources, Dir_ScriptTemplate);

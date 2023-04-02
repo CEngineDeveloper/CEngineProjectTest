@@ -58,7 +58,7 @@ namespace CYM
         {
             if (Application.isPlaying)
                 return;
-            ScriptConfigManager.LoadOrCreate();
+            ScriptConfigHub.LoadOrCreate();
             IsInited = true;
             TitleStyle.fixedWidth = 100;
             EnsureLanguge();
@@ -93,7 +93,7 @@ namespace CYM
                 EditorGUILayout.HelpBox("游戏运行时无法显示", MessageType.Info);
                 return;
             }
-            if (IsInited && ScriptConfigManager.IsAllLoaded())
+            if (IsInited && ScriptConfigHub.IsAllLoaded())
             {
                 Present_Info();
                 Present_Version();
@@ -986,7 +986,7 @@ namespace CYM
         protected virtual void OnDrawSubwindow() { }
         protected virtual void OnDrawSettings() 
         {
-            foreach (var item in ScriptConfigManager.ConfigWindows)
+            foreach (var item in ScriptConfigHub.ConfigWindows)
             {
                 if (item.Key is IScriptConfig inter && !inter.IsHideInBuildWindow)
                 {

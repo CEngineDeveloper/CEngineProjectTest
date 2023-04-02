@@ -33,13 +33,13 @@ namespace CYM
         public void Refresh()
         {
             Datas.Clear();
-            var files = Directory.GetDirectories(SysConst.Path_Plugins,$"{SysConst.Dir_CEngine}.*",SearchOption.TopDirectoryOnly);
+            var files = Directory.GetDirectories(SysConst.RPath_Packages,$"{SysConst.Dir_CEngine}.*",SearchOption.TopDirectoryOnly);
             foreach (var item in files)
             {
                 var newItem = item.Replace("\\","/").Split('/').Last();
                 if (newItem == SysConst.Dir_CEngine)
                     continue;
-                var data = new Item { Name = newItem, Url = "",Path = item.ToUnityPath() };
+                var data = new Item { Name = newItem, Url = "",Path = item.ToPackagePath() };
                 Datas.Add(newItem, data);
             }
         }

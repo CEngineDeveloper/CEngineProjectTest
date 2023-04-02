@@ -1,7 +1,7 @@
 {
     "name": "com.cengine.core",
     "version": "1.0.0",
-    "displayName": "CEngine",
+    "displayName": "CEngine.Core",
     "description": "CEngine 核心库",
     "unity": "2021.3",
     "unityRelease": "0b5",
