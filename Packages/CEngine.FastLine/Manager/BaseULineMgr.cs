@@ -6,6 +6,7 @@
 // 填写类的描述...
 //------------------------------------------------------------------------------
 
+using CYM.Pathfinding;
 using DigitalRuby.FastLineRenderer;
 using System;
 using System.Collections.Generic;
@@ -111,8 +112,7 @@ namespace CYM.Line
         private void OnMoveStart()
         {
             if (SelfBaseUnit.AStarMoveMgr != null &&
-                SelfBaseUnit.AStarMoveMgr.ABPath != null &&
-                SelfBaseUnit.AStarMoveMgr.ABPath.vectorPath != null)
+                SelfBaseUnit.AStarMoveMgr.IsHaveValidPathData())
             {
                 PathVector.Clear();
                 PathVector.AddRange(SelfBaseUnit.AStarMoveMgr.ABPath.vectorPath);

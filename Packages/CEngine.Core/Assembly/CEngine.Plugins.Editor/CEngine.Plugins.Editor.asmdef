@@ -1,14 +1,12 @@
 {
-    "name": "RoslynCSharp.Editor",
+    "name": "CEngine.Plugins.Editor",
     "rootNamespace": "",
     "references": [
-        "GUID:37c7be5c33b1a0941833141788850526"
+        "GUID:07589c96134f6ea4d8b6d6b198b93812"
     ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
-    "allowUnsafeCode": false,
+    "allowUnsafeCode": true,
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,

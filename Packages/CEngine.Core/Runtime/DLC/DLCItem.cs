@@ -176,7 +176,7 @@ namespace CYM.DLC
             TargetPath = Path.Combine(SysConst.Path_StreamingAssets, Name);
 
             //计算Build路径
-            ConstPathBuild = Path.Combine(SysConst.RPath_Funcs, SysConst.Dir_Const, Name + "Const.cs");
+            ConstPathBuild = Path.Combine(SysConst.RPath_Funcs, SysConst.Dir_Main, Name + "Const.cs");
             ManifestPathBuild = Path.Combine(AssetsRootPath, SysConst.Dir_Config, SysConst.STR_DLCManifest + ".json");
             ConfigPathBuild = Path.Combine(AssetsRootPath, SysConst.Dir_Config, SysConst.STR_DLCItem + ".json");
             //计算Manifest路径

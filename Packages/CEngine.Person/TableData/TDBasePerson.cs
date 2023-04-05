@@ -192,7 +192,7 @@ namespace CYM.Person
             //人过60,死亡几率扩大
             if (Age > deathAge) add = 0.1f + (Age - deathAge) * 0.001f;
             //快速死亡
-            if (SysConsole.IsFastPersonDeath) add = 0.5f;
+            if (TestConfig.IsFastPersonDeath) add = 0.5f;
             //计算最终的死亡概率
             float final = GameConfig.Ins.DeathProb[AgeRange] + (Age * ageFac) + add;
             return final * mul;

@@ -15,5 +15,10 @@ namespace CYM
 
         public IMoveMgr MoveMgr { get; protected set; }
         public IAStarMoveMgr AStarMoveMgr => MoveMgr as IAStarMoveMgr;
+
+        //public TMove GetMoveMgr<TMove>() where TMove : class,IMoveMgr
+        //{           
+        //    return MoveMgr as TMove;
+        //}
     }
 }

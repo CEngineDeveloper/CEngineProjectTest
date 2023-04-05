@@ -10,7 +10,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 namespace CYM
 {
-    public partial class SysConsole : BaseCoreMono
+    public partial class TestConfig : ScriptConfig<TestConfig>
     {
         [FoldoutGroup("Camera"), ShowInInspector]
         public static bool IsLockCamera = false;

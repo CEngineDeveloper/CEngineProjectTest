@@ -97,7 +97,7 @@ namespace CYM.Unit
                 return null;
             }
             CurRandCount++;
-            if (SysConsole.IsNoEvent) return null;
+            if (TestConfig.IsNoEvent) return null;
             if (!SelfBaseUnit.IsPlayerCtrl()) return null;
             if (ITDConfig.ListKeys.Count == 0) return null;
 
@@ -164,7 +164,7 @@ namespace CYM.Unit
         // 是否可以触发
         bool IsInProp(TData eventData)
         {
-            if (SysConsole.IsMustEvent) return true;
+            if (TestConfig.IsMustEvent) return true;
             if (RandUtil.Rand(eventData.Prob)) return true;
             return false;
         }

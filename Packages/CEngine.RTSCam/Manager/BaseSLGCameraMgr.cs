@@ -32,7 +32,7 @@ namespace CYM.RTSCam
         public virtual bool IsScreenEdgeControl => isScreenEdgeControl;
         public virtual bool IsRotateControl => isRotateControl;
         public virtual bool IsControl =>
-                 !SysConsole.IsLockCamera &&
+                 !TestConfig.IsLockCamera &&
                  !BaseInputMgr.IsFullScreen &&
                  !ULoadingView.IsInLoading &&
                  BaseInputMgr.IsEnablePlayerInput &&

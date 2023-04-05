@@ -32,6 +32,7 @@ namespace CYM
             ImportConfig.DoLoad();
             LogConfig.DoLoad();
             PluginConfig.DoLoad();
+            TestConfig.DoLoad();
             Debug.Log("加载配置完毕!!");
         }
         public static void LoadOrCreate()
@@ -45,6 +46,7 @@ namespace CYM
             ImportConfig.DoLoadOrCreate();
             LogConfig.DoLoadOrCreate();
             PluginConfig.DoLoadOrCreate();
+            TestConfig.DoLoadOrCreate();
         }
         public static bool IsAllLoaded() =>
             BuildConfig.IsLoaded &&
@@ -55,6 +57,22 @@ namespace CYM
             ImportConfig.IsLoaded &&
             LogConfig.IsLoaded &&
             GameConfig.IsLoaded &&
-            PluginConfig.IsLoaded;
+            PluginConfig.IsLoaded &&
+            TestConfig.IsLoaded;
+
+        public static void SaveConfig()
+        {
+            EditorUtility.SetDirty(BuildConfig.Ins);
+            EditorUtility.SetDirty(DLCConfig.Ins);
+            EditorUtility.SetDirty(GameConfig.Ins);
+            EditorUtility.SetDirty(LocalConfig.Ins);
+            EditorUtility.SetDirty(CursorConfig.Ins);
+            EditorUtility.SetDirty(UIConfig.Ins);
+            EditorUtility.SetDirty(ImportConfig.Ins);
+            EditorUtility.SetDirty(LogConfig.Ins);
+            EditorUtility.SetDirty(PluginConfig.Ins);
+            EditorUtility.SetDirty(TestConfig.Ins);
+            AssetDatabase.SaveAssets();
+        }
     }
 }

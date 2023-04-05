@@ -59,9 +59,12 @@ namespace CYM
             _ins = SystemRes.LoadConfig<T>(fileName);
             _ins?.OnInited();
 #if UNITY_EDITOR
-            if (!ScriptConfigHub.ConfigWindows.ContainsKey(_ins))
+            if (_ins)
             {
-                ScriptConfigHub.ConfigWindows.Add(_ins, Editor.CreateEditor(_ins));
+                if (!ScriptConfigHub.ConfigWindows.ContainsKey(_ins))
+                {
+                    ScriptConfigHub.ConfigWindows.Add(_ins, Editor.CreateEditor(_ins));
+                }
             }
 #endif 
         }

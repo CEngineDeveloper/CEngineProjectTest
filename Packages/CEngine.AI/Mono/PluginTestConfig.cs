@@ -11,13 +11,9 @@ using Sirenix.OdinInspector;
 
 namespace CYM
 {
-    public partial class SysConsole : BaseCoreMono
+    public partial class TestConfig : ScriptConfig<TestConfig>
     {
-        [FoldoutGroup("Unit"), ShowInInspector]
-        public static bool IsAllAlert = false;
-        [FoldoutGroup("Unit"), ShowInInspector]
-        public static bool IsNoEvent = false;
-        [FoldoutGroup("Unit"), ShowInInspector]
-        public static bool IsMustEvent = false;
+        [FoldoutGroup("AI"),ShowInInspector]
+        public static bool IsOnlyPlayerAI = false;
     }
 }

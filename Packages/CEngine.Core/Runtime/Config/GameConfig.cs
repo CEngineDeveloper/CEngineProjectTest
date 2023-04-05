@@ -65,11 +65,11 @@ namespace CYM
 
         #region reference
         [SerializeField, FoldoutGroup("Reference")]
-        Dictionary<string, Texture2D> RefTexture2D = new Dictionary<string, Texture2D>();
+        SerializableDic<string, Texture2D> RefTexture2D = new SerializableDic<string, Texture2D>();
         [SerializeField, FoldoutGroup("Reference")]
-        Dictionary<string, GameObject> RefGameObject = new Dictionary<string, GameObject>();
+        SerializableDic<string, GameObject> RefGameObject = new SerializableDic<string, GameObject>();
         [SerializeField, FoldoutGroup("Reference")]
-        Dictionary<string, AnimationCurve> RefAnimationCurve = new Dictionary<string, AnimationCurve>();
+        SerializableDic<string, AnimationCurve> RefAnimationCurve = new SerializableDic<string, AnimationCurve>();
         #endregion
 
         #region DateTime

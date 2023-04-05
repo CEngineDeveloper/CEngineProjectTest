@@ -56,12 +56,12 @@ namespace CYM
         #region set
         protected void HireLog(string str, params object[] obj)
         {
-            if (SysConsole.IsOnlyPlayerAI)
+            if (TestConfig.IsOnlyPlayerAI)
                 CLog.Green(str, obj);
         }
         protected void FireLog(string str, params object[] obj)
         {
-            if (SysConsole.IsOnlyPlayerAI)
+            if (TestConfig.IsOnlyPlayerAI)
                 CLog.Red(str, obj);
         }
         protected void ChangeLeftBuget(float val) => Balancer.ChangeLeftBuget(val);
@@ -76,7 +76,7 @@ namespace CYM
             bool isDo = OnDo(ref _outputBuget);
             bool isForGroup = ForGroupData();
             bool isSucc = isDo || isForGroup;
-            if (SysConsole.IsOnlyPlayerAI)
+            if (TestConfig.IsOnlyPlayerAI)
                 OnLog(isSucc);
             return isSucc;
         }

@@ -696,10 +696,6 @@ namespace CYM
                     GameObject Starter = new GameObject(nameof(Starter));
                     Starter.AddComponent<Starter>();
                 }
-                //else if (GUILayout.Button("刷新配置"))
-                //{
-                //    ScriptableObjectConfigMgr.LoadOrCreate();
-                //}
                 else if (GUILayout.Button("运行游戏"))
                 {
                     FileUtil.OpenExplorer(Version.ExePath);
@@ -786,13 +782,7 @@ namespace CYM
         public static void Save()
         {
             EditorUtility.SetDirty(HybridCLRGlobalSettings);
-            EditorUtility.SetDirty(LogConfig);
-            EditorUtility.SetDirty(UIConfig);
-            EditorUtility.SetDirty(DLCConfig);
-            EditorUtility.SetDirty(LocalConfig);
-            EditorUtility.SetDirty(BuildConfig);
-            EditorUtility.SetDirty(PluginConfig);
-            AssetDatabase.SaveAssets();
+            ScriptConfigHub.SaveConfig();
             AssetDatabase.Refresh();
         }
         public bool CheckDevBuildWarring()
@@ -891,7 +881,6 @@ namespace CYM
             FileUtil.EnsureDirectory(SysConst.Path_ResourcesTemp);
 
             FileUtil.EnsureDirectory(SysConst.Path_Funcs);
-            FileUtil.EnsureDirectory(Path.Combine(SysConst.Path_Funcs, SysConst.Dir_Const));
             FileUtil.EnsureDirectory(Path.Combine(SysConst.Path_Funcs, SysConst.Dir_GlobalMgr));
             FileUtil.EnsureDirectory(Path.Combine(SysConst.Path_Funcs, SysConst.Dir_Main));
             FileUtil.EnsureDirectory(Path.Combine(SysConst.Path_Funcs, SysConst.Dir_Table));
@@ -931,16 +920,16 @@ namespace CYM
         }
         static void LaunchVS()
         {
-            string assetsDirName = Path.Combine(SysConst.RPath_CEngine, "Scripts/Core/Mono/Global/BaseGlobal.cs");
+            //string assetsDirName = Path.Combine(SysConst.RPath_CEngine, "Scripts/Core/Mono/Global/BaseGlobal.cs");
 
-            if (!File.Exists(assetsDirName))
-            {
-                Debug.Log("BaseGlobal.cs doesn't exist? Aborting...");
-                return;
-            }
-            AssetDatabase.ImportAsset(assetsDirName, ImportAssetOptions.ForceUpdate);
-            var asset = AssetDatabase.LoadAssetAtPath(assetsDirName, typeof(TextAsset)) as TextAsset;
-            AssetDatabase.OpenAsset(asset);
+            //if (!File.Exists(assetsDirName))
+            //{
+            //    Debug.Log("BaseGlobal.cs doesn't exist? Aborting...");
+            //    return;
+            //}
+            //AssetDatabase.ImportAsset(assetsDirName, ImportAssetOptions.ForceUpdate);
+            //var asset = AssetDatabase.LoadAssetAtPath(assetsDirName, typeof(TextAsset)) as TextAsset;
+            //AssetDatabase.OpenAsset(asset);
         }
         static void LaunchLua()
         {

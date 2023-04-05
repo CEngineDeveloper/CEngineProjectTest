@@ -320,7 +320,7 @@ namespace CYM.Unit
         private bool IsCanAddDisposableAlert()
         {
             if (SelfBaseUnit == null) return false;
-            if (SysConsole.IsAllAlert) return true;
+            if (TestConfig.IsAllAlert) return true;
             if (!SelfBaseUnit.IsPlayer()) return false;
             return true;
         }

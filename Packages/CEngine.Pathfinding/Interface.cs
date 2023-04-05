@@ -13,10 +13,18 @@ namespace CYM.Pathfinding
         //是否可以自动执行MoveTarget操作,用于回合制游戏
         bool IsCanAutoExcuteMoveTarget();
     }
-    public interface IAStarMoveMgr
+    public interface IAStarMoveMgr: IMoveMgr
     {
         #region is
         bool IsCanTraversal(GraphNode node);
+        bool IsHaveValidPathData()
+        {
+            if (ABPath == null)
+                return false;
+            if (ABPath.vectorPath == null)
+                return false;
+            return true;
+        }
         #endregion
 
         #region AStar

@@ -228,7 +228,7 @@ namespace CYM
             {
                 if (!BaseGlobal.BattleMgr.IsLoadBattleEnd)
                     return true;
-                if (SysConsole.IsIgnoreCondition)
+                if (TestConfig.IsIgnoreCondition)
                     return true;
                 return !BaseGlobal.IsUnReadData;
             }

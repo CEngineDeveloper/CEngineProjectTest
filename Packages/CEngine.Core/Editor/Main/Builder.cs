@@ -296,10 +296,20 @@ namespace CYM
             FileUtil.EnsureDirectory(dlcItem.TargetPath);
             BuildManifest(dlcItem);
             BuildAssetBundleOptions op = BuildAssetBundleOptions.None;
-            if (BuildConfig.IsCompresse) op |= BuildAssetBundleOptions.ChunkBasedCompression;
-            else op |= BuildAssetBundleOptions.UncompressedAssetBundle;
+            if (BuildConfig.IsCompresse)
+            {
+                op |= BuildAssetBundleOptions.ChunkBasedCompression;
+            }
+            else
+            {
+                op |= BuildAssetBundleOptions.UncompressedAssetBundle;
+            }
             if (BuildConfig.IsForceBuild)
+            {
                 op |= BuildAssetBundleOptions.ForceRebuildAssetBundle;
+            }
+            op |= BuildAssetBundleOptions.DeterministicAssetBundle;
+            op |= BuildAssetBundleOptions.StrictMode;
             List<AssetBundleBuild> realBundles = new List<AssetBundleBuild>();
             foreach (var item in AssetBundleBuildsCache)
             {
@@ -454,8 +464,10 @@ namespace CYM
                     shaders.Add(assetPath);
                     AddToPackedAssets(assetPath);
                 }
-                else if (!assetPath.EndsWith(".cs", StringComparison.CurrentCulture) &&
-                    !assetPath.EndsWith(".js", StringComparison.CurrentCulture))
+                else if (
+                    !assetPath.EndsWith(".cs", StringComparison.CurrentCulture) &&
+                    !assetPath.EndsWith(".js", StringComparison.CurrentCulture)
+                    )
                 {
                     if (BuildConfig.IsSafeBuild)
                     {

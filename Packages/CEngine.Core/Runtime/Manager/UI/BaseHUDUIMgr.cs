@@ -17,15 +17,15 @@ namespace CYM
 
         #region life
         protected override string ViewName => "HUDUI";
-        protected override string RootViewPrefab => "URootView";
+        protected override string RootViewPrefab => "Res:Root/URootView";
         protected override void OnCreateUIView1()
         {
             base.OnCreateUIView1();
-            CommonHUDView = CreateView<UHUDView>("UHUDView", "Common");
+            CommonHUDView = CreateView<UHUDView>("Res:Root/UHUDView", "Common");
         }
         protected UHUDView CreateHUDView(string customName)
         {
-            return CreateView<UHUDView>("UHUDView", customName);
+            return CreateView<UHUDView>("Res:Root/UHUDView", customName);
         }
         #endregion
 

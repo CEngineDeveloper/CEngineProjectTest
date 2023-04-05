@@ -5,12 +5,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
 using System.Linq;
-
-#if VEGETATION_STUDIO_PRO
-using AwesomeTechnologies.Vegetation.PersistentStorage;
-using AwesomeTechnologies.VegetationStudio;
-#endif
-
 //**********************************************
 // Discription	：Base Core Calss .All the Mono will inherit this class
 // Author	：CYM
@@ -51,78 +45,6 @@ namespace CYM
             base.Awake();
             Parse();
         }
-        #endregion
-
-        #region Vegetation
-        #if VEGETATION_STUDIO_PRO
-        [Button]
-        void ExportVegetation()
-        {
-            Dictionary<Vector2Int, PersistentVegetationItem> PersistentVegetations = new Dictionary<Vector2Int, PersistentVegetationItem>();
-            VegetationStudioManager Vegetation = VegetationStudioManager.Instance;
-            AdjVegetation();
-            Texture2D texture = new Texture2D(TerrainX, TerrainZ);
-            texture.DrawBG(Color.black);
-            foreach (var item in PersistentVegetations)
-            {
-                texture.DrawFilledCircle(item.Key.x, TerrainZ - item.Key.y, 1, Color.white);
-            }
-            texture.Apply();
-            FileUtil.SaveTextureToPNG(texture, Path.Combine(SysConst.Path_ResourcesTemp, "Vegetation.png"));
-
-            Vector3 PositionVegetationItem(Vector3 position, PersistentVegetationStorage storeage)
-            {
-                Ray ray = new Ray(position + new Vector3(0, 2000f, 0), Vector3.down);
-
-                var hits = Physics.RaycastAll(ray).OrderBy(h => h.distance).ToArray();
-                for (int i = 0; i <= hits.Length - 1; i++)
-                {
-                    if (hits[i].collider is TerrainCollider ||
-                        storeage.GroundLayerMask.Contains(hits[i].collider.gameObject.layer))
-                    {
-                        return hits[i].point;
-                    }
-                }
-
-                return position;
-            }
-            void AdjVegetation()
-            {
-                if (Application.isEditor)
-                {
-                    PersistentVegetations.Clear();
-                    if (Vegetation != null && Vegetation.VegetationSystemList.Count > 0)
-                    {
-                        foreach (var System in Vegetation.VegetationSystemList)
-                        {
-                            foreach (var Storage in System.PersistentVegetationStorage.PersistentVegetationStoragePackage.PersistentVegetationCellList)
-                            {
-                                foreach (var info in Storage.PersistentVegetationInfoList)
-                                {
-                                    for (int j = info.VegetationItemList.Count - 1; j >= 0; j--)
-                                    {
-                                        var item = info.VegetationItemList[j];
-                                        Vector3 newPos = PositionVegetationItem(item.Position, System.PersistentVegetationStorage);
-                                        item.Position = newPos - System.PersistentVegetationStorage.VegetationSystemPro.VegetationSystemPosition;
-                                        Vector2Int intV2 = new Vector2Int((int)item.Position.x, (int)item.Position.z);
-                                        if (!PersistentVegetations.ContainsKey(intV2))
-                                        {
-                                            PersistentVegetations.Add(intV2, item);
-                                        }
-                                        else
-                                        {
-                                            PersistentVegetations[intV2] = item;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-            }
-        }
-        #endif
         #endregion
 
         #region set

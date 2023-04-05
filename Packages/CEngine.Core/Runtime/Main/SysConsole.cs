@@ -451,10 +451,6 @@ namespace CYM
         #region Config
         [SerializeField, PropertyOrder(-100)]
         InputAction ToggleKey = new InputAction();
-        //[SerializeField,PropertyOrder(-100)]
-        //KeyCode ToggleKey = KeyCode.F1;
-        [FoldoutGroup("Core"), ShowInInspector]
-        public static bool IsIgnoreCondition = false;
         #endregion
     }
 }

@@ -9,7 +9,8 @@
     "changelogUrl": "https://www.baidu.com/",
     "licensesUrl": "https://www.baidu.com/",
     "dependencies": {
-      "com.cengine.core": "1.0.0"
+      "com.cengine.core": "1.0.0",
+      "com.cengine.pathfinding": "1.0.0"
    },
    "keywords": [
       "CEngine"

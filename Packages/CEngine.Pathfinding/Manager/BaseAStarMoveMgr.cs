@@ -80,7 +80,7 @@ namespace CYM.Pathfinding
             
         }
     }
-    public abstract class BaseAStarMoveMgr<TState, TUnit, TTraversal, TModify> : BaseMgr, IMoveMgr, IAStarMoveMgr
+    public abstract class BaseAStarMoveMgr<TState, TUnit, TTraversal, TModify> : BaseMgr, IAStarMoveMgr
         where TState : struct, Enum
         where TUnit : BaseUnit
         where TTraversal : BaseTraversal, new()
@@ -589,10 +589,6 @@ namespace CYM.Pathfinding
         #region state
         public class BaseMoveState : CharaState<TState, TUnit>
         {
-            #region mgr
-            protected IMoveMgr MoveMgr => SelfUnit.MoveMgr;
-            #endregion
-
             #region life
             public virtual Color Color => Color.black;
             protected virtual bool MustPlayerDrawPath => true;

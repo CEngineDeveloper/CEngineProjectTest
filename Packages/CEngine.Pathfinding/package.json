@@ -2,7 +2,7 @@
     "name": "com.cengine.pathfinding",
     "version": "1.0.0",
     "displayName": "CEngine.Pathfinding",
-    "description": "CEngine 寻路组件",
+    "description": "CEngine A* 寻路组件",
     "unity": "2021.3",
     "unityRelease": "0b5",
     "documentationUrl": "https://www.baidu.com/",
