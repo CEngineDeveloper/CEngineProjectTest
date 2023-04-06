@@ -62,6 +62,7 @@ namespace CYM
 
         public static void SaveConfig()
         {
+#if UNITY_EDITOR
             EditorUtility.SetDirty(BuildConfig.Ins);
             EditorUtility.SetDirty(DLCConfig.Ins);
             EditorUtility.SetDirty(GameConfig.Ins);
@@ -73,6 +74,7 @@ namespace CYM
             EditorUtility.SetDirty(PluginConfig.Ins);
             EditorUtility.SetDirty(TestConfig.Ins);
             AssetDatabase.SaveAssets();
+#endif
         }
     }
 }

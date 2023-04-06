@@ -1,8 +1,8 @@
 {
-    "name": "com.cengine.fastline",
+    "name": "com.cengine.formations",
     "version": "1.0.0",
-    "displayName": "CEngine.FastLine",
-    "description": "CEngine 画线组件",
+    "displayName": "CEngine.Formations",
+    "description": "CEngine 队形算法组件",
     "unity": "2021.3",
     "unityRelease": "0b5",
     "documentationUrl": "https://www.baidu.com/",

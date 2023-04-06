@@ -6,12 +6,10 @@
 // 填写类的描述...
 //------------------------------------------------------------------------------
 
-using CYM.Pathfinding;
 using DigitalRuby.FastLineRenderer;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 namespace CYM.Line
 {
     public class BaseULineMgr : BaseMgr
@@ -23,40 +21,16 @@ namespace CYM.Line
         #endregion
 
         #region life
+        protected virtual List<Vector3> RawPathVector => throw new NotImplementedException();
         protected virtual float LineRadius => 0.025f;
         protected virtual float LineYOffset => 0.3f;
         protected virtual float LineEndCapScale => 5.0f;
         public sealed override MgrType MgrType => MgrType.Unit;
-        public override void OnEnable()
-        {
-            base.OnEnable();
-            SelfBaseUnit.Callback_OnBeSelected += OnBeSelected;
-            SelfBaseUnit.Callback_OnUnBeSelected += OnUnBeSelected;
-            if (SelfBaseUnit.MoveMgr != null)
-            {
-                SelfBaseUnit.MoveMgr.Callback_OnMoveStart += OnMoveStart;
-                SelfBaseUnit.MoveMgr.Callback_OnMoveEnd += OnMoveEnd;
-                SelfBaseUnit.MoveMgr.Callback_OnMovingStep += OnMovingStep;
-            }
-        }
-        public override void OnDisable()
-        {
-            ClearPath();
-            SelfBaseUnit.Callback_OnBeSelected -= OnBeSelected;
-            SelfBaseUnit.Callback_OnUnBeSelected -= OnUnBeSelected;
-            if (SelfBaseUnit.MoveMgr != null)
-            {
-                SelfBaseUnit.MoveMgr.Callback_OnMoveStart -= OnMoveStart;
-                SelfBaseUnit.MoveMgr.Callback_OnMoveEnd -= OnMoveEnd;
-                SelfBaseUnit.MoveMgr.Callback_OnMovingStep -= OnMovingStep;
-            }
-            base.OnDisable();
-        }
 
         public override void OnDeath()
         {
             base.OnDeath();
-            ClearPath();
+            ClearLine();
         }
         #endregion
 
@@ -72,76 +46,63 @@ namespace CYM.Line
             BaseGlobal.PathRenderMgr.ClearPath(ref LineRender);
             LineRender = BaseGlobal.PathRenderMgr.DrawPath(newPath, col, LineRadius, LineEndCapScale);
         }
-        public void ClearPath()
+        public void ClearLine()
         {
-            IsForceDrawPath = false;
+            IsForceDraw = false;
             BaseGlobal.PathRenderMgr.ClearPath(ref LineRender);
         }
-        public void UpdateDrawPath()
+        public void UpdateDrawLine()
         {
             if (SelfBaseUnit.MoveMgr == null)
                 return;
             if (
-                IsNeedDrawPath ||
-                IsForceDrawPath)
+                IsNeedDraw ||
+                IsForceDraw)
             {
                 DrawPath(PathVector, PathColor);
             }
             else
             {
-                ClearPath();
+                ClearLine();
             }
         }
         #endregion
 
         #region is
-        public bool HasDrawPath => LineRender != null;
-        public bool IsForceDrawPath { get; private set; } = false;
-        public bool IsNeedDrawPath=> (IsForceDrawPath || BaseInputMgr.IsSelectUnit(SelfBaseUnit)) && PathVector.Count>0;
+        public bool HasDraw => LineRender != null;
+        public bool IsForceDraw { get; private set; } = false;
+        public bool IsNeedDraw=> (IsForceDraw || BaseInputMgr.IsSelectUnit(SelfBaseUnit)) && PathVector.Count>0;
         #endregion
 
-        #region Callback
-        private void OnBeSelected(bool arg1)
+        #region set
+        public void StartDrowLine()
         {
-            UpdateDrawPath();
-        }
-        private void OnUnBeSelected()
-        {
-            ClearPath();
-        }
-        private void OnMoveStart()
-        {
-            if (SelfBaseUnit.AStarMoveMgr != null &&
-                SelfBaseUnit.AStarMoveMgr.IsHaveValidPathData())
+            PathVector.Clear();
+            PathVector.AddRange(RawPathVector);
+            for (int i = 0; i < PathVector.Count; i++)
             {
-                PathVector.Clear();
-                PathVector.AddRange(SelfBaseUnit.AStarMoveMgr.ABPath.vectorPath);
-                for (int i = 0; i < PathVector.Count; i++)
-                {
-                    Vector3 point = PathVector[i];
-                    float terrainY = TerrainObj.Ins.SampleHeight(point) + LineYOffset;
-                    float bakedPos = BaseSceneRoot.Ins.GetBakedColliderPos(point).y + LineYOffset;
-                    if (terrainY < bakedPos)
-                        terrainY = bakedPos;
-                    // 避免地面小幅度起伏时先画在地面下面的问题
-                    point.y = terrainY;
-                    PathVector[i] = point;
-                }
+                Vector3 point = PathVector[i];
+                float terrainY = TerrainObj.Ins.SampleHeight(point) + LineYOffset;
+                float bakedPos = BaseSceneRoot.Ins.GetBakedColliderPos(point).y + LineYOffset;
+                if (terrainY < bakedPos)
+                    terrainY = bakedPos;
+                // 避免地面小幅度起伏时先画在地面下面的问题
+                point.y = terrainY;
+                PathVector[i] = point;
             }
-            UpdateDrawPath();
+            UpdateDrawLine();
         }
-        private void OnMoveEnd()
+        public void EndDrawLine()
         {
-            ClearPath();
+            ClearLine();
             PathVector.Clear();
         }
-        protected void OnMovingStep()
+        public void StepDrawLine()
         {
             if (PathVector.Count > 4)
                 PathVector.RemoveAt(0);
-            UpdateDrawPath();
+            UpdateDrawLine();
         }
-        
         #endregion
     }
 }
