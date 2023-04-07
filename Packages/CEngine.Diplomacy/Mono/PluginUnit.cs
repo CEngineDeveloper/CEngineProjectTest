@@ -21,9 +21,19 @@ namespace CYM
                 {
                     u.TerritoryMgr = x as BaseTerritoryMgr;
                 }
+                else if (x is IAlertMgr<TDBaseAlertData>)
+                {
+                    u.AlertMgr = x as IAlertMgr<TDBaseAlertData>;
+                }
+                else if (x is IEventMgr<TDBaseEventData>)
+                {
+                    u.EventMgr = x as IEventMgr<TDBaseEventData>;
+                }
             }
         };
         public IDipMgr DipMgr { get; protected set; }
         public BaseTerritoryMgr TerritoryMgr { get; protected set; }
+        public IAlertMgr<TDBaseAlertData> AlertMgr { get; protected set; }
+        public IEventMgr<TDBaseEventData> EventMgr { get; protected set; }
     }
 }

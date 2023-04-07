@@ -53,8 +53,8 @@ namespace CYM.Line
         }
         public void UpdateDrawLine()
         {
-            if (SelfBaseUnit.MoveMgr == null)
-                return;
+            //if (SelfBaseUnit.MoveMgr == null)
+            //    return;
             if (
                 IsNeedDraw ||
                 IsForceDraw)

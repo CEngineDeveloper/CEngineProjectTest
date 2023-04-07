@@ -1,8 +1,8 @@
 {
-  "name": "com.cengine.unit",
+  "name": "com.cengine.astarpathfinding",
   "version": "1.0.0",
-  "displayName": "CEngine.Unit",
-  "description": "CEngine \u5355\u4f4d\u7ec4\u4ef6",
+  "displayName": "CEngine.AStarPathfinding",
+  "description": "CEngine A* 寻路插件",
   "unity": "2021.3",
   "unityRelease": "0b5",
   "documentationUrl": "https://www.baidu.com/",
@@ -10,7 +10,7 @@
   "licensesUrl": "https://www.baidu.com/",
   "dependencies": {
     "com.cengine.core": "1.0.0",
-    "com.cengine.perform": "1.0.0"
+    "com.cengine.move": "1.0.0"
   },
   "keywords": [
     "CEngine"

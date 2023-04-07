@@ -47,4 +47,25 @@ namespace CYM
 
         public ArticleObjType ArticleObjType = ArticleObjType.Self;
     }
+    [Serializable]
+    public class DBBaseAlert : DBBase
+    {
+        public float CurTurn;
+        public bool IsCommingTimeOutFalg;
+        public long Cast;
+        public string TipStr;
+        public string DetailStr;
+        public string TitleStr;
+        public string Illustration;
+        public AlertType Type = AlertType.Continue;
+        public string StartSFX;
+        public bool IsAutoTrigger;
+        public string Bg;
+        public string Icon;
+    }
+    [Serializable]
+    public class DBBaseEvent : DBBase
+    {
+        public int CD;
+    }
 }
