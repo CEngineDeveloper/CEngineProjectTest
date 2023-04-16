@@ -253,8 +253,8 @@ namespace CYM
     public interface IPlotMgr
     {
         #region set
-        int PushIndex(int? index=null);
-        bool Start(string id,int? index=null);
+        int PushIndex(int? index = null);
+        bool Start(string id, int? index = null);
         void RunTemp(IEnumerator<float> enumerator, string flag = null);
         void RunMain();
         void Stop();
@@ -270,7 +270,7 @@ namespace CYM
         bool IsInPlotPause();
         bool IsInPlot();
         bool IsInPlot(params string[] tdid);
-        bool IsEnableAI { get;}
+        bool IsEnableAI { get; }
         int CurPlotIndex { get; }
         #endregion
 

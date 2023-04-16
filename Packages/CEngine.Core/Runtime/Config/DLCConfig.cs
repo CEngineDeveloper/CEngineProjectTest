@@ -17,7 +17,7 @@ using System.Reflection;
 
 namespace CYM
 {
-    public sealed partial class DLCConfig : ScriptConfig<DLCConfig>
+    public partial class DLCConfig : ScriptConfig<DLCConfig>
     {
         #region private inspector
         [SerializeField,ReadOnly, HideInInspector] 

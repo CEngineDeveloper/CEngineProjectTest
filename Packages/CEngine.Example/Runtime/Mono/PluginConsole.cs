@@ -8,7 +8,7 @@
 
 namespace CYM
 {
-    public partial class SysConsole : BaseCoreMono
+    public partial class Console : BaseCoreMono
     {
 
     }

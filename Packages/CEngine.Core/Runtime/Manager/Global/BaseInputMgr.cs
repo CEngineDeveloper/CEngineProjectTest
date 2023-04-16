@@ -512,7 +512,7 @@ namespace CYM
             {
                 IsInGuideMask = UGuideView.Default.IsInMask;
             }
-            IsDevConsoleShow = SysConsole.IsShow();
+            IsDevConsoleShow = Console.IsShow();
             bool pre = IsStayInUI;
             IsStayInUI = CheckOverUI();
             if (IsStayInUI != pre)

@@ -199,23 +199,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1965685614}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3db9364f135e0d419495eff0664dd0b, type: 3}
+  m_Script: {fileID: 11500000, guid: 0db44f4f9eb3a824c962c4902accb357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ToggleKey:
     m_Name: Toggle Key
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: c2e6e6dd-aa8f-41a1-96ff-d375ebe16503
+    m_Id: 8b47a28a-7a1a-46b2-a108-af4a187398eb
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 788b13a3-0116-4470-a9c3-51df9d5a6723
-      m_Path: <Keyboard>/f1
-      m_Interactions: Tap
-      m_Processors: 
-      m_Groups: 
-      m_Action: Toggle Key
-      m_Flags: 0
+    m_SingletonActionBindings: []
     m_Flags: 0

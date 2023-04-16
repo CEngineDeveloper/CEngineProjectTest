@@ -7,12 +7,13 @@
 //------------------------------------------------------------------------------
 
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace CYM
 {
     public partial class TestConfig : ScriptConfig<TestConfig>
     {
-        [FoldoutGroup("Person"), ShowInInspector]
-        public static bool IsFastPersonDeath = false;
+        [FoldoutGroup("Person"), SerializeField]
+        public bool IsFastPersonDeath = false;
     }
 }

@@ -12,7 +12,7 @@ namespace CYM
 {
     public partial class TestConfig : ScriptConfig<TestConfig>
     {
-        [FoldoutGroup("Camera"), ShowInInspector]
-        public static bool IsLockCamera = false;
+        [FoldoutGroup("Camera"), SerializeField]
+        public bool IsLockCamera = false;
     }
 }

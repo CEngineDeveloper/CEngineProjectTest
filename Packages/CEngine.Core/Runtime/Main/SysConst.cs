@@ -239,6 +239,8 @@ namespace CYM
         public static readonly string Path_AtrUI = Path.Combine(Path_Arts, Dir_UI);
         //程序脚本文件夹
         public static readonly string Path_Funcs = Path.Combine(Application.dataPath, Dir_Funcs);
+        //程序脚本文件夹
+        public static readonly string Path_FuncsConfig = Path.Combine(Application.dataPath, Dir_Funcs,Dir_Config);
         //测试文件夹
         public static readonly string Path_Tests = Path.Combine(Application.dataPath, Dir_Tests);
         //Gizmos

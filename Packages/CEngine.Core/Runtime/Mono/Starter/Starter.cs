@@ -9,6 +9,8 @@ using UnityEngine.UI;
 
 namespace CYM
 {
+    [RequireComponent(typeof(Console))]
+    [RequireComponent(typeof(FPSCounter))]
     [ExecuteInEditMode]
     [HideMonoScript]
     public class Starter : MonoBehaviour
@@ -20,7 +22,6 @@ namespace CYM
 
         #region prop
         public static Starter Ins { get; private set; }
-        public static UnityEngine.Object ConsoleObj { get; private set; }
         public static UnityEngine.Object GlobalObj { get; private set; }
         static StarterUI StarterUI = null;
         #endregion
@@ -36,6 +37,8 @@ namespace CYM
         async void Awake()
         {
             Ins = this;
+            transform.hideFlags = HideFlags.NotEditable;
+            transform.position = SysConst.VEC_GlobalPos;
             if (Application.isPlaying)
             {
                 StarterUI = Util.CreateGlobalResourceObj<StarterUI>("BaseStarterPlayer");
@@ -43,6 +46,8 @@ namespace CYM
                 SetupComponet<ErrorCatcher>();
                 SetupComponet<DLCDownloader>();
                 SetupComponet<DLCManager>();
+                SetupComponet<Console>();
+                SetupComponet<FPSCounter>();
                 //下载资源
                 await DLCDownloader.StartDownload();
                 //加载配置文件
@@ -50,24 +55,24 @@ namespace CYM
                 //加载热更代码
                 LoadHotFixScript();
                 //初始化Console
-                SysConsole.Initialize();
+                Console.Initialize();
             }
         }
         #endregion
 
-#if UNITY_EDITOR
-        [Button]
-        [DisableInPlayMode]
-        void EnsureComponet()
-        {
-            if (Application.isPlaying)
-                return;
-            transform.hideFlags = HideFlags.NotEditable;
-            transform.position = SysConst.VEC_GlobalPos;
-            ConsoleObj = AddScript("Console");
-            SetupComponet<FPSCounter>();
-        }
-#endif
+//#if UNITY_EDITOR
+//        [Button]
+//        [DisableInPlayMode]
+//        void EnsureComponet()
+//        {
+//            if (Application.isPlaying)
+//                return;
+//            transform.hideFlags = HideFlags.NotEditable;
+//            transform.position = SysConst.VEC_GlobalPos;
+//            SetupComponet<SysConsole>();
+//            SetupComponet<FPSCounter>();
+//        }
+//#endif
 
         #region set
         void SetupComponet<T>() where T : MonoBehaviour
@@ -86,7 +91,7 @@ namespace CYM
             UnityEngine.Object ret = null;
             EnsureAssembly();
             //加载逻辑层环境
-            fullName = BuildConfig.Ins.NameSpace + "." + name;
+            fullName = BuildConfig.NameSpace + "." + name;
             Type type = AssemblyGameLogic.GetType(fullName);
             //加载教程环境
             if (type == null)
@@ -130,7 +135,6 @@ namespace CYM
             }
             EnsureAssembly();
             GlobalObj = AddScript(GlobalType);
-            ConsoleObj = AddScript("Console");
             Debug.Log("热更初始化完成");
         }
         void EnsureAssembly()

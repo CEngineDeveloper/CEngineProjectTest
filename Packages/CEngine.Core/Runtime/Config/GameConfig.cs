@@ -105,21 +105,6 @@ namespace CYM
         };
         #endregion
 
-        #region Dyn
-        [FoldoutGroup("Dyn"), ReadOnly, SerializeField, HideInInspector]
-        private List<string> DynStrName = new List<string>();
-        [FoldoutGroup("Dyn"), ReadOnly, SerializeField, HideInInspector]
-        private List<MethodInfo> DynStrMethodInfo = new List<MethodInfo>();
-        [FoldoutGroup("Dyn"), SerializeField]
-        public Dictionary<string, MethodInfo> DynStrFuncs = new Dictionary<string, MethodInfo>();
-        [FoldoutGroup("Dyn"), ReadOnly, SerializeField, HideInInspector]
-        public string MonoTypeName = "";
-#if UNITY_EDITOR
-        [FoldoutGroup("Dyn"), SerializeField]
-        public MonoScript DynamicFuncScript;
-#endif
-        #endregion
-
         #region Url
         [FoldoutGroup("URL")]
         public string URLWebsite = "https://store.steampowered.com/developer/Yiming";
@@ -143,49 +128,12 @@ namespace CYM
         }
         #endregion
 
-        #region life
-        private void OnEnable()
-        {
-#if UNITY_EDITOR
-            if (DynamicFuncScript != null)
-            {
-                MonoTypeName = DynamicFuncScript.GetClass().FullName;
-            }
-#endif
-            DynStrName.Clear();
-            DynStrMethodInfo.Clear();
-            var type = Type.GetType(MonoTypeName);
-            if (type == null)
-                return;
-            var array = type.GetMethods();
-            foreach (var item in array)
-            {
-                var attrArray = item.GetCustomAttributes(true);
-                foreach (var attr in attrArray)
-                {
-                    if (attr is DynStrAttribute)
-                    {
-                        DynStrName.Add(item.Name);
-                        DynStrMethodInfo.Add(item);
-                    }
-                }
-            }
-            DynStrFuncs.Clear();
-            for (int i = 0; i < DynStrName.Count; ++i)
-            {
-                DynStrFuncs.Add(DynStrName[i], DynStrMethodInfo[i]);
-            }
-        }
-        #endregion
-
         #region get
         public override string ToString()
         {
             string str = string.Format("v{0}.{1} {2}{3} {4}", Major, Minor, Tag, Suffix, PlatformSDK.GetDistributionName());
             return str;
         }
-        // 数据库版本是否兼容
-        public bool IsInData(int data) => Data == data;
         #endregion
     }
 }

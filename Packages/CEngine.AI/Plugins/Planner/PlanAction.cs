@@ -24,13 +24,13 @@ namespace CYM.AI.Planner
         public bool Do()
         {
             var ret = OnDo();
-            if (TestConfig.IsOnlyPlayerAI)
+            if (TestConfig.Ins.IsOnlyPlayerAI)
                 OnLog(ret);
             return ret;
         }
         protected void Log(string str, params object[] obj)
         {
-            if (TestConfig.IsOnlyPlayerAI)
+            if (TestConfig.Ins.IsOnlyPlayerAI)
                 CYM.CLog.Cyan(str, obj);
         }
         #endregion

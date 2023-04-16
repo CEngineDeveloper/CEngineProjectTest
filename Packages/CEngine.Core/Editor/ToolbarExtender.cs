@@ -138,7 +138,7 @@ namespace CYM
                 }
                 if (GUILayout.Button(EditorGUIUtility.IconContent("d_KeyboardShortcutsDisabled"), GUILayout.Width(buttonWidth)))
                 {
-                    EditorUtility.OpenPropertyEditor(Starter.ConsoleObj);
+                    ScriptConfigWindow.ShowConfigWindow(TestConfig.Ins);
                 }
             });
 

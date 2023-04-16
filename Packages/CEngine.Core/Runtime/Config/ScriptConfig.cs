@@ -8,6 +8,8 @@
 
 using UnityEngine;
 using Sirenix.OdinInspector;
+using CodegenCS;
+using System.IO;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -89,6 +91,33 @@ namespace CYM
                 AssetDatabase.CreateAsset(_ins, path);
             }
 #endif
+        }
+
+#if UNITY_EDITOR
+        [Button]
+        public static void GenerateCode()
+        {
+            string configName = typeof(T).Name;
+            string configFullName = typeof(T).FullName;
+            string fileName = Path.Combine(SysConst.Path_FuncsConfig, configName + ".cs");
+            FileUtil.EnsureDirectory(SysConst.Path_FuncsConfig);
+            if (File.Exists(fileName))
+            {
+                return;
+            }
+            var w = new CodegenTextWriter($"{fileName}", System.Text.Encoding.UTF8);
+            w.WriteLine($"using UnityEngine;");
+            w.WithCurlyBraces($"namespace {BuildConfig.NameSpace}", () =>
+            {
+                w.WriteLine($"[CreateAssetMenu(menuName = \"ScriptConfig/{configName}\")]");
+                w.WithCurlyBraces($"public partial class {configName}:{configFullName}", () =>
+                {
+                    w.WriteLine($"public static new {configName} Ins => {configFullName}.Ins as {configName};");
+                });
+            });
+            w.Flush();
+            w.Dispose();
+#endif            
         }
     }
 }

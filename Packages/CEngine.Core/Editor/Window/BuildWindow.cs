@@ -58,11 +58,11 @@ namespace CYM
         {
             if (Application.isPlaying)
                 return;
-            ScriptConfigHub.LoadOrCreate();
+            EnsureProjectFiles();
+            ScriptConfigHub.InitOnEditor();
             IsInited = true;
             TitleStyle.fixedWidth = 100;
             EnsureLanguge();
-            EnsureProjectFiles();
             RefreshSceneNames();
             PluginConfig.Refresh();
             DLCConfig.Refresh();
@@ -129,6 +129,7 @@ namespace CYM
                     EditorGUILayout.LabelField("BuildTime:" + LocalConfig.LastBuildTime);
                 EditorGUILayout.LabelField(string.Format("版本:{0}", Version.GameVersion));
                 EditorGUILayout.LabelField(string.Format("完整:{0}", Version.FullVersion));
+                EditorGUILayout.LabelField("Identifier:"+PlayerSettings.applicationIdentifier);
             }
             EditorGUILayout.EndFoldoutHeaderGroup();
             EditorGUILayout.EndVertical();
@@ -179,10 +180,6 @@ namespace CYM
 
                 if (PlayerSettings.companyName != BuildConfig.CompanyName)
                     PlayerSettings.companyName = BuildConfig.CompanyName;
-
-                EditorGUILayout.BeginVertical();
-                OnDrawSettings();
-                EditorGUILayout.EndVertical();
             }
             EditorGUILayout.EndFoldoutHeaderGroup();
             EditorGUILayout.EndVertical();
@@ -745,7 +742,7 @@ namespace CYM
                 else if (GUILayout.Button("ColorPicker")) ColorPickerWindow.ShowWindow();
                 else if (GUILayout.Button("UnityTexture")) UnityTextureWindow.ShowWindow();
                 else if (GUILayout.Button("Screenshot")) ScreenshotWindow.ShowWindow();
-                else if (GUILayout.Button("Console")) EditorUtility.OpenPropertyEditor(Starter.ConsoleObj);
+                else if (GUILayout.Button("Console")) ScriptConfigWindow.ShowConfigWindow(TestConfig.Ins);
             }
             EditorGUILayout.EndFoldoutHeaderGroup();
             EditorGUILayout.EndVertical();

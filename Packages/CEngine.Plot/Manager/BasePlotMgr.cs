@@ -94,7 +94,7 @@ namespace CYM.Plot
             }
             return false;
         }
-        public bool IsHavePlot() => BaseGlobal.DiffMgr.IsHavePlot() && !TestConfig.IsNoPlot;
+        public bool IsHavePlot() => BaseGlobal.DiffMgr.IsHavePlot() && !TestConfig.Ins.IsNoPlot;
         public bool IsInPlotPause() => PlotPauseState.IsIn();
         public bool IsInPlot()=> IsInPlotPause() || CurData!=null || MainPlotCoroutine.IsRunning;
         public bool IsGhostSel(BaseUnit unit) => GhostSelUnits.Contains(unit);

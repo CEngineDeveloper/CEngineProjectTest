@@ -10,7 +10,7 @@
   "licensesUrl": "https://www.baidu.com/",
   "dependencies": {
     "com.cengine.core": "1.0.0",
-    "com.cengine.unit": "1.0.0"
+    "com.cengine.stats": "1.0.0"
   },
   "keywords": [
     "CEngine"

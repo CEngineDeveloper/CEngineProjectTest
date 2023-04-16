@@ -44,7 +44,7 @@ namespace CYM
         #region public
         public const string Template = "Template";
         public const string Namespace = "Namespace";
-        public static string FinalNamespace = BuildConfig.Ins.NameSpace;//  "NationWar";
+        public static string FinalNamespace = BuildConfig.NameSpace;//  "NationWar";
         public static object Convert(DynValue luaValue, Type type)
         {
             if (!IsInitiated)

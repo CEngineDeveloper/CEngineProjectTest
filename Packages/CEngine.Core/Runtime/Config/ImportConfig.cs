@@ -101,7 +101,7 @@ namespace CYM
             return ret;
         }
     }
-    public sealed class ImportConfig : ScriptConfig<ImportConfig>
+    public class ImportConfig : ScriptConfig<ImportConfig>
     {
         public TextureImportSettings ResUI = new TextureImportSettings("UI", SpriteDirRoot.Res, true);
 

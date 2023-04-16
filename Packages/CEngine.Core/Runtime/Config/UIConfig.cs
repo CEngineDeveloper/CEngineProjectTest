@@ -85,7 +85,7 @@ namespace CYM
                 return Default;
         }
     }
-    public sealed class UIConfig : ScriptConfig<UIConfig>
+    public class UIConfig : ScriptConfig<UIConfig>
     {
         #region inspector
         [FoldoutGroup("Fonts"), SerializeField]

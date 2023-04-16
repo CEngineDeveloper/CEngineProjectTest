@@ -19,6 +19,28 @@ namespace CYM
     {
 #if UNITY_EDITOR
         public static Dictionary<SerializedScriptableObject, Editor> ConfigWindows { get; private set; } = new Dictionary<SerializedScriptableObject, Editor>();
+
+        public static void InitOnEditor()
+        {
+            GenerateCode();
+            LoadOrCreate();
+        }
+
+        [MenuItem("Tools/GenScriptConfigCode", priority = -10000)]
+        public static void GenerateCode()
+        {
+            BuildConfig.GenerateCode();
+            DLCConfig.GenerateCode();
+            GameConfig.GenerateCode();
+            LocalConfig.GenerateCode();
+            CursorConfig.GenerateCode();
+            UIConfig.GenerateCode();
+            ImportConfig.GenerateCode();
+            LogConfig.GenerateCode();
+            PluginConfig.GenerateCode();
+            TestConfig.GenerateCode();
+            AssetDatabase.Refresh();
+        }
 #endif
         public static void Load()
         {

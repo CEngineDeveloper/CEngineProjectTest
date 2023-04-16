@@ -209,7 +209,7 @@ namespace CYM
         {
             if (!Version.IsWindows)
                 return;
-            if (SysConsole.IsShow())
+            if (Console.IsShow())
                 return;
             if (BaseGlobal.DiffMgr!=null && 
                 BaseGlobal.DiffMgr.IsSettedGMMod())

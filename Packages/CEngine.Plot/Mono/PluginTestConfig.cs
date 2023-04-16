@@ -7,12 +7,13 @@
 //------------------------------------------------------------------------------
 
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace CYM
 {
     public partial class TestConfig : ScriptConfig<TestConfig>
     {
-        [FoldoutGroup("Plot"), ShowInInspector]
-        public static bool IsNoPlot = false;
+        [FoldoutGroup("Plot"), SerializeField]
+        public bool IsNoPlot = false;
     }
 }

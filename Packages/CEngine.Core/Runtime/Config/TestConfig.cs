@@ -15,7 +15,7 @@ namespace CYM
     {
         public override bool IsHideInBuildWindow => false;
 
-        [FoldoutGroup("Core"), ShowInInspector]
-        public static bool IsIgnoreCondition = false;
+        [FoldoutGroup("Core"), SerializeField]
+        public bool IsIgnoreCondition = false;
     }
 }

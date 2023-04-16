@@ -320,7 +320,7 @@ namespace CYM.Diplomacy
         private bool IsCanAddDisposableAlert()
         {
             if (SelfBaseUnit == null) return false;
-            if (TestConfig.IsAllAlert) return true;
+            if (TestConfig.Ins.IsAllAlert) return true;
             if (!SelfBaseUnit.IsPlayer()) return false;
             return true;
         }

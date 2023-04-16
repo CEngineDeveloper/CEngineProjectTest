@@ -8,6 +8,23 @@
         "com.cengine.core": "1.0.0"
       }
     },
+    "com.cengine.anim": {
+      "version": "file:CEngine.Anim",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.cengine.core": "1.0.0"
+      }
+    },
+    "com.cengine.astarpathfinding": {
+      "version": "file:CEngine.AStarPathfinding",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.cengine.core": "1.0.0",
+        "com.cengine.move": "1.0.0"
+      }
+    },
     "com.cengine.core": {
       "version": "file:CEngine.Core",
       "depth": 0,
@@ -37,7 +54,8 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.cengine.core": "1.0.0"
+        "com.cengine.core": "1.0.0",
+        "com.cengine.stats": "1.0.0"
       }
     },
     "com.cengine.example": {
@@ -64,8 +82,32 @@
         "com.cengine.core": "1.0.0"
       }
     },
+    "com.cengine.formations": {
+      "version": "file:CEngine.Formations",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.cengine.core": "1.0.0"
+      }
+    },
     "com.cengine.fow": {
       "version": "file:CEngine.FOW",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.cengine.core": "1.0.0"
+      }
+    },
+    "com.cengine.hud": {
+      "version": "file:CEngine.HUD",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.cengine.core": "1.0.0"
+      }
+    },
+    "com.cengine.move": {
+      "version": "file:CEngine.Move",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
@@ -88,8 +130,8 @@
         "com.cengine.core": "1.0.0"
       }
     },
-    "com.cengine.pathfinding": {
-      "version": "file:CEngine.Pathfinding",
+    "com.cengine.perform": {
+      "version": "file:CEngine.Perform",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
@@ -136,6 +178,14 @@
         "com.cengine.core": "1.0.0"
       }
     },
+    "com.cengine.stats": {
+      "version": "file:CEngine.Stats",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.cengine.core": "1.0.0"
+      }
+    },
     "com.cengine.steam": {
       "version": "file:CEngine.Steam",
       "depth": 0,
@@ -152,8 +202,8 @@
         "com.cengine.core": "1.0.0"
       }
     },
-    "com.cengine.unit": {
-      "version": "file:CEngine.Unit",
+    "com.cengine.voice": {
+      "version": "file:CEngine.Voice",
       "depth": 0,
       "source": "embedded",
       "dependencies": {

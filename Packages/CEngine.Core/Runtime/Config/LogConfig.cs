@@ -13,7 +13,7 @@ using static CYM.CLog;
 
 namespace CYM
 {
-    public sealed class LogConfig : ScriptConfig<LogConfig>
+    public class LogConfig : ScriptConfig<LogConfig>
     {
         [HideInInspector]
         public bool Enable = true;

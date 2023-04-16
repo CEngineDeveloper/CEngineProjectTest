@@ -12,7 +12,7 @@ using Sirenix.OdinInspector;
 
 namespace CYM
 {
-    public sealed partial class DLCConfig : ScriptConfig<DLCConfig>
+    public partial class DLCConfig : ScriptConfig<DLCConfig>
     {
         [DLCCopy][SerializeField, FoldoutGroup("Copy Rule"), ReadOnly] BuildRuleType CSharp = BuildRuleType.Whole;
     }

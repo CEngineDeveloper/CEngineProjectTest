@@ -6,7 +6,7 @@
 // 填写类的描述...
 //------------------------------------------------------------------------------
 
-using CYM.Unit;
+using CYM.Stats;
 using System.Collections.Generic;
 
 namespace CYM.Diplomacy
@@ -97,7 +97,7 @@ namespace CYM.Diplomacy
                 return null;
             }
             CurRandCount++;
-            if (TestConfig.IsNoEvent) return null;
+            if (TestConfig.Ins.IsNoEvent) return null;
             if (!SelfBaseUnit.IsPlayerCtrl()) return null;
             if (ITDConfig.ListKeys.Count == 0) return null;
 
@@ -164,7 +164,7 @@ namespace CYM.Diplomacy
         // 是否可以触发
         bool IsInProp(TData eventData)
         {
-            if (TestConfig.IsMustEvent) return true;
+            if (TestConfig.Ins.IsMustEvent) return true;
             if (RandUtil.Rand(eventData.Prob)) return true;
             return false;
         }

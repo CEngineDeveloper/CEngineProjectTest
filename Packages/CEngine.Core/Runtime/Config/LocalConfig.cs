@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace CYM
 {
-    public sealed class LocalConfig : ScriptConfig<LocalConfig>
+    public class LocalConfig : ScriptConfig<LocalConfig>
     {
         public override bool IsHideInBuildWindow => true;
 

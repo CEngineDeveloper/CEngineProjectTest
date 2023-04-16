@@ -15,7 +15,7 @@ namespace CYM
         Config,
         Bundle,
     }
-    public sealed class BuildConfig : ScriptConfig<BuildConfig> 
+    public class BuildConfig : ScriptConfig<BuildConfig> 
     {
         #region prop
         public override bool IsHideInBuildWindow => true;
@@ -47,7 +47,7 @@ namespace CYM
 
         public string CompanyName = "CYM";
         [HideInInspector]
-        public string NameSpace => "Gamelogic";
+        public static string NameSpace => "Gamelogic";
         [HideInInspector]
         public string MainUIView = "MainUIView";
         public bool IsShowWinClose = true;

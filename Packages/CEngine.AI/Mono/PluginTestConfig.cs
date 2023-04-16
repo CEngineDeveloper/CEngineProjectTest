@@ -13,7 +13,7 @@ namespace CYM
 {
     public partial class TestConfig : ScriptConfig<TestConfig>
     {
-        [FoldoutGroup("AI"),ShowInInspector]
-        public static bool IsOnlyPlayerAI = false;
+        [FoldoutGroup("AI"),SerializeField]
+        public bool IsOnlyPlayerAI = false;
     }
 }

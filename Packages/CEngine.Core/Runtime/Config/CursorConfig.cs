@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace CYM
 {
-    public sealed class CursorConfig : ScriptConfig<CursorConfig>
+    public class CursorConfig : ScriptConfig<CursorConfig>
     {
         #region inspector
         [SerializeField]

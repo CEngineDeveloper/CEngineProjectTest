@@ -6,9 +6,6 @@
 // 填写类的描述...
 //------------------------------------------------------------------------------
 
-using UnityEngine;
-using CYM;
-using CYM.UI;
 using System;
 
 namespace CYM.Plot

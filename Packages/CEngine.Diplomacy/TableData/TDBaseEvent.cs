@@ -6,7 +6,7 @@
 // 填写类的描述...
 //------------------------------------------------------------------------------
 
-using CYM.Unit;
+using CYM.Stats;
 using System;
 using System.Collections.Generic;
 
