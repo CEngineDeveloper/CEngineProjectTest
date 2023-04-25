@@ -14,7 +14,7 @@ using UnityEngine.EventSystems;
 namespace CYM
 {
     [CustomEditor(typeof(GlobalMonoManager), true)]
-    public class IPTGlobalMonoManager : OdinEditor
+    public class GlobalMonoManagerEditor : OdinEditor
     {
         public override void OnInspectorGUI()
         {

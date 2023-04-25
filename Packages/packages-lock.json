@@ -162,6 +162,12 @@
         "com.cengine.core": "1.0.0"
       }
     },
+    "com.cengine.scripttemplate": {
+      "version": "file:CEngine.ScriptTemplate",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.cengine.sense": {
       "version": "file:CEngine.Sense",
       "depth": 0,
@@ -269,7 +275,7 @@
       "url": "https://packages.unity.cn"
     },
     "com.unity.nuget.newtonsoft-json": {
-      "version": "3.0.2",
+      "version": "3.1.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {},

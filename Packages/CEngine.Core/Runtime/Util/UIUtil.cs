@@ -23,7 +23,7 @@ namespace CYM
         OneK,
         TenK,
     }
-    public partial class UIUtil
+    public partial class UIUtil 
     {
         #region UIFormat
         // 条件

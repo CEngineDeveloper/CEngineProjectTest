@@ -1,6 +1,6 @@
 ﻿namespace CYM
 {
-    public partial class MarkdownUtil
+    public partial class MarkdownUtil 
     {
         // punctuation characters
         // headers

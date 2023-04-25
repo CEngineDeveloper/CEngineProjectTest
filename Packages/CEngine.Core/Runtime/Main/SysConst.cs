@@ -170,6 +170,7 @@ namespace CYM
         public const string Dir_Language = "Language";
         //配置文件
         public const string Dir_Config = "Config";
+        public const string Dir_Util = "Util";
         public const string Dir_System = "System";
         //Const文件
         public const string Dir_Const = "Const";
@@ -241,6 +242,8 @@ namespace CYM
         public static readonly string Path_Funcs = Path.Combine(Application.dataPath, Dir_Funcs);
         //程序脚本文件夹
         public static readonly string Path_FuncsConfig = Path.Combine(Application.dataPath, Dir_Funcs,Dir_Config);
+        //工具类
+        public static readonly string Path_FuncsUtil = Path.Combine(Application.dataPath, Dir_Funcs, Dir_Util);
         //测试文件夹
         public static readonly string Path_Tests = Path.Combine(Application.dataPath, Dir_Tests);
         //Gizmos

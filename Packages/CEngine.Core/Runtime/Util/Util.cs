@@ -17,7 +17,7 @@ namespace CYM
         Top,
         Bot,
     }
-    public partial class Util
+    public partial class Util 
     {
         #region static
         static DateTime DateTime1970 = new DateTime(1970, 1, 1, 0, 0, 0, 0);

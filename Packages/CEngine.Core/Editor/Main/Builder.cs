@@ -241,56 +241,64 @@ namespace CYM
             #endregion
 
             #region const
-            SafeDic<string, Dictionary<string, string>> Consts = new SafeDic<string, Dictionary<string, string>>();
-            foreach (var bundleData in dlcManifest.Data)
+            if (dlcItem.IsNative)
             {
-                string buildRuleName = "";
-                foreach (var pathData in bundleData.AssetFullPaths)
+                SafeDic<string, Dictionary<string, string>> Consts = new SafeDic<string, Dictionary<string, string>>();
+                foreach (var bundleData in dlcManifest.Data)
                 {
-                    if (pathData.SourceBundleName.IsInv())
-                        continue;
-                    if (pathData.BuildRuleName.IsInv())
-                        continue;
-                    //获得相应的BuildRule名称
-                    buildRuleName = pathData.BuildRuleName;
-                    //保证变量名称有效
-                    var fileName = pathData.FileName.Replace(".", "_").Replace("(", "_").Replace(")", "").Trim();
-                    //忽略不需要的Const
-                    if (DLCConfig.IsInIgnoreConst(fileName))
-                        continue;
-                    if (!Consts.ContainsKey(buildRuleName))
-                        Consts.Add(buildRuleName, new Dictionary<string, string>());
-                    if (Consts[buildRuleName].ContainsKey(fileName))
-                        continue;
-                    Consts[buildRuleName].Add(fileName, pathData.FileName);
-                }
-            }
-
-            if (File.Exists(constPath)) File.Delete(constPath);
-            var cultureInfo = new System.Globalization.CultureInfo("en-us");
-            var w = new CodegenTextWriter(constPath, System.Text.Encoding.UTF8);
-            w.WithCurlyBraces($"namespace {BuildConfig.NameSpace}", () =>
-            {
-                foreach (var item in Consts)
-                {
-                    var className = cultureInfo.TextInfo.ToTitleCase(item.Key);
-                    if (item.Key == SysConst.BN_UI)
-                        className = className.ToUpper();
-                    w.WithCurlyBraces($"public partial class C{className}", () =>
+                    string buildRuleName = "";
+                    foreach (var pathData in bundleData.AssetFullPaths)
                     {
-                        foreach (var line in item.Value)
-                        {
-                            w.WriteLine($"public const string {line.Key} = \"{line.Value}\";");
-                        }
-                    });
+                        if (pathData.SourceBundleName.IsInv())
+                            continue;
+                        if (pathData.BuildRuleName.IsInv())
+                            continue;
+                        //获得相应的BuildRule名称
+                        buildRuleName = pathData.BuildRuleName;
+                        //保证变量名称有效
+                        var fileName = pathData.FileName.Replace(".", "_").Replace("(", "_").Replace(")", "").Trim();
+                        //忽略不需要的Const
+                        if (DLCConfig.IsInIgnoreConst(fileName))
+                            continue;
+                        if (!Consts.ContainsKey(buildRuleName))
+                            Consts.Add(buildRuleName, new Dictionary<string, string>());
+                        if (Consts[buildRuleName].ContainsKey(fileName))
+                            continue;
+                        Consts[buildRuleName].Add(fileName, pathData.FileName);
+                    }
                 }
-            });
-            w.Flush();
-            w.Dispose();
+
+                if (File.Exists(constPath)) File.Delete(constPath);
+                var cultureInfo = new System.Globalization.CultureInfo("en-us");
+                var w = new CodegenTextWriter(constPath, System.Text.Encoding.UTF8);
+                w.WithCurlyBraces($"namespace {BuildConfig.NameSpace}", () =>
+                {
+                    foreach (var item in Consts)
+                    {
+                        var className = cultureInfo.TextInfo.ToTitleCase(item.Key);
+                        if (item.Key == SysConst.BN_UI)
+                            className = className.ToUpper();
+                        w.WithCurlyBraces($"public partial class C{className}", () =>
+                        {
+                            foreach (var line in item.Value)
+                            {
+                                w.WriteLine($"public const string {line.Key} = \"{line.Value}\";");
+                            }
+                        });
+                    }
+                });
+                w.Flush();
+                w.Dispose();
+            }
+            #endregion
+
+            #region RConst
+            RConstGenerator.WriteCodeFile();
             #endregion
 
             CLog.Info($"[Builder][{dlcItem.Name}] BuildManifest with {assets.Count} assets and {bundles.Count} bundels.");
         }
+
         static void _BuildBundle(DLCItem dlcItem)
         {
             FileUtil.EnsureDirectory(dlcItem.TargetPath);

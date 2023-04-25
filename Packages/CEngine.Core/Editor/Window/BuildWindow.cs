@@ -60,6 +60,7 @@ namespace CYM
                 return;
             EnsureProjectFiles();
             ScriptConfigHub.InitOnEditor();
+            EditorUtil.GenerateUtilScript();
             IsInited = true;
             TitleStyle.fixedWidth = 100;
             EnsureLanguge();

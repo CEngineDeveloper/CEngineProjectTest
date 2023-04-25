@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CYM.Pathfinding.Formations
+namespace CYM.Formations
 {
 
     /// <summary>

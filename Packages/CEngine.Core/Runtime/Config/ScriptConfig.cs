@@ -8,9 +8,9 @@
 
 using UnityEngine;
 using Sirenix.OdinInspector;
-using CodegenCS;
 using System.IO;
 #if UNITY_EDITOR
+using CodegenCS;
 using UnityEditor;
 #endif
 
@@ -116,8 +116,8 @@ namespace CYM
                 });
             });
             w.Flush();
-            w.Dispose();
-#endif            
+            w.Dispose();          
         }
+#endif  
     }
 }

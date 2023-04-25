@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 namespace CYM
 {
-    public partial class StrUtil
+    public partial class StrUtil 
     {
         #region 简体繁体转换
         /// <summary>

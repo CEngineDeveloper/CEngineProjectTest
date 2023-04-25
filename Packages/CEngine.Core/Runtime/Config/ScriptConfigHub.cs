@@ -26,7 +26,7 @@ namespace CYM
             LoadOrCreate();
         }
 
-        [MenuItem("Tools/GenScriptConfigCode", priority = -10000)]
+        //[MenuItem("Tools/GenScriptConfigCode", priority = -10000)]
         public static void GenerateCode()
         {
             BuildConfig.GenerateCode();

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace CYM
 {
-    public partial class RandUtil
+    public partial class RandUtil 
     {
         #region normal
         public static void RandForwardY(BaseUnit unit, Vector3 upwards)

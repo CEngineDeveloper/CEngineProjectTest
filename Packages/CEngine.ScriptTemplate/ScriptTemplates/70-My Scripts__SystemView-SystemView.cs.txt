@@ -1,0 +1,13 @@
+#SIGNATURE#using UnityEngine;
+
+#NAMESPACE#public class #SCRIPTNAME# : MainUIView
+{
+    protected override void OnCreatedView()
+    {
+        base.OnCreatedView();
+    }
+    public override void Refresh()
+    {
+        base.Refresh();
+    }
+}

@@ -13,7 +13,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Collections.Generic;
 namespace CYM
 {
-    public static class HTTPUtil 
+    public partial class HTTPUtil 
     {
         public static string HTTPIP { get; private set; } = "";
         public static int HTTPPort { get; private set; } = 0;
@@ -124,10 +124,10 @@ namespace CYM
                 return reader.ReadToEnd();
             }
         }
-        public static string ToString(this HttpWebResponse webresponse)
-        {
-            return GetStr(webresponse);
-        }
+        //public static string ToString(this HttpWebResponse webresponse)
+        //{
+        //    return GetStr(webresponse);
+        //}
         private static bool CheckValidationResult(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors)
         {
             return true; //总是接受

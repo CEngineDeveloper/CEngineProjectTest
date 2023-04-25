@@ -5,7 +5,7 @@ namespace CYM
     [InitializeOnLoad]
     [CanEditMultipleObjects]
     [CustomEditor(typeof(BaseMono), true)]
-    public class IPTBaseMono : OdinEditor
+    public class BaseMonoEditor : OdinEditor
     {
         BaseMono preFabOverride;
 

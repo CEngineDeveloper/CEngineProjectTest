@@ -9,7 +9,7 @@
 using UnityEngine;
 namespace CYM
 {
-    public partial class IMUIUtil
+    public partial class IMUIUtil 
     {
         const float slightlyGrayTone = 0.85f;
         const float lightGrayTone = 0.7f;

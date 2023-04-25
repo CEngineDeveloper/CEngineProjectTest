@@ -9,7 +9,7 @@
 using UnityEngine;
 namespace CYM
 {
-    public partial class FormulaUtil
+    public partial class FormulaUtil 
     {
         //指数基数
         //用于较短的升级曲线,基于一个基础值,和一个差距因子

@@ -13,7 +13,7 @@ using UnityEngine;
 
 namespace CYM
 {
-    public partial class FileUtil
+    public partial class FileUtil 
     {
         #region dir
         /// <summary>

@@ -12,7 +12,7 @@ using System.Text;
 
 namespace CYM
 {
-    public class WinUtil
+    public partial class WinUtil 
     {
         public static int MessageBox(String message, String title)
         {

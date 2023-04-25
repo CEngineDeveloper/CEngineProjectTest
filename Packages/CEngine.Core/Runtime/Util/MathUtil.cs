@@ -5,7 +5,7 @@ using UnityEngine;
 namespace CYM
 {
     //数学计算通用类
-    public partial class MathUtil
+    public partial class MathUtil 
     {
         #region switch direction
         public static bool IsLeft(BaseCoreMono self, BaseCoreMono target)

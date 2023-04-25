@@ -12,6 +12,7 @@ using UnityEditor;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.IO;
+using CodegenCS;
 
 namespace CYM
 {
@@ -283,5 +284,45 @@ namespace CYM
             return selected;
         }
 
+        public static void GenerateUtilScript()
+        {
+            BuildScriptFromBaseCS(SysConst.Path_FuncsUtil, typeof(FileUtil));
+            BuildScriptFromBaseCS(SysConst.Path_FuncsUtil, typeof(FormulaUtil));
+            BuildScriptFromBaseCS(SysConst.Path_FuncsUtil, typeof(HTTPUtil));
+            BuildScriptFromBaseCS(SysConst.Path_FuncsUtil, typeof(IDUtil));
+            BuildScriptFromBaseCS(SysConst.Path_FuncsUtil, typeof(IMUIUtil));
+            BuildScriptFromBaseCS(SysConst.Path_FuncsUtil, typeof(MarkdownUtil));
+            BuildScriptFromBaseCS(SysConst.Path_FuncsUtil, typeof(MathUtil));
+            BuildScriptFromBaseCS(SysConst.Path_FuncsUtil, typeof(RandUtil));
+            BuildScriptFromBaseCS(SysConst.Path_FuncsUtil, typeof(StrUtil));
+            BuildScriptFromBaseCS(SysConst.Path_FuncsUtil, typeof(TransformUtil));
+            BuildScriptFromBaseCS(SysConst.Path_FuncsUtil, typeof(UIUtil));
+            BuildScriptFromBaseCS(SysConst.Path_FuncsUtil, typeof(Util));
+            BuildScriptFromBaseCS(SysConst.Path_FuncsUtil, typeof(WinUtil));
+        }
+
+        public static void BuildScriptFromBaseCS(string path,Type utileType,Action<CodegenTextWriter> namespaceAction=null,Action<CodegenTextWriter> classAction=null)
+        {
+            string configName = utileType.Name;
+            string configFullName = utileType.FullName;
+            string fileName = Path.Combine(path, configName + ".cs");
+            FileUtil.EnsureDirectory(path);
+            if (File.Exists(fileName))
+            {
+                return;
+            }
+            var w = new CodegenTextWriter($"{fileName}", System.Text.Encoding.UTF8);
+            w.WriteLine($"using UnityEngine;");
+            w.WithCurlyBraces($"namespace {BuildConfig.NameSpace}", () =>
+            {
+                namespaceAction?.Invoke(w);
+                w.WithCurlyBraces($"public partial class {configName}:{configFullName}", () =>
+                {
+                    classAction?.Invoke(w);
+                });
+            });
+            w.Flush();
+            w.Dispose();
+        }
     }
 }

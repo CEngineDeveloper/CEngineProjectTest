@@ -9,7 +9,7 @@
 //**********************************************
 namespace CYM
 {
-    public partial class IDUtil
+    public partial class IDUtil 
     {
         public static long Gen()
         {

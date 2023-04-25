@@ -19,7 +19,7 @@ using UnityEngine;
 
 namespace CYM
 {
-    public static class TransformUtil
+    public partial class TransformUtil 
     {
         #region BOUNDS
         private static readonly Vector3 MIN_VECTOR3 = new Vector3(float.MinValue, float.MinValue, float.MinValue);
