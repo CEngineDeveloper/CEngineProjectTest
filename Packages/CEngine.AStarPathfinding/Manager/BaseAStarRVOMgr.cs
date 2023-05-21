@@ -13,9 +13,8 @@ using Pathfinding.RVO;
 
 namespace CYM.Pathfinding
 {
-    public class BaseAStarRVOMgr<TState, TUnit, TTraversal, TModify> : BaseAStarMoveMgr<TState, TUnit, TTraversal, TModify>
+    public class BaseAStarRVOMgr<TUnit, TTraversal, TModify> : BaseAStarMoveMgr<TUnit, TTraversal, TModify>
         where TUnit : BaseUnit
-        where TState : struct, Enum
         where TTraversal : BaseTraversal, new()
         where TModify : MonoModifier
     {
@@ -67,6 +66,15 @@ namespace CYM.Pathfinding
 		{
 			isCanpath = b;
 		}
+        public override void StopPath()
+        {
+            base.StopPath();
+            IsMovingFlag = false;
+            Destination = SelfBaseUnit.Pos;
+            RVOController.SetTarget(Destination, Mathf.Clamp(0.5f, MinSpeed, MaxSpeed), MaxSpeed);
+            vectorPath?.Clear();
+            Callback_OnMoveDestination?.Invoke();
+        }
         public override bool StartPath(Vector3 pos, float speed)
 		{
 			canSearchAgain = false;
@@ -192,31 +200,31 @@ namespace CYM.Pathfinding
 			{
 				var rot = SelfUnit.Trans.rotation;
 				var targetRot = Quaternion.LookRotation(movementDelta, RVOController.To3D(Vector2.zero, 1));
-				const float RotationSpeed = 5;
+				//const float RotationSpeed = RealRotSpeed;
 				if (RVOController.movementPlane == MovementPlane.XY)
 				{
 					targetRot = targetRot * Quaternion.Euler(-90, 180, 0);
 				}
-				SelfUnit.Trans.rotation = Quaternion.Slerp(rot, targetRot, Time.deltaTime * RotationSpeed);
+				SelfUnit.Trans.rotation = Quaternion.Slerp(rot, targetRot, Time.deltaTime * RealRotSpeed);
 			}
 
 			//采样地图高度
-			if (IsPositionChange && TerrainObj.Ins != null)
-			{
-				Vector3 bakePos = BaseSceneRoot.Ins.GetBakedColliderPos(SelfBaseUnit);
-				float terrainY = TerrainObj.Ins.SampleHeight(pos);
-				if (bakePos.y == SysConst.VEC_Inv.y)
-				{
-					pos.y = terrainY;
-				}
-				else
-				{
-					if (bakePos.y > terrainY)
-						pos.y = bakePos.y;
-					else
-						pos.y = terrainY;
-				}
-			}
+			//if (IsPositionChange && TerrainObj.Ins != null)
+			//{
+			//	Vector3 bakePos = BaseSceneRoot.Ins.GetBakedColliderPos(SelfBaseUnit);
+			//	float terrainY = TerrainObj.Ins.SampleHeight(pos);
+			//	if (bakePos.y == SysConst.VEC_Inv.y)
+			//	{
+			//		pos.y = terrainY;
+			//	}
+			//	else
+			//	{
+			//		if (bakePos.y > terrainY)
+			//			pos.y = bakePos.y;
+			//		else
+			//			pos.y = terrainY;
+			//	}
+			//}
 
 			//原地踏步Timeout
 			if (IsMovingFlag )
@@ -226,8 +234,9 @@ namespace CYM.Pathfinding
 					curArrivalTime += Time.deltaTime*BaseAStarMgr.MultipleSpeed;
 					if (curArrivalTime > ArrivalTimeout)
 					{
-						ForceStop();
-					}
+						//ForceStop(desiredSpeed);
+                        StopPath();
+                    }
 				}
 				else
 				{
@@ -239,18 +248,14 @@ namespace CYM.Pathfinding
 			//判断单位是否抵达目标点
 			if (IsMovingFlag && MathUtil.ApproximatelyXZ(SelfBaseUnit.Pos, Destination, ArrivalAccuracy))
 			{
-				ForceStop();
-			}
+				//ForceStop(desiredSpeed);
+                StopPath();
+            }
 			SelfUnit.Trans.position = pos;
-			void ForceStop()
-			{
-				IsMovingFlag = false;
-				Destination = SelfBaseUnit.Pos;
-				RVOController.SetTarget(Destination, Mathf.Clamp(desiredSpeed, MinSpeed, MaxSpeed), MaxSpeed);
-				vectorPath.Clear();
-				StopPath();
-				Callback_OnMoveDestination?.Invoke();
-			}
 		}
+        void ForceStop(float desiredSpeed)
+        {
+
+        }
     }
 }

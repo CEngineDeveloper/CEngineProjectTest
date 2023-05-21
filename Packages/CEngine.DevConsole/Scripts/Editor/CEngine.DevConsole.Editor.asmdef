@@ -1,0 +1,18 @@
+{
+    "name": "CEngine.DevConsole.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:525d7970190645d47a6134b7fede9f66"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

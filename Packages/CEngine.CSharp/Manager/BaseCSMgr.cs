@@ -45,7 +45,7 @@ namespace CYM
             Callback_OnParseStart?.Invoke();
             foreach (var dlc in DLCManager.LoadedDLCItems.Values)
             {
-                if (Version.IsEditorOrConfigMode)
+                if (VersionUtil.IsEditorOrConfigMode)
                 {
                     string[] fileList = dlc.GetAllCSharp();
                     foreach (var item in fileList)

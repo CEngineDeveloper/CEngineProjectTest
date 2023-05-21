@@ -74,7 +74,7 @@ namespace CYM
             //加载DLC Excel
             foreach (var dlc in DLCManager.LoadedDLCItems.Values)
             {
-                if (Version.IsEditorOrConfigMode)
+                if (VersionUtil.IsEditorOrConfigMode)
                 {
                     string[] fileList = dlc.GetAllExcel();
                     foreach (var item in fileList)

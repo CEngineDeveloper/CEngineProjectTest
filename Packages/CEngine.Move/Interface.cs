@@ -15,7 +15,7 @@ namespace CYM.Move
         #region prop
         BaseUnit GetSelfBaseUnit();
         Quaternion NewQuateration { get; }
-        BaseUnit FaceTarget { get; }
+        //BaseUnit FaceTarget { get; }
         float SearchedSpeed { get; }
         Vector3 SearchedPos { get; }
         Vector3 Destination { get; }

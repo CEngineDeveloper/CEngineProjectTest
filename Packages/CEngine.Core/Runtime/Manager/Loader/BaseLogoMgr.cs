@@ -73,7 +73,7 @@ namespace CYM
         {
 
             bool IsNoLogo = Logos == null || Logos.Count == 0;
-            if (Version.IsLogoEditorMode() && !IsNoLogo)
+            if (VersionUtil.IsLogoEditorMode() && !IsNoLogo)
             {
                 while (LogoPlayer == null) 
                     yield return new WaitForEndOfFrame();

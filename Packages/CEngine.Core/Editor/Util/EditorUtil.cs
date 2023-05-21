@@ -299,6 +299,7 @@ namespace CYM
             BuildScriptFromBaseCS(SysConst.Path_FuncsUtil, typeof(UIUtil));
             BuildScriptFromBaseCS(SysConst.Path_FuncsUtil, typeof(Util));
             BuildScriptFromBaseCS(SysConst.Path_FuncsUtil, typeof(WinUtil));
+            BuildScriptFromBaseCS(SysConst.Path_FuncsUtil, typeof(VersionUtil));
         }
 
         public static void BuildScriptFromBaseCS(string path,Type utileType,Action<CodegenTextWriter> namespaceAction=null,Action<CodegenTextWriter> classAction=null)

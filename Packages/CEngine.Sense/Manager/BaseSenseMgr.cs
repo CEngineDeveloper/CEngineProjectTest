@@ -210,7 +210,7 @@ namespace CYM.Sense
                 Units.Add(unit);
                 if (SelfBaseUnit.IsEnemy(unit)) 
                     UnitsEnemy.Add(unit);
-                if (SelfBaseUnit.IsSOF(unit)) 
+                if (SelfBaseUnit.IsSelfOrFriend(unit)) 
                     UnitsAlly.Add(unit);
                 if (SelfBaseUnit.IsSelf(unit)) 
                     UnitsSelf.Add(unit);
@@ -246,7 +246,7 @@ namespace CYM.Sense
             {
                 if (SelfBaseUnit.IsEnemy(item)) 
                     UnitsEnemy.Add(item);
-                if (SelfBaseUnit.IsSOF(item)) 
+                if (SelfBaseUnit.IsSelfOrFriend(item)) 
                     UnitsAlly.Add(item);
                 if (SelfBaseUnit.IsSelf(item)) 
                     UnitsSelf.Add(item);

@@ -11,6 +11,7 @@ namespace CYM
 {
     [RequireComponent(typeof(Console))]
     [RequireComponent(typeof(FPSCounter))]
+    [RequireComponent(typeof(ErrorCatcher))]
     [ExecuteInEditMode]
     [HideMonoScript]
     public class Starter : MonoBehaviour

@@ -94,7 +94,7 @@ namespace CYM
             if (!BaseGlobal.PlatSDKMgr.IsCanGM)
                 return false;
             return
-                Version.IsDevelop ||
+                VersionUtil.IsDevelop ||
                 Application.isEditor ||
                 Setting.IsGMMod || 
                 IsGMMod;

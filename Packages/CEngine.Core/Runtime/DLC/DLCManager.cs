@@ -458,7 +458,7 @@ namespace CYM.DLC
         public static AssetBundleManifest LoadAssetBundleManifest(string dlc)
         {
             //编辑器模式下不需要加载清单文件
-            if (Version.IsEditorMode)
+            if (VersionUtil.IsEditorMode)
                 return null;
             //加载Unity Assetbundle Manifest
             Bundle tempBundle = LoadBundle(dlc, dlc, false, false);

@@ -39,21 +39,6 @@ namespace CYM
     }
     public partial class GameConfig : ScriptConfig<GameConfig> 
     {
-        #region version
-        [SerializeField, FoldoutGroup("Version")]
-        public int Major;
-        [SerializeField, FoldoutGroup("Version")]
-        public int Minor;
-        [SerializeField, FoldoutGroup("Version")]
-        public int Data;
-        [SerializeField, FoldoutGroup("Version")]
-        public int Suffix = 1;
-        [SerializeField, FoldoutGroup("Version")]
-        public int Prefs = 0;
-        [SerializeField, FoldoutGroup("Version")]
-        public VersionTag Tag = VersionTag.Preview;
-        #endregion
-
         #region input assets
         [SerializeField, FoldoutGroup("Input"), PropertyOrder(-100)]
         public int TouchDPI = 1;
@@ -128,12 +113,6 @@ namespace CYM
         }
         #endregion
 
-        #region get
-        public override string ToString()
-        {
-            string str = string.Format("v{0}.{1} {2}{3} {4}", Major, Minor, Tag, Suffix, PlatformSDK.GetDistributionName());
-            return str;
-        }
-        #endregion
+
     }
 }

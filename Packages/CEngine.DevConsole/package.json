@@ -1,0 +1,23 @@
+{
+  "name": "com.cengine.devconsole",
+  "version": "1.0.0",
+  "displayName": "CEngine.DevConsole",
+  "description": "CEngine 控制台模块",
+  "unity": "2021.3",
+  "unityRelease": "0b5",
+  "documentationUrl": "https://www.baidu.com/",
+  "changelogUrl": "https://www.baidu.com/",
+  "licensesUrl": "https://www.baidu.com/",
+  "dependencies": {
+    "com.cengine.core": "1.0.0",
+    "com.cengine.stats": "1.0.0"
+  },
+  "keywords": [
+    "CEngine"
+  ],
+  "author": {
+    "name": "CYM",
+    "email": "13245665770@qq.com",
+    "url": "https://www.baidu.com/"
+  }
+}

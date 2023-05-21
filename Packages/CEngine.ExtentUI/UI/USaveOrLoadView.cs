@@ -109,7 +109,7 @@ namespace CYM.UI
                 item.BntClose.NameText = GetStr("删除");
             }
             item.Data.OnClick = OnSaveOrLoadItemClick;
-            bool IsInData = Version.IsInData(itemData.Header.Version);
+            bool IsInData = VersionUtil.IsInData(itemData.Header.Version);
             if (!IsInData)
             {
                 item.NameText = string.Format($"<color=red>{"！"}{item.NameText}</color>");

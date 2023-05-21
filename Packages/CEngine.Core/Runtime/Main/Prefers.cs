@@ -21,10 +21,10 @@ namespace CYM
 
         private void Start()
         {
-            if (GetInt(Key_LastPrefsVer) != GameConfig.Ins.Prefs)
+            if (GetInt(Key_LastPrefsVer) != VersionConfig.Ins.Prefs)
             {
                 DeleteAll();
-                SetInt(Key_LastPrefsVer, GameConfig.Ins.Prefs);
+                SetInt(Key_LastPrefsVer, VersionConfig.Ins.Prefs);
             }
         }
 

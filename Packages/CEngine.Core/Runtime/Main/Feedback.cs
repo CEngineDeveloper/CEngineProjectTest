@@ -55,13 +55,13 @@ namespace CYM
             error = ErrorCatcher.GetErrorString();
             SendDesc = desc;
             string realDesc = string.Format(
-                $"{MarkdownUtil.H2("Version")}:\n{Version.FullVersion??"无版本"}\n" +
+                $"{MarkdownUtil.H2("Version")}:\n{VersionUtil.FullVersion??"无版本"}\n" +
                 $"{MarkdownUtil.H2("Contact")}:\n{contactInfo}\n" +
                 $"{MarkdownUtil.H2("GMMode")}:\n{BaseGlobal.DiffMgr?.IsSettedGMMod()??false}\n" +
                 $"{MarkdownUtil.H2("Name")}:\n{BaseGlobal.PlatSDKMgr?.GetName()??"无名氏"}\n" +
                 $"{MarkdownUtil.H2("Desc")}:\n{SendDesc}\n" +
                 $"{MarkdownUtil.H2("Error")}:\n{error}\n" +
-                $"{MarkdownUtil.H2("SystemInfo")}:\n{Version.AdvSystemInfo}"
+                $"{MarkdownUtil.H2("SystemInfo")}:\n{VersionUtil.AdvSystemInfo}"
                 );
             return realDesc;
         }

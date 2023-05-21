@@ -180,21 +180,21 @@ namespace CYM
                     item.OnLateUpdate();
         }
         // mono的日期帧
-        public virtual void OnTurnbase(bool day,bool month,bool year)
+        public virtual void DoTurnbase(bool day,bool month,bool year)
         {
             foreach (var item in subComponets)
             {
                 if (item.NeedTurnbase && item.IsEnable)
-                    item.OnTurnbase(day,month,year);
+                    item.DoTurnbase(day,month,year);
             }
         }
         // 帧同步
-        public virtual void OnTurnframe(int gameFramesPerSecond)
+        public virtual void DoTurnframe(int gameFramesPerSecond)
         {
             foreach (var item in subComponets)
             {
                 if (item.IsEnable)
-                    item.OnTurnframe(gameFramesPerSecond);
+                    item.DoTurnframe(gameFramesPerSecond);
             }
         }
         // mono的OnGui

@@ -12,9 +12,8 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace CYM.Pathfinding
 {
-    public class BaseAStarSPMoveMgr<TState, TUnit, TTraversal, TModify> : BaseAStarMoveMgr<TState, TUnit, TTraversal, TModify>
+    public class BaseAStarSPMoveMgr<TState, TUnit, TTraversal, TModify> : BaseAStarMoveMgr<TUnit, TTraversal, TModify>
         where TUnit : BaseUnit
-        where TState : struct, Enum
         where TTraversal : BaseTraversal, new()
         where TModify : MonoModifier
     {

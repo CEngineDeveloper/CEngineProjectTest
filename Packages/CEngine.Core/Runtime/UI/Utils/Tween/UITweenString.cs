@@ -6,12 +6,11 @@
 // 填写类的描述...
 //------------------------------------------------------------------------------
 
-using CYM.UI;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CYM
+namespace CYM.UI
 {
     public class UITweenString : UITween
     {

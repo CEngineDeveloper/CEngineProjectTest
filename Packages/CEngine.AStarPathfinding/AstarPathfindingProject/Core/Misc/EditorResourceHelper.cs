@@ -44,7 +44,7 @@ namespace Pathfinding {
 		public static bool LocateEditorAssets () {
 #if UNITY_2019_3_OR_NEWER
 			var package = UnityEditor.PackageManager.PackageInfo.FindForAssembly(typeof(EditorResourceHelper).Assembly);
-			string packpath = "Packages/com.cengine.pathfinding";
+			string packpath = "Packages/com.cengine.astarpathfinding";
 			if (package != null) {
 				editorAssets = packpath + "/AstarPathfindingProject/Editor/EditorAssets";
 				if (System.IO.File.Exists(packpath + "/AstarPathfindingProject/Editor/EditorAssets/AstarEditorSkinLight.guiskin")) {

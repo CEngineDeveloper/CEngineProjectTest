@@ -15,13 +15,7 @@ namespace CYM.Pathfinding
     [Serializable]
     public class DBBaseMove
     {
-        public int CurMoveState = 0;
-        public int MoveTargetState = 0;
-        public long MoveTarget = SysConst.INT_Inv;
-        public long FaceTarget = SysConst.INT_Inv;
-        public Vec3 MoveTargetPosPreview;
-        public Vec3 MoveTargetPosReal;
-        public bool IsValidMoveTarget;
+
     }
     public class BaseTraversal : ITraversalProvider
     {
@@ -67,7 +61,7 @@ namespace CYM.Pathfinding
         }
         protected virtual bool OnFilter(BaseUnit item)
         {
-            return item.IsSOF(SelfUnit) || item == SelfUnit;
+            return item.IsSelfOrFriend(SelfUnit) || item == SelfUnit;
         }
     }
 
@@ -80,8 +74,7 @@ namespace CYM.Pathfinding
             
         }
     }
-    public abstract class BaseAStarMoveMgr<TState, TUnit, TTraversal, TModify> : BaseMgr, IAStarMoveMgr
-        where TState : struct, Enum
+    public abstract class BaseAStarMoveMgr<TUnit, TTraversal, TModify> : BaseMgr, IAStarMoveMgr
         where TUnit : BaseUnit
         where TTraversal : BaseTraversal, new()
         where TModify : MonoModifier
@@ -98,7 +91,6 @@ namespace CYM.Pathfinding
         #region val
         public BaseUnit GetSelfBaseUnit() => SelfBaseUnit;
         public Quaternion NewQuateration { get; private set; } = Quaternion.identity;
-        public BaseUnit FaceTarget { get; protected set; }
         public float SearchedSpeed { get; protected set; }
         public Vector3 SearchedPos { get; protected set; } = SysConst.VEC_FarawayPos;
         public Vector3 Destination { get; protected set; } = SysConst.VEC_FarawayPos;
@@ -129,7 +121,6 @@ namespace CYM.Pathfinding
         #region mgr
         protected Corouter BattleCoroutine => BaseGlobal.BattleCorouter;
         protected BaseAStarMgr AStarMgr => BaseGlobal.AStarMgr;
-        protected CharaStateMachine<TState, TUnit, BaseMoveState> StateMachine { get; set; } = new CharaStateMachine<TState, TUnit, BaseMoveState>();
         #endregion
 
         #region prop
@@ -151,7 +142,6 @@ namespace CYM.Pathfinding
             base.OnAffterAwake();
             Traversal = new TTraversal();
             Traversal.Init(SelfBaseUnit);
-            StateMachine.Init(SelfBaseUnit);
             Seeker = SelfMono.SetupMonoBehaviour<Seeker>();
             PathModify = SelfMono.SetupMonoBehaviour<TModify>();
         }
@@ -222,32 +212,11 @@ namespace CYM.Pathfinding
                 {
                     OnFollowPathUpdate();
                 }
-                StateMachine?.OnUpdate();
 
                 //位置变化记录
                 IsPositionChange = !MathUtil.Approximately(LastPos, SelfUnit.Pos);
                 IsRotationChange = LastRot != SelfUnit.Rot;
             }
-        }
-        public override void OnFixedUpdate()
-        {
-            base.OnFixedUpdate();
-            if (SelfBaseUnit != null)
-            {
-                StateMachine?.OnFixedUpdate();
-            }
-        }
-        public override void OnGameStarted1()
-        {
-            base.OnGameStarted1();
-            SetState(StateMachine.CurState, false);
-        }
-        #endregion
-
-        #region protector set
-        protected virtual void AddState(TState state, BaseMoveState stateData, TState? endState = null, Func<bool> isRange = null, Func<bool> isAction = null)
-        {
-            StateMachine.AddState(state, stateData);
         }
         #endregion
 
@@ -287,11 +256,10 @@ namespace CYM.Pathfinding
             Vector3 dir = (pos - SelfBaseUnit.Pos);
             LookDir(dir);
         }
-        public void Look(BaseUnit unit)
+        public virtual void Look(BaseUnit unit)
         {
             if (unit == null) return;
             Look(unit.Pos);
-            FaceTarget = unit;
         }
         public void SetRotationY(float rot)
         {
@@ -395,8 +363,6 @@ namespace CYM.Pathfinding
             CalcCurNode();
             CalcCurBlock();
         }
-        public void ChangeState(TState state, bool isForce = false, bool isManual = true) => StateMachine.ChangeState(state, isForce, isManual);
-        public void SetState(TState state, bool isManual = true) => StateMachine.SetCurState(state, isManual);
         #endregion
 
         #region get
@@ -446,7 +412,6 @@ namespace CYM.Pathfinding
         //是否广泛的移动
         public bool IsGeneralMoving => IsPositionChange || IsMovingFlag;
         public virtual bool IsCanMove => true;
-        public bool IsInState(TState state) => EnumTool<TState>.Int(StateMachine.CurState) == EnumTool<TState>.Int(state);
         public bool IsCanTraversal(GraphNode node)
         {
             if (Traversal == null) return true;
@@ -539,7 +504,6 @@ namespace CYM.Pathfinding
         {
             IsMovingFlag = true;
             BaseAStarMgr.GlobalMoveState.Add();
-            StateMachine.CurStateData?.OnMoveStart();
 
             ClearNode();
             ClearBlock();
@@ -557,7 +521,6 @@ namespace CYM.Pathfinding
             IsMovingFlag = false;
             BaseAStarMgr.GlobalMoveState.Remove();
             BaseGlobal.AStarMgr?.SetSpeedRate(1.0f);
-            StateMachine.CurStateData?.OnMoveEnd();
 
             CalcCurNode();
             CalcCurBlock();
@@ -583,44 +546,6 @@ namespace CYM.Pathfinding
         protected virtual void OnFollowPathUpdate()
         {
             return;
-        }
-        #endregion
-
-        #region state
-        public class BaseMoveState : CharaState<TState, TUnit>
-        {
-            #region life
-            public virtual Color Color => Color.black;
-            protected virtual bool MustPlayerDrawPath => true;
-            public override void OnBeAdded()
-            {
-                base.OnBeAdded();
-            }
-            public override void Enter()
-            {
-                base.Enter();
-            }
-            public override void Exit()
-            {
-                base.Exit();
-            }
-            #endregion
-
-            #region set
-            protected void DrawPath(Color col)
-            {
-
-            }
-            protected void ClearPath()
-            {
-
-            }
-            #endregion
-
-            #region Callback
-            public virtual void OnMoveStart() { DrawPath(Color); }
-            public virtual void OnMoveEnd() { ClearPath(); }
-            #endregion
         }
         #endregion
     }

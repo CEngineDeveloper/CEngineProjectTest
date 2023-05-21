@@ -23,7 +23,7 @@ namespace CYM.Anim
         #endregion
 
         #region prop
-        public StateMachine<State> Machine { get; private set; } = new StateMachine<State>();
+        public StateMachine<BaseCharaState> Machine { get; private set; } = new StateMachine<BaseCharaState>();
         public Dictionary<int, BaseCharaState> States = new Dictionary<int, BaseCharaState>();
         public TState State { get; private set; }
         public int Index { get; private set; } = 0;
@@ -313,16 +313,20 @@ namespace CYM.Anim
         }
         #endregion
 
-        public class BaseCharaState : State
+        public class MyBlackboard
+        { 
+        
+        }
+        public class BaseCharaState : StateMachine<BaseCharaState>.State
         {
             public float Wait = 0.0f;
             public TUnit Self;
             public BaseCharaState() : base()
             {
             }
-            public override void Update()
+            public override void OnUpdate()
             {
-                base.Update();
+                base.OnUpdate();
                 if (UpdateTime >= Wait)
                 {
 

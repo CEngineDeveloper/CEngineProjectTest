@@ -7,7 +7,7 @@
 //------------------------------------------------------------------------------
 using UnityEngine;
 using DG.Tweening;
-namespace CYM
+namespace CYM.UI
 {
     [System.Serializable]
     public class UIScaleAnimator : UIAnimator 

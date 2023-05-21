@@ -57,8 +57,8 @@ namespace CYM.UI
             BntWebsite?.Init(new UButtonData { NameKey = "Websit", HoverClip = "BntHover", IsTrans = false, OnClick = OnClickWebsite });
             Logo?.Init(new UImageData { Icon = GetMainMenuLogo });
             GameLogo?.Init(new UImageData { Icon = GetGameLogo });
-            VersionText?.Init(new UTextData { Name = () => Version.GameVersion, IsTrans = false });
-            BuildTime?.Init(new UTextData { Name = () => Version.BuildTime, IsTrans = false });
+            VersionText?.Init(new UTextData { Name = () => VersionUtil.GameVersion, IsTrans = false });
+            BuildTime?.Init(new UTextData { Name = () => VersionUtil.BuildTime, IsTrans = false });
             Tips?.Init(new UTextData { NameKey = "MainMenuTip" });
         }
         #endregion

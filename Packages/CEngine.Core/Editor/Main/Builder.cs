@@ -335,10 +335,10 @@ namespace CYM
         }
         static void _BuildEXE()
         {
-            string path = Version.DirPath;
+            string path = VersionUtil.DirPath;
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
-            string location = Version.ExePath;
+            string location = VersionUtil.ExePath;
             CLog.Log("location = {0}", location);
             BuildOptions op = BuildOptions.None;
             if (LocalConfig.Ins.IsUnityDevelopmentBuild)

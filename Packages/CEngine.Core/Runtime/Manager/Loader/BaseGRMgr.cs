@@ -79,7 +79,7 @@ namespace CYM
             }
 
             //初始化的加载所有Bundle
-            if (!Version.IsEditorMode)
+            if (!VersionUtil.IsEditorMode)
             {
                 var shaderData = DLCManager.LoadAllShaderBundle();
                 foreach (var bundle in shaderData)
@@ -114,7 +114,7 @@ namespace CYM
             // 获得DLC的根目录
             List<DLCItemConfig> GetDLCItemConfigs()
             {
-                if (Version.IsEditorOrAssetBundleMode)
+                if (VersionUtil.IsEditorOrAssetBundleMode)
                 {
                     return DLCConfig.ConfigAll;
                 }

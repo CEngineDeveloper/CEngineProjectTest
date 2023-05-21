@@ -51,6 +51,7 @@ namespace CYM
         public float BackgroundOpacity = 0.0f;
         public Color BackgroundColor = Color.black;
         public Color ErrorColor = new Color(1, 0.0f, 0.0f);
+        public List<string> Filter = new List<string>();
 
         static Queue<LogMessage> showQueue = new Queue<LogMessage>();
         static Queue<LogMessage> cacheQueue = new Queue<LogMessage>();
@@ -153,7 +154,7 @@ namespace CYM
 
         void OnGUI()
         {
-            if (!Version.IsWindows)
+            if (!VersionUtil.IsWindows)
                 return;
             //if (Application.isEditor)
             //    return;
@@ -207,7 +208,7 @@ namespace CYM
 
         void HandleLog(string message, string stackTrace, LogType type)
         {
-            if (!Version.IsWindows)
+            if (!VersionUtil.IsWindows)
                 return;
             if (Console.IsShow())
                 return;
@@ -221,6 +222,11 @@ namespace CYM
                 type != LogType.Exception) 
                 return;
 
+            foreach (var item in Filter)
+            {
+                if (message.Contains(item))
+                    return;
+            }
             showQueue.Enqueue(new LogMessage(message , stackTrace));
             cacheQueue.Enqueue(new LogMessage(message , stackTrace));
         }

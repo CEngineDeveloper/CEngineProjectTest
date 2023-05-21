@@ -241,7 +241,7 @@ namespace CYM
             //加载DLC 的 Language
             foreach (var dlc in DLCManager.LoadedDLCItems.Values)
             {
-                if (Version.IsEditorOrConfigMode)
+                if (VersionUtil.IsEditorOrConfigMode)
                 {
                     string[] fileList = dlc.GetAllLanguages();
                     foreach (var item in fileList)

@@ -77,6 +77,36 @@ namespace CYM
                 }
             }
         }
+        public Vector3 SampleBakedTerrainPos(BaseMono mono,out bool isInBakedPos)
+        {
+            if (TerrainObj.Ins != null)
+            {
+                var pos = mono.Pos;
+                Vector3 bakePos = Ins.GetBakedColliderPos(mono);
+                float terrainY = TerrainObj.Ins.SampleHeight(pos);
+                if (bakePos.y == SysConst.VEC_Inv.y)
+                {
+                    pos.y = terrainY;
+                    isInBakedPos = false;
+                }
+                else
+                {
+                    if (bakePos.y > terrainY)
+                    {
+                        pos.y = bakePos.y;
+                        isInBakedPos = true;
+                    }
+                    else
+                    {
+                        pos.y = terrainY;
+                        isInBakedPos = false;
+                    }
+                }
+                return pos;
+            }
+            isInBakedPos = false;
+            return Vector3.zero;
+        }
         public Vector3 GetBakedColliderPos(BaseMono mono)
         {
             return GetBakedColliderPos(mono.Pos);

@@ -26,9 +26,9 @@ namespace CYM
             LoadOrCreate();
         }
 
-        //[MenuItem("Tools/GenScriptConfigCode", priority = -10000)]
         public static void GenerateCode()
         {
+            VersionConfig.GenerateCode();
             BuildConfig.GenerateCode();
             DLCConfig.GenerateCode();
             GameConfig.GenerateCode();
@@ -45,6 +45,7 @@ namespace CYM
         public static void Load()
         {
             Debug.Log("加载配置开始!!");
+            VersionConfig.DoLoad();
             BuildConfig.DoLoad();
             DLCConfig.DoLoad();
             GameConfig.DoLoad();
@@ -59,6 +60,7 @@ namespace CYM
         }
         public static void LoadOrCreate()
         {
+            VersionConfig.DoLoadOrCreate();
             BuildConfig.DoLoadOrCreate();
             DLCConfig.DoLoadOrCreate();
             GameConfig.DoLoadOrCreate();
@@ -71,6 +73,7 @@ namespace CYM
             TestConfig.DoLoadOrCreate();
         }
         public static bool IsAllLoaded() =>
+            VersionConfig.IsLoaded &&
             BuildConfig.IsLoaded &&
             DLCConfig.IsLoaded &&
             LocalConfig.IsLoaded &&
@@ -85,6 +88,7 @@ namespace CYM
         public static void SaveConfig()
         {
 #if UNITY_EDITOR
+            EditorUtility.SetDirty(VersionConfig.Ins);
             EditorUtility.SetDirty(BuildConfig.Ins);
             EditorUtility.SetDirty(DLCConfig.Ins);
             EditorUtility.SetDirty(GameConfig.Ins);

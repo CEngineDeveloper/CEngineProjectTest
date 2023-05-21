@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 namespace CYM.UI
 {
-	public class UIEventPenetrate : MonoBehaviour, ICanvasRaycastFilter
+    public class UIEventPenetrate : MonoBehaviour, ICanvasRaycastFilter
 	{
 		private Image _targetImage;
 

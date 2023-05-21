@@ -53,7 +53,7 @@ namespace CYM
         public ArchiveHeader Header { get; private set; }
         public DateTime FileTime { get; private set; }        // FileTime用于快速发现文件是否没变
         public bool IsLoadble => !IsBroken && IsCompatible;
-        public bool IsCompatible => Header.Version == Version.DataVersion;
+        public bool IsCompatible => Header.Version == VersionUtil.DataVersion;
         public TimeSpan PlayTime => new TimeSpan(0, 0, Header.PlayTime);
         public bool IsInHolding { get; private set; } = false;
         // 当存档载入仅读取文件头时，GameDatas为空
@@ -125,7 +125,7 @@ namespace CYM
                 //保存文件头
                 Header.PlayTime = GameDatas.PlayTime;
                 Header.PlayerID = GameDatas.PlayerTDID;
-                Header.Version = Version.DataVersion;
+                Header.Version = VersionUtil.DataVersion;
                 Header.IsHide = isHide;
                 Header.SaveTimeTicks = DateTime.Now.Ticks;
                 Header.IsCompressed = IsCompressed;

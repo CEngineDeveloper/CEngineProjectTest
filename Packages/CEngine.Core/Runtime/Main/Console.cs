@@ -281,7 +281,7 @@ namespace CYM
             {
                 if (
                     BuildConfig.Ins.IsShowConsoleBnt && 
-                    Version.IsDevelop
+                    VersionUtil.IsDevelop
                     )
                 {
                     if (GUI.Button(new Rect(0, 0, 45, 45), BntConsole))
@@ -439,7 +439,7 @@ namespace CYM
         {
             get
             {
-                if (Version.IsDevelop)
+                if (VersionUtil.IsDevelop)
                     return true;
                 if (BaseGlobal.DiffMgr == null)
                     return false;

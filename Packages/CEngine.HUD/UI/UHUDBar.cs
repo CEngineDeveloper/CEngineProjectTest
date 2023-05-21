@@ -75,7 +75,7 @@ namespace CYM.UI
         {
             if (!SelfUnit.IsLive)
                 return true;
-            if (!SelfUnit.IsRendered)
+            if (!SelfUnit.IsLogicRendered)
                 return true;
             if (BaseCameraMgr.IsEndHight)
             {

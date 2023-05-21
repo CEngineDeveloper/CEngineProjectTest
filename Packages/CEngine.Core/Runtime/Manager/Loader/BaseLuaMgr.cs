@@ -381,7 +381,7 @@ namespace CYM
                 //加载DLC Lua
                 foreach (var dlc in DLCManager.LoadedDLCItems.Values)
                 {
-                    if (Version.IsEditorOrConfigMode)
+                    if (VersionUtil.IsEditorOrConfigMode)
                     {
                         var files = dlc.GetAllLuas();
                         for (int i = 0; i < files.Length; ++i)

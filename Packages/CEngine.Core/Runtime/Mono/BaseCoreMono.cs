@@ -404,29 +404,37 @@ namespace CYM
 
         #region 手动调用
         // 手动调用(简单回合制,更新数值,适用于回合制游戏)
-        public virtual void OnTurnbase(bool day, bool month, bool year)
+        public virtual void DoTurnbase(bool day, bool month, bool year)
         {
             foreach (var value in turnbaseComponets)
             {
                 if (value.IsEnable)
-                    value.OnTurnbase(day,month,year);
+                    value.DoTurnbase(day,month,year);
             }
         }
         // 手动调用(帧同步回合)
-        public virtual void OnTurnframe(int gameFramesPerSecond)
+        public virtual void DoTurnframe(int gameFramesPerSecond)
         {
             foreach (var value in componets)
             {
                 if (value.IsEnable)
-                    value.OnTurnframe(gameFramesPerSecond);
+                    value.DoTurnframe(gameFramesPerSecond);
             }
         }
         // 手动调用(动画触发)
-        public virtual void OnAnimTrigger(int param)
+        public virtual void DoAnimTrigger(int param)
         {
             foreach (var item in triggersComponets)
             {
-                item.OnAnimTrigger(param);
+                item.DoAnimTrigger(param);
+            }
+        }
+        //手动调用(自定义刷新逻辑)
+        public virtual void Refresh()
+        {
+            foreach (var item in componets)
+            {
+                item.Refresh();
             }
         }
         #endregion
@@ -529,27 +537,5 @@ namespace CYM
                 item.SetDirtyAllAction(isImmidiate);
         }
         #endregion
-
-        //#region Inspector
-        //[Button("CheckMissing")]
-        //void CheckMissing()
-        //{
-        //    Transform[] trans = GetComponentsInChildren<Transform>(true);
-        //    foreach (var item in trans)
-        //    {
-
-        //        foreach (var com in item.gameObject.GetComponents<Component>())
-        //        {
-
-        //            if (com == null)
-        //                Debug.LogError("Missing:" + GetPath(item.gameObject), item.gameObject);
-        //        }
-        //    }
-        //    static string GetPath(GameObject go)
-        //    {
-        //        return go.transform.parent == null ? "/" + go.name : GetPath(go.transform.parent.gameObject) + "/" + go.name;
-        //    }
-        //}
-        //#endregion
     }
 }

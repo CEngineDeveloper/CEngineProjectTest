@@ -7,9 +7,8 @@
 //------------------------------------------------------------------------------
 using UnityEngine;
 using DG.Tweening;
-using CYM.UI;
 
-namespace CYM
+namespace CYM.UI
 {
     [System.Serializable]
     public class UIPosAnimator : UIAnimator 

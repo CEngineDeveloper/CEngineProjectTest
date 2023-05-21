@@ -11,7 +11,7 @@ using CYM.UI;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
 
-namespace CYM
+namespace CYM.UI
 {
     [AddComponentMenu("UI/Control/UScrollGroup")]
     [HideMonoScript]

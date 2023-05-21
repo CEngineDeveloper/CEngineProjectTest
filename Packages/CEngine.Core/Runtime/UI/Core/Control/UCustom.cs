@@ -10,7 +10,7 @@ using CYM.UI;
 using Sirenix.OdinInspector;
 using UnityEngine.UI;
 using System;
-namespace CYM
+namespace CYM.UI
 {
     public class UCustomData : UData
     {

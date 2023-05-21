@@ -119,7 +119,7 @@ namespace CYM.DLC
         //public readonly static Dictionary<string, UnityEngine.Object> RawAssets = new Dictionary<string, UnityEngine.Object>();
         //DLC配置文件
         static private DLCConfig DLCConfig => DLCConfig.Ins;
-        static bool IsEditorMode => Version.IsEditorMode;
+        static bool IsEditorMode => VersionUtil.IsEditorMode;
         #endregion
 
         #region res path
@@ -219,7 +219,7 @@ namespace CYM.DLC
             if(File.Exists(source))
                 File.Move(source, target);
             //资源包模式不拷贝
-            if (Version.RealResBuildType == ResBuildType.Config)
+            if (VersionUtil.RealResBuildType == ResBuildType.Config)
             {
                 //拷贝非打包资源到指定目录
                 for (int i = 0; i < AbsCopyDirectory.Count; ++i)
@@ -260,7 +260,7 @@ namespace CYM.DLC
         public DLCManifest GetManifestFile()
         {
             DLCManifest reader = null;
-            if (Version.IsEditorOrConfigMode)
+            if (VersionUtil.IsEditorOrConfigMode)
             {
                 reader = FileUtil.LoadJson<DLCManifest>(GetManifest());
             }

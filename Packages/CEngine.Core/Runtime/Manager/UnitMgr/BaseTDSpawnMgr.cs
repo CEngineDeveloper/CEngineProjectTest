@@ -54,15 +54,15 @@ namespace CYM
                 BaseGlobal.BattleMgr.Callback_OnUnLoaded += OnBattleUnLoaded;
             }
         }
-        public override void OnTurnbase(bool day, bool month, bool year)
+        public override void DoTurnbase(bool day, bool month, bool year)
         {
-            base.OnTurnbase(day,month,year);
+            base.DoTurnbase(day,month,year);
             foreach (var item in Data)
                 item.OnTurnbase();
         }
-        public override void OnTurnframe(int gameFramesPerSecond)
+        public override void DoTurnframe(int gameFramesPerSecond)
         {
-            base.OnTurnframe(gameFramesPerSecond);
+            base.DoTurnframe(gameFramesPerSecond);
             foreach (var item in Data)
                 item.OnTurnframe(gameFramesPerSecond);
         }

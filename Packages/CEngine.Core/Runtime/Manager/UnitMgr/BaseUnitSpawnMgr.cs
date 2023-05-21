@@ -76,6 +76,7 @@ namespace CYM
         protected override void OnSetNeedFlag()
         {
             base.OnSetNeedFlag();
+            NeedFixedUpdate = true;
             NeedTurnbase = true;
         }
         public override void OnCreate()
@@ -96,20 +97,28 @@ namespace CYM
                 BaseGlobal.LoaderMgr.Callback_OnAllLoadEnd2 += OnAllLoadEnd2;
             }
         }
-        public override void OnTurnbase(bool day, bool month, bool year)
+        public override void Refresh()
         {
+            base.Refresh();
             foreach (var item in Data)
             {
-                item.OnTurnbase(day,month,year);
+                item.Refresh();
             }
-            base.OnTurnbase(day,month,year);
         }
-        public override void OnTurnframe(int gameFramesPerSecond)
+        public override void DoTurnbase(bool day, bool month, bool year)
         {
-            base.OnTurnframe(gameFramesPerSecond);
             foreach (var item in Data)
             {
-                item.OnTurnframe(gameFramesPerSecond);
+                item.DoTurnbase(day,month,year);
+            }
+            base.DoTurnbase(day,month,year);
+        }
+        public override void DoTurnframe(int gameFramesPerSecond)
+        {
+            base.DoTurnframe(gameFramesPerSecond);
+            foreach (var item in Data)
+            {
+                item.DoTurnframe(gameFramesPerSecond);
             }
         }
         public override void OnGameStart1()

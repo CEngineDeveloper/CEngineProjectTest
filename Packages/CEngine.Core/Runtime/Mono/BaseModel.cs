@@ -49,7 +49,7 @@ namespace CYM
         {
             if (SelfBaseUnit == null)
                 return;
-            SelfBaseUnit.OnAnimTrigger(param1);
+            SelfBaseUnit.DoAnimTrigger(param1);
         }
         #endregion
 

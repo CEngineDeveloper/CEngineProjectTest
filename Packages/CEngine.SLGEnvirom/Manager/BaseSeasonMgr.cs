@@ -68,9 +68,9 @@ namespace CYM.SLGEnvirom
             base.OnGameStart1();
             RefreshByMonth(true);
         }
-        public override void OnTurnbase(bool day, bool month, bool year)
+        public override void DoTurnbase(bool day, bool month, bool year)
         {
-            base.OnTurnbase(day, month, year);
+            base.DoTurnbase(day, month, year);
             if (month)
             {
                 RefreshByMonth();

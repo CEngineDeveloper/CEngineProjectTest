@@ -408,6 +408,8 @@ namespace CYM
             SelfBaseGlobal.OnGameStarted1();
             SelfBaseGlobal.OnGameStarted2();
             Callback_OnGameStarted?.Invoke();
+            //执行自定义刷新
+            SelfBaseGlobal.Refresh();
             IsGameStart = true;
             //暂停在加载界面
             Callback_OnInPauseLoadingView?.Invoke();

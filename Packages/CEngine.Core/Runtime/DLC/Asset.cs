@@ -105,7 +105,7 @@ namespace CYM.DLC
         protected override void OnLoad()
         {
 #if UNITY_EDITOR
-            if (Version.IsEditorMode)
+            if (VersionUtil.IsEditorMode)
             {
                 Object = UnityEditor.AssetDatabase.LoadAssetAtPath(AssetFullPath, AssetType);
                 return;
@@ -145,7 +145,7 @@ namespace CYM.DLC
         protected override void OnLoad()
         {
 #if UNITY_EDITOR
-            if (Version.IsEditorMode)
+            if (VersionUtil.IsEditorMode)
             {
                 Object = UnityEditor.AssetDatabase.LoadAssetAtPath(AssetFullPath, AssetType);
                 return;
@@ -170,7 +170,7 @@ namespace CYM.DLC
                 return;
 
 #if UNITY_EDITOR
-            if (Version.IsEditorMode)
+            if (VersionUtil.IsEditorMode)
             {
 
                 if (Object == null)
@@ -230,7 +230,7 @@ namespace CYM.DLC
             {
 
 #if UNITY_EDITOR
-                if (Version.IsEditorMode)
+                if (VersionUtil.IsEditorMode)
                 {
 
                     if (Object == null)
@@ -261,7 +261,7 @@ namespace CYM.DLC
         protected override void OnLoad()
         {
 #if UNITY_EDITOR
-            if (Version.IsEditorMode)
+            if (VersionUtil.IsEditorMode)
             {
                 asyncOperation = EditorSceneManager.LoadSceneAsyncInPlayMode(AssetFullPath, new LoadSceneParameters(LoadSceneMode.Additive, LocalPhysicsMode.None));
                 loadState = LoadStateType.Loading;
@@ -296,7 +296,7 @@ namespace CYM.DLC
                 return;
 
 #if UNITY_EDITOR
-            if (Version.IsEditorMode)
+            if (VersionUtil.IsEditorMode)
             {
 
                 if (asyncOperation == null)
@@ -345,7 +345,7 @@ namespace CYM.DLC
             get
             {
 #if UNITY_EDITOR
-                if (Version.IsEditorMode)
+                if (VersionUtil.IsEditorMode)
                 {
                     if (asyncOperation == null)
                         return 0.0f;

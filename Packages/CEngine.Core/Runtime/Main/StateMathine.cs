@@ -22,7 +22,7 @@ namespace CYM
         void RevertToPreState();
     }
     public class StateMachine<TStateData> : IStateMachine 
-        where TStateData : State
+        where TStateData : StateMachine<TStateData>.State
     {
         #region prop
         public TStateData CurStateData { get; private set; }
@@ -48,45 +48,70 @@ namespace CYM
         }
         public virtual void OnUpdate()
         {
-            if (GlobalStateData != null) GlobalStateData.Update();
-            if (CurStateData != null) CurStateData.Update();
+            if (GlobalStateData != null) GlobalStateData.OnUpdate();
+            if (CurStateData != null) CurStateData.OnUpdate();
         }
         public virtual void OnFixedUpdate()
         {
             if (GlobalStateData != null) GlobalStateData.OnFixedUpdate();
             if (CurStateData != null) CurStateData.OnFixedUpdate();
         }
+        public virtual void OnJobUpdate()
+        {
+            if (GlobalStateData != null) GlobalStateData.OnJobUpdate();
+            if (CurStateData != null) CurStateData.OnJobUpdate();
+        }
         public void SetPreState(TStateData state) { PreStateData = state; }
         public void SetGlobalState(TStateData state) { GlobalStateData = state; }
         public virtual void SetCurState(TStateData state, bool isManual = true)
         {
             if (state == null) return;
-            state.BaseStateMachine = this;
+            state.StateMachine = this;
             CurStateData = state;
             CurStateData.IsManual = isManual;
-            CurStateData.Enter();
+            CurStateData.OnEnter();
         }
         public virtual void ChangeState(TStateData state, bool isForce = true, bool isManual = true)
         {
             if (state == null) return;
-            state.BaseStateMachine = this;
+            state.StateMachine = this;
             PreStateData = CurStateData;
-            if (CurStateData != null) CurStateData.Exit();
+            if (CurStateData != null) CurStateData.OnExit();
             CurStateData = state;
             CurStateData.IsForce = isForce;
             CurStateData.IsManual = isManual;
-            CurStateData.Enter();
+            CurStateData.OnEnter();
         }
         public void RevertToPreState()
         {
             ChangeState(PreStateData);
         }
+
+        public class State
+        {
+            public StateMachine<TStateData> StateMachine { get; set; }
+            public bool IsManual { get; set; } = false;
+            public bool IsForce { get; set; } = false;
+            public float UpdateTime { get; set; } = 0.0f;
+            public virtual void OnFixedUpdate() { }
+            public virtual void OnJobUpdate() { }
+            public virtual void OnUpdate()
+            {
+                UpdateTime += Time.deltaTime;
+            }
+            public virtual void OnEnter()
+            {
+                UpdateTime = 0;
+            }
+            public virtual void OnExit() { }
+        }
     }
 
-    public class CharaStateMachine<TState, TUnit, TStateData> : StateMachine<TStateData> 
+    public class CharaStateMachine<TState, TUnit, TStateData,TBalckboard> : StateMachine<TStateData> 
         where TState : Enum 
         where TUnit : BaseUnit 
-        where TStateData : CharaState<TState, TUnit>, new()
+        where TStateData : CharaStateMachine<TState, TUnit, TStateData, TBalckboard>.State, new()
+        where TBalckboard : class,new()
     {
         #region Callback
         public event Callback<TState, TState> Callback_OnChangeState;
@@ -95,6 +120,7 @@ namespace CYM
         #region prop
         public Dictionary<int, TStateData> States = new Dictionary<int, TStateData>();
         public TUnit SelfUnit { get; protected set; }
+        public TBalckboard Balckboard { get; protected set; } = new TBalckboard();
         #endregion
 
         #region Val
@@ -136,7 +162,9 @@ namespace CYM
             PreState = CurState;
             CurState = state;
             var newStateData = States[intNextState];
+            newStateData.StateMachine = this;
             newStateData.SelfUnit = SelfUnit;
+            newStateData.Blackboard = Balckboard;
             base.ChangeState(newStateData, isForce, isManual);
             Callback_OnChangeState?.Invoke(CurState, PreState);
             return newStateData;
@@ -149,7 +177,9 @@ namespace CYM
             int intstate = EnumTool<TState>.Int(state);
             if (!States.ContainsKey(intstate)) return;
             var newStateData = States[intstate];
+            newStateData.StateMachine = this;
             newStateData.SelfUnit = SelfUnit;
+            newStateData.Blackboard = Balckboard;
             SetCurState(newStateData, isManual);
             CurState = state;
         }
@@ -162,7 +192,7 @@ namespace CYM
         {
             int key = EnumTool<TState>.Int(type);
             state.SelfUnit = SelfUnit;
-            state.State = CurState;
+            state.StateType = CurState;
             state.OnBeAdded();
             if (States.ContainsKey(key))
             {
@@ -209,47 +239,30 @@ namespace CYM
             return intState == intstate;
         }
         #endregion
-    }
 
-    #region base state
-    public class State
-    {
-        public IStateMachine BaseStateMachine { get; set; }
-        public bool IsManual { get; set; } = false;
-        public bool IsForce { get; set; } = false;
-        public float UpdateTime { get; set; } = 0.0f;
-        public virtual void OnFixedUpdate() { }
-        public virtual void UpdatePhysical() { }
-        public virtual void Update()
-        {
-            UpdateTime += Time.deltaTime;
-        }
-        public virtual void Enter()
-        {
-            UpdateTime = 0;
-        }
-        public virtual void Exit() { }
-    }
-    public class CharaState<TState, TUnit> : State where TState : Enum where TUnit : BaseUnit
-    {
-        public float Wait { get; set; } = 0.0f;
-        public TUnit SelfUnit { get; set; }
-        public TState State { get; set; }
-        public CharaState() : base() { }
-        public override void Update()
-        {
-            base.Update();
-            if (UpdateTime >= Wait) { }
-        }
-        public virtual void OnBeAdded() { }
 
-        #region is
-        protected bool IsLocalPlayer()
+        public new class State : StateMachine<TStateData>.State
         {
-            return SelfUnit.IsPlayer();
-        }
-        #endregion
+            public new CharaStateMachine<TState, TUnit, TStateData, TBalckboard> StateMachine { get; set; }
+            public TBalckboard Blackboard { get; set; }
+            public float Wait { get; set; } = 0.0f;
+            public TUnit SelfUnit { get; set; }
+            public TState StateType{ get; set; }
+            public State() : base() { }
+            public override void OnUpdate()
+            {
+                base.OnUpdate();
+                if (UpdateTime >= Wait) { }
+            }
+            public virtual void OnBeAdded() { }
 
+            #region is
+            protected bool IsLocalPlayer()
+            {
+                return SelfUnit.IsPlayer();
+            }
+            #endregion
+
+        }
     }
-    #endregion
 }

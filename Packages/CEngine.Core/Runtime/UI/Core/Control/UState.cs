@@ -14,7 +14,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace CYM
+namespace CYM.UI
 {
     /// <summary>
     /// None=-1

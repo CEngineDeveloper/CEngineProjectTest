@@ -20,7 +20,7 @@ namespace CYM
             Data.Clear();
             foreach (var dlc in DLCManager.LoadedDLCItems.Values)
             {
-                if (Version.IsEditorOrConfigMode)
+                if (VersionUtil.IsEditorOrConfigMode)
                 {
                     foreach (var file in dlc.GetAllTexts())
                     {

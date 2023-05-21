@@ -77,7 +77,6 @@ namespace CYM.Surf
             SelfBaseUnit.Callback_OnUnBeSelected += OnUnBeSelected;
             SelfBaseUnit.Callback_OnMouseEnter += OnMouseEnter;
             SelfBaseUnit.Callback_OnMouseExit += OnMouseExit;
-            SelfBaseUnit.Callback_OnSetOwner += OnSetOwner;
         }
         public override void OnDisable()
         {
@@ -86,7 +85,6 @@ namespace CYM.Surf
             SelfBaseUnit.Callback_OnUnBeSelected += OnUnBeSelected;
             SelfBaseUnit.Callback_OnMouseEnter -= OnMouseEnter;
             SelfBaseUnit.Callback_OnMouseExit -= OnMouseExit;
-            SelfBaseUnit.Callback_OnSetOwner -= OnSetOwner;
         }
         public override void OnBeAdded(IMono mono)
         {
@@ -206,7 +204,7 @@ namespace CYM.Surf
         }
         public virtual void ShowHint(bool b)
         {
-
+            throw new System.NotImplementedException();
         }
         #endregion
 
@@ -251,9 +249,7 @@ namespace CYM.Surf
             CloseHighlight();
             ShowHint(false);
         }
-        protected virtual void OnSetOwner(BaseUnit owner)
-        {
-        }
+
         #endregion
     }
 }

@@ -36,15 +36,15 @@ namespace CYM.Line
 
         #region set
         // 一般上会在玩家选择的时候绘制
-        public void ShowColor(Color color)
+        public void SetColor(Color color)
         {
             PathColor = color;
         }
 
-        public void DrawPath(List<Vector3> newPath, Color col)
+        public void DrawPath(List<Vector3> newPath)
         {
             BaseGlobal.PathRenderMgr.ClearPath(ref LineRender);
-            LineRender = BaseGlobal.PathRenderMgr.DrawPath(newPath, col, LineRadius, LineEndCapScale);
+            LineRender = BaseGlobal.PathRenderMgr.DrawPath(newPath, PathColor, LineRadius, LineEndCapScale);
         }
         public void ClearLine()
         {
@@ -59,7 +59,7 @@ namespace CYM.Line
                 IsNeedDraw ||
                 IsForceDraw)
             {
-                DrawPath(PathVector, PathColor);
+                DrawPath(PathVector);
             }
             else
             {

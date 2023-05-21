@@ -225,11 +225,11 @@ namespace CYM
 
             if (data.IsCopyDirectory)
             {
-                if (Version.RealResBuildType == ResBuildType.Bundle)
+                if (VersionUtil.RealResBuildType == ResBuildType.Bundle)
                 {
                     runtimedata.Add(data);
                 }
-                else if (Version.RealResBuildType == ResBuildType.Config)
+                else if (VersionUtil.RealResBuildType == ResBuildType.Config)
                 {
                     copyDir.Add(data.Name);
                 }

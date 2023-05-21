@@ -73,7 +73,7 @@ namespace CYM
 
         #region set
         // 设置父对象
-        public void SetOwner(TOwner unit)
+        public override void SetOwner(BaseUnit unit)
         {
             base.SetOwner(unit);
             if (unit == null)

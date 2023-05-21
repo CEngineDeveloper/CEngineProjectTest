@@ -9,7 +9,6 @@
 
 using CYM.UI;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -73,7 +72,7 @@ namespace CYM
         protected static Vector3 LastMouseDownPos { get; private set; }
         protected static Vector3 LastMousePos { get; private set; }
         protected static Vector3 LastTouchDownPos { get; private set; }
-        protected static RaycastHit LastHit => lastHit;
+        public static RaycastHit LastHit => lastHit;
         static RaycastHit lastHit;
         #endregion
 
@@ -237,7 +236,7 @@ namespace CYM
         {
             ScilentUnSingleSelectUnit();
             ScilentUnGroupSelectAllUnits();
-            Ins?.OnUnSelectUnit();
+            Ins?.OnUnSelectAllUnit();
         }
         //单选单位
         public static void SingleSelectUnit(BaseUnit unit)
@@ -276,18 +275,51 @@ namespace CYM
             Ins?.OnSelectedUnit(SelectedUnit, isRepeat);
             Ins?.OnSingleSelectUnit(SelectedUnit);
         }
+        //组开关单位
         public static void GroupToggleUnit(BaseUnit unit)
         {
             if (IsInSelect(unit))
             {
-                SilentUnGroupSelectUnit(unit);
-                Ins?.OnGroupToggleUnit(false, unit);
+                GroupUnSelectUnit(unit);
             }
             else
             {
                 GroupSeletcUnit(unit);
-                Ins?.OnGroupToggleUnit(true, unit);
             }
+        }
+        //组不选单位
+        public static void GroupUnSelectUnit(BaseUnit unit)
+        {
+            //检测这个是否可以被选择
+            if (!Ins.IsCanSelectUnit(unit))
+                return;
+
+            if (unit)
+            {
+                unit?.OnUnBeSelected();
+                SelectedUnits.Remove(unit);
+                SelectedUnit = SelectedUnits.FirstOrDefault();
+            }
+            Ins?.OnGroupToggleUnit(false, unit);
+        }
+        //组选单位
+        public static void GroupSeletcUnit(BaseUnit unit)
+        {
+            //检测这个是否可以被选择
+            if (!Ins.IsCanSelectUnit(unit))
+                return;
+
+            //检测是否重复选择
+            bool isRepeat = IsInSelect(unit);
+
+            if (unit)
+            {
+                SelectedUnits.Add(unit);
+                SelectedUnit = unit;
+                unit?.OnBeSelected(isRepeat);
+            }
+            Ins?.OnSelectedUnit(unit, isRepeat);
+            Ins?.OnGroupToggleUnit(true, unit);
         }
         #endregion
 
@@ -298,6 +330,17 @@ namespace CYM
             SelectedUnits.Remove(SelectedUnit);
             SelectedUnit = null;
         }
+        static void SilentGroupSelectUnit(BaseUnit unit)
+        {
+            //检测是否重复选择
+            bool isRepeat = IsInSelect(unit);
+            if (unit)
+            {
+                unit?.OnBeSelected(isRepeat);
+                SelectedUnits.Add(unit);
+                SelectedUnit = unit;
+            }
+        }
         static void SilentUnGroupSelectUnit(BaseUnit unit)
         {
             //检测是否重复选择
@@ -306,7 +349,7 @@ namespace CYM
             {
                 unit?.OnUnBeSelected();
                 SelectedUnits.Remove(unit);
-                SelectedUnit = null;
+                SelectedUnit = SelectedUnits.FirstOrDefault();
             }
         }
         static void ScilentUnGroupSelectAllUnits()
@@ -350,24 +393,6 @@ namespace CYM
             }
             return isRepeat;
         }
-        //框选单位
-        static void GroupSeletcUnit(BaseUnit unit)
-        {
-            //检测这个是否可以被选择
-            if (!Ins.IsCanSelectUnit(unit))
-                return;
-
-            //检测是否重复选择
-            bool isRepeat = IsInSelect(unit);
-
-            if (unit)
-            {
-                SelectedUnits.Add(unit);
-                SelectedUnit = unit;
-                unit?.OnBeSelected(isRepeat);
-            }
-            Ins?.OnSelectedUnit(unit, isRepeat);
-        }
         protected virtual void OnStartRectSelect()
         {
             if (!NeedGroupSelect)
@@ -395,7 +420,7 @@ namespace CYM
                 {
                     if (SelectionRect.IsSelected(item))
                     {
-                        GroupSeletcUnit(item);
+                        SilentGroupSelectUnit(item);
                     }
                 }
                 OnGroupSelectUnit(SelectedUnits);
@@ -494,6 +519,10 @@ namespace CYM
             ResetPlayerInputState();
             ResetUnitSelectState();
         }
+        protected virtual bool GetCustomDevShowFlag()
+        {
+            return false;
+        }
         #endregion
 
         #region update
@@ -512,15 +541,21 @@ namespace CYM
             {
                 IsInGuideMask = UGuideView.Default.IsInMask;
             }
-            IsDevConsoleShow = Console.IsShow();
+            IsDevConsoleShow = Console.IsShow() || GetCustomDevShowFlag();
             bool pre = IsStayInUI;
             IsStayInUI = CheckOverUI();
             if (IsStayInUI != pre)
             {
                 if (IsStayInUI)
+                {
+                    if (HoverUnit != null)
+                        DoExitUnit(HoverUnit);
                     OnEnterUI();
+                }
                 else
+                {
                     OnExitUI();
+                }
             }
         }
         void UpdateHitUI()
@@ -563,7 +598,11 @@ namespace CYM
                 if (pre != IsStayInTerrain)
                 {
                     if (IsStayInTerrain)
+                    {
+                        if (HoverUnit != null)
+                            DoExitUnit(HoverUnit);
                         OnEnterTerrain(LastHit.point);
+                    }
                     else
                         OnExitTerrain();
                 }
@@ -882,11 +921,15 @@ namespace CYM
         Invoke.IJob ButtonExitJob;
         public void DoEnterUnit(BaseUnit arg1)
         {
+            if (IsStayInUnit)
+                return;
             ButtonExitJob?.Kill();
             OnEnterUnit(arg1);
         }
         public void DoExitUnit(BaseUnit arg1)
         {
+            if (!IsStayInUnit)
+                return;
             OnExitUnit(arg1);
         }
         #endregion
@@ -997,7 +1040,6 @@ namespace CYM
         protected virtual void OnExitTerrain() { }
         protected virtual void OnEnterUI() { }
         protected virtual void OnExitUI() { }
-        protected virtual void OnSelectedUnit(BaseUnit arg1, bool repeat) => Callback_OnSelectedUnit?.Invoke(arg1, repeat);
         protected virtual void OnRealDeathG(BaseUnit arg1) { }
         protected virtual void OnDeathG(BaseUnit arg1)
         {
@@ -1006,13 +1048,18 @@ namespace CYM
                 SingleSelectUnit(null);
             }
         }
+        #endregion
+
+        #region Callback select unit
+        //当选择单位的时候
+        protected virtual void OnSelectedUnit(BaseUnit arg1, bool repeat) => Callback_OnSelectedUnit?.Invoke(arg1, repeat);
         //当框选所有的单位
         protected virtual void OnGroupSelectUnit(HashList<BaseUnit> list)
         {
             OnGenerateSelectUnit();
         }
         //Ctrl+鼠标 单选某个单位的时候触发
-        protected virtual void OnGroupToggleUnit(bool isToggle,BaseUnit unit)
+        protected virtual void OnGroupToggleUnit(bool isToggle, BaseUnit unit)
         {
             OnGenerateSelectUnit();
         }
@@ -1022,13 +1069,14 @@ namespace CYM
             OnGenerateSelectUnit();
         }
         //当没有选择任何单位的时候
-        protected virtual void OnUnSelectUnit()
+        protected virtual void OnUnSelectAllUnit()
         {
+            OnGenerateSelectUnit();
         }
         //宽泛的选择单位的时候
         protected virtual void OnGenerateSelectUnit()
-        { 
-        
+        {
+
         }
         #endregion
 

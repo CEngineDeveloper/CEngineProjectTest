@@ -7,8 +7,7 @@
 //------------------------------------------------------------------------------
 using UnityEngine.UI;
 using UnityEngine;
-using CYM.UI;
-namespace CYM
+namespace CYM.UI
 {
     public class UIBaseFocusing : MonoBehaviour, ICanvasRaycastFilter
     {

@@ -19,6 +19,28 @@ using UnityEngine.Rendering;
 
 namespace CYM
 {
+    #region Callback
+    public delegate void Callback();
+    public delegate void Callback<in T>(T arg1);
+    public delegate void Callback<in T, in U>(T arg1, U arg2);
+    public delegate void Callback<in T, in U, in V>(T arg1, U arg2, V arg3);
+    public delegate void Callback<in T, in U, in V, in W>(T arg1, U arg2, V arg3, W arg4);
+    public delegate void Callback<in T, in U, in V, in W, in Z>(T arg1, U arg2, V arg3, W arg4, Z arg5);
+    #endregion
+
+    #region other
+    public interface IBase
+    {
+        long ID { get; set; }
+        string TDID { get; set; }
+    }
+    public interface ILoader
+    {
+        IEnumerator Load();
+        string GetLoadInfo();
+    }
+    #endregion
+
     #region UI
     public interface IUIDirty
     {
@@ -502,9 +524,11 @@ namespace CYM
 
         #region Turn
         // 战旗回合
-        void OnTurnbase(bool day, bool month, bool year);
+        void DoTurnbase(bool day, bool month, bool year);
         // 帧回合
-        void OnTurnframe(int gameFramesPerSecond);
+        void DoTurnframe(int gameFramesPerSecond);
+        // 自定义刷新逻辑
+        void Refresh();
         #endregion
 
         #region Login
@@ -562,7 +586,7 @@ namespace CYM
     }
     public interface IOnAnimTrigger
     {
-        void OnAnimTrigger(int param);
+        void DoAnimTrigger(int param);
     }
     #endregion
 }

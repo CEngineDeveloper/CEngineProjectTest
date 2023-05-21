@@ -61,7 +61,7 @@ namespace CYM
                 {
                     curTime = 0.0f;
                     BaseGlobal.DateTimeMgr?.AddDay(1);
-                    BaseGlobal.Ins.OnTurnbase(
+                    BaseGlobal.Ins.DoTurnbase(
                         BaseDateTimeMgr.IsDayChanged,
                         BaseDateTimeMgr.IsMonthChanged,
                         BaseDateTimeMgr.IsYearChanged);

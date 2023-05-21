@@ -317,17 +317,17 @@ namespace CYM.UI
         #endregion
 
         #region Seald
-        public sealed override void OnTurnbase(bool day, bool month, bool year)
+        public sealed override void DoTurnbase(bool day, bool month, bool year)
         {
-            base.OnTurnbase(day, month, year);
+            base.DoTurnbase(day, month, year);
         }
-        public sealed override void OnTurnframe(int gameFramesPerSecond)
+        public sealed override void DoTurnframe(int gameFramesPerSecond)
         {
-            base.OnTurnframe(gameFramesPerSecond);
+            base.DoTurnframe(gameFramesPerSecond);
         }
-        public sealed override void OnAnimTrigger(int param)
+        public sealed override void DoAnimTrigger(int param)
         {
-            base.OnAnimTrigger(param);
+            base.DoAnimTrigger(param);
         }
         protected sealed override void OnAttachComponet()
         {

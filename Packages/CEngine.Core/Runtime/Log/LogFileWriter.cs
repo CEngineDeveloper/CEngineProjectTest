@@ -41,9 +41,9 @@ namespace CYM
             {
                 fs = new FileStream(sFileName, FileMode.Create, FileAccess.Write);
                 sw = new StreamWriter(fs);
-                sw.WriteLine($"BuildTime:{Version.BuildTime}");
-                sw.WriteLine($"{Version.GameVersion}");
-                sw.WriteLine($"{Version.AdvSystemInfo}");
+                sw.WriteLine($"BuildTime:{VersionUtil.BuildTime}");
+                sw.WriteLine($"{VersionUtil.GameVersion}");
+                sw.WriteLine($"{VersionUtil.AdvSystemInfo}");
                 sw.WriteLine($"----------------------------------------------------------------");
             }
         }

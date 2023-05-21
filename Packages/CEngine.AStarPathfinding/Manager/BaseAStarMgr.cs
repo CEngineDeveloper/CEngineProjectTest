@@ -155,6 +155,40 @@ namespace CYM.Pathfinding
         {
             BlockNodeData.SetBlockNode(unit, nodes);
         }
+        public Vector3 GetArroundPos(BaseUnit targetUnit, BaseUnit moveUnit, int range = 1)
+        {
+            var nodes = GetBFS(targetUnit.Pos, range, moveUnit.AStarMoveMgr.IsCanTraversal, true);
+            HashList<GraphNode> RandNodes = new HashList<GraphNode>();
+            //节点数量太少,无法摆放军团
+            if (nodes.Count <= 1) return moveUnit.Pos;
+            //去掉中心Node
+            nodes.RemoveAt(0);
+            //获得备用Node
+            GraphNode SpareNode = null;
+            for (int i = nodes.Count - 1; i > 0; --i)
+            {
+                var item = nodes[i];
+                if (!IsHaveUnit(item) && !IsBlocker(item))
+                {
+                    SpareNode = item;
+                    RandNodes.Add(item);
+                }
+            }
+            //获得随机Node
+            GraphNode RandNode;
+            RandNode = RandNodes.Rand();
+            //获得Final Node
+            GraphNode FinalNode = IsHaveUnit(RandNode) || IsBlocker(RandNode) ? SpareNode : RandNode;
+            if (FinalNode != null)
+            {
+                return (Vector3)FinalNode.position;
+            }
+            //进入递归
+            else
+            {
+                return GetArroundPos(targetUnit, moveUnit, range + 1);
+            }
+        }
         // 移动一个单位到另一个单位的边上(随机位置)
         public bool RandArroundUnit(BaseUnit targetUnit, BaseUnit moveUnit, int range = 8)
         {
@@ -464,7 +498,11 @@ namespace CYM.Pathfinding
             var node = GetSafeNode(RandUtil.RandCirclePoint(pos, RandUtil.Range(radio, radio * 1.5f)));
             return node;
         }
-        // 获得最远距离的节点,符合以下条件:此节点没有单位,此节点可以穿越,此节点是可行走的
+        // 获得最远距离的节点,符合以下条件:
+        // isMaxDistance
+        // isNoUnit:此节点没有单位
+        // isCanTraversal:此节点可以穿越
+        // isNoBlocker:此节点是可行走的
         public GraphNode GetDistNode(
             BaseUnit selfUnit, 
             Vector3 pos, 

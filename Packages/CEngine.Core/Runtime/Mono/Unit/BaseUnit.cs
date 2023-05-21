@@ -183,14 +183,15 @@ namespace CYM
             if (BaseGlobal.CameraMgr.MainCamera == null)
                 return;
             Vector3 pos = BaseGlobal.CameraMgr.MainCamera.WorldToViewportPoint(Trans.position);
-            IsRendered = (pos.x > 0f && pos.x < 1f && pos.y > 0f && pos.y < 1f);
-            if (IsRendered != IsLastRendered)
+            IsLogicRendered = (pos.x > 0f && pos.x < 1f && pos.y > 0f && pos.y < 1f);
+            if (IsLogicRendered != IsLastRendered)
             {
-                if (IsRendered) OnBeRender();
+                if (IsLogicRendered) OnBeRender();
                 else OnBeUnRender();
 
-                IsLastRendered = IsRendered;
+                IsLastRendered = IsLogicRendered;
             }
+            SqrDistanceToCamera = MathUtil.XZSqrDistance(Pos, BaseGlobal.CameraMgr.Pos);
         }
         protected virtual void OnBecameInvisible() => IsVisible = false;
         protected virtual void OnBecameVisible() => IsVisible = true;
@@ -243,7 +244,7 @@ namespace CYM
             BaseConfig = config;
             BaseConfig.OnBeAdded(this);
         }
-        public void SetOwner(BaseUnit owner)
+        public virtual void SetOwner(BaseUnit owner)
         {
             BasePreOwner = BaseOwner;
             BaseOwner = owner;
@@ -320,7 +321,8 @@ namespace CYM
         // 是否真的死亡
         public bool IsRealDeath { get; protected set; } = false;
         // 是否被渲染(计算位置是否在摄像机中)
-        public bool IsRendered { get; private set; } = false;
+        public bool IsLogicRendered { get; private set; } = false;
+        public float SqrDistanceToCamera { get; private set; } = 0;
         // 是否被摄像机渲染
         public bool IsVisible { get; private set; } = false;
         // 上一帧被渲染
@@ -345,7 +347,7 @@ namespace CYM
             return other.Team == Team;
         }
         // Self or Friend
-        public virtual bool IsSOF(BaseUnit other)
+        public virtual bool IsSelfOrFriend(BaseUnit other)
         {
             if (other == null)
                 return false;

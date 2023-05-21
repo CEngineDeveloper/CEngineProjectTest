@@ -91,7 +91,7 @@ namespace CYM.DLC
             //设置资源缓存路径
             if (BuildConfig.IsHotFix)
             {
-                if (!Version.IsEditorMode)
+                if (!VersionUtil.IsEditorMode)
                     CacheDirPath = SysConst.Path_PersistentBundle;
                 else
                     CacheDirPath = SysConst.Path_StreamingAssets;
@@ -99,13 +99,13 @@ namespace CYM.DLC
                 if (!Directory.Exists(CacheDirPath))
                     Directory.CreateDirectory(CacheDirPath);
                 string ip = BuildConfig.TestIP;
-                if (Version.IsPublic)
+                if (VersionUtil.IsPublic)
                 {
                     ip = BuildConfig.PublicIP;
                 }
                 FullNetPath = ip + "/";
 
-                if (!Version.IsEditorMode)
+                if (!VersionUtil.IsEditorMode)
                 {
                     yield return DownloadConfig();
                     yield return DownloadAllAssetBundle();

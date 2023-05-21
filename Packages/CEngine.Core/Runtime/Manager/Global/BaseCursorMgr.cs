@@ -36,7 +36,7 @@ namespace CYM
         protected override void OnAllLoadEnd2()
         {
             base.OnAllLoadEnd2();
-            SetNormal();
+            //SetNormal();
         }
         protected override void OnSetNeedFlag()
         {
@@ -55,7 +55,7 @@ namespace CYM
                 if (currentCursor == CursorConfig.Normal ||
                     SetBackToNormal)
                 {
-                    SetPress();
+                    //SetPress();
                     SetBackToNormal = false;
                 }
             }
@@ -65,7 +65,7 @@ namespace CYM
                 if (currentCursor == CursorConfig.Press ||
                     SetBackToNormal)
                 {
-                    SetNormal();
+                    //SetNormal();
                     SetBackToNormal = false;
                 }
             }
@@ -152,31 +152,31 @@ namespace CYM
         protected override void OnSubBattleLoad()
         {
             base.OnSubBattleLoad();
-            SetNormal();
+            //SetNormal();
         }
         protected override void OnSubBattleUnLoad()
         {
             base.OnSubBattleUnLoad();
-            SetNormal();
+            //SetNormal();
         }
         #endregion
 
         #region Callback
         protected override void OnBattleLoad()
         {
-            SetWait();
+            //SetWait();
         }
         protected override void OnBattleLoaded()
         {
-            SetNormal();
+            //SetNormal();
         }
         protected override void OnBattleUnLoad()
         {
-            SetWait();
+            //SetWait();
         }
         protected override void OnBattleUnLoaded()
         {
-            SetNormal();
+            //SetNormal();
         }
         #endregion
     }

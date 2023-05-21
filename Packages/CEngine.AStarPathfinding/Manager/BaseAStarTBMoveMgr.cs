@@ -16,9 +16,16 @@ namespace CYM.Pathfinding
     [Serializable]
     public class DBBaseTBMove:DBBaseMove
     {
+        public int CurMoveState = 0;
+        public int MoveTargetState = 0;
+        public long MoveTarget = SysConst.INT_Inv;
+        public long FaceTarget = SysConst.INT_Inv;
+        public Vec3 MoveTargetPosPreview;
+        public Vec3 MoveTargetPosReal;
+        public bool IsValidMoveTarget;
         public float CurMovePoint = 0;
     }
-    public class BaseAStarTBMoveMgr<TState, TUnit, TTraversal,TModify> : BaseAStarMoveMgr<TState, TUnit, TTraversal, TModify> , IAStarTBMoveMgr
+    public class BaseAStarTBMoveMgr<TState, TUnit, TTraversal,TModify> : BaseAStarMoveMgr<TUnit, TTraversal, TModify> , IAStarTBMoveMgr
         where TUnit : BaseUnit 
         where TState : struct, Enum
         where TTraversal : BaseTraversal, new()
@@ -47,6 +54,11 @@ namespace CYM.Pathfinding
         #endregion
 
         #region life
+        public override void OnAffterAwake()
+        {
+            base.OnAffterAwake();
+            StateMachine.Init(SelfBaseUnit);
+        }
         public override void OnBirth()
         {
             base.OnBirth();
@@ -62,10 +74,36 @@ namespace CYM.Pathfinding
             base.OnSetNeedFlag();
             NeedTurnbase = true;
         }
+        public override void OnUpdate()
+        {
+            base.OnUpdate();
+            if (SelfBaseUnit != null)
+            {
+                StateMachine?.OnUpdate();
+            }
+        }
+        public override void OnFixedUpdate()
+        {
+            base.OnFixedUpdate();
+            if (SelfBaseUnit != null)
+            {
+                StateMachine?.OnFixedUpdate();
+            }
+        }
+        public override void OnGameStarted1()
+        {
+            base.OnGameStarted1();
+            SetState(StateMachine.CurState, false);
+        }
+        protected override void OnMoveStart()
+        {
+            base.OnMoveStart();
+            StateMachine.CurStateData?.OnMoveStart();
+        }
         protected override void OnMoveEnd()
         {
             base.OnMoveEnd();
-
+            StateMachine.CurStateData?.OnMoveEnd();
             ChangeToEndState();
             if (MoveTarget_IsInTarget())
                 CancleMoveTarget();
@@ -180,9 +218,9 @@ namespace CYM.Pathfinding
         #endregion
 
         #region Callback
-        public override void OnTurnbase(bool day, bool month, bool year)
+        public override void DoTurnbase(bool day, bool month, bool year)
         {
-            base.OnTurnbase(day,month,year);
+            base.DoTurnbase(day,month,year);
             ResetMovePoint();
         }
         public override void OnBeNewSpawned()
@@ -216,6 +254,7 @@ namespace CYM.Pathfinding
         private Dictionary<TState, Tuple<TState, Func<bool>, Func<bool>>> MoveTargetStateDatas = new Dictionary<TState, Tuple<TState, Func<bool>, Func<bool>>>();
         //是否到达目标
         private bool MoveTarget_IsInTarget() => MathUtil.Approximately(SelfBaseUnit.Pos, MoveTarget_PosReal) || MoveTarget_Node == CurNode;
+        public BaseUnit FaceTarget { get; protected set; }
         //目标是否有效
         protected bool MoveTarget_IsValid { get; set; } = false;
         //期待的状态
@@ -279,20 +318,14 @@ namespace CYM.Pathfinding
             MoveTarget_Unit = null;
             MoveTarget_Node = null;
         }
+        public override void Look(BaseUnit unit)
+        {
+            base.Look(unit);
+            FaceTarget = unit;
+        }
         #endregion
 
         #region private move target
-        //添加移动状态
-        protected override void AddState(TState state, BaseMoveState stateData, TState? endState = null, Func<bool> isRange = null, Func<bool> isAction = null)
-        {
-            base.AddState(state, stateData, endState, isRange, isAction);
-            if (endState != null)
-            {
-                MoveTargetStateDatas.Add(state, new Tuple<TState, Func<bool>, Func<bool>>(endState.Value, isRange, isAction));
-                if (isRange == null && isAction == null) MoveTargetStateToNode.Add(state);
-                else MoveTargetStateToUnit.Add(state);
-            }
-        }
         //设置移动状态
         private void SetMoveTarget(TState state, BaseUnit unit, GraphNode node)
         {
@@ -502,6 +535,69 @@ namespace CYM.Pathfinding
         }
         #endregion
 
+        #region State
+        public class MyBlackboard {  }
+        protected CharaStateMachine<TState, TUnit, BaseMoveState, MyBlackboard> StateMachine { get; set; } = new CharaStateMachine<TState, TUnit, BaseMoveState, MyBlackboard>();
+        //添加移动状态
+        protected virtual void AddState(TState state, BaseMoveState stateData, TState? endState = null, Func<bool> isRange = null, Func<bool> isAction = null)
+        {
+            StateMachine.AddState(state, stateData);
+            if (endState != null)
+            {
+                MoveTargetStateDatas.Add(state, new Tuple<TState, Func<bool>, Func<bool>>(endState.Value, isRange, isAction));
+                if (isRange == null && isAction == null) MoveTargetStateToNode.Add(state);
+                else MoveTargetStateToUnit.Add(state);
+            }
+        }
+        public void ChangeState(TState state, bool isForce = false, bool isManual = true) => StateMachine.ChangeState(state, isForce, isManual);
+        public void SetState(TState state, bool isManual = true) => StateMachine.SetCurState(state, isManual);
+        public bool IsInState(TState state) => EnumTool<TState>.Int(StateMachine.CurState) == EnumTool<TState>.Int(state);
+
+        #endregion
+
+        #region state
+        public class BaseMoveState : CharaStateMachine<TState, TUnit, BaseMoveState, MyBlackboard>.State
+        {
+            #region life
+            public virtual Color Color => Color.black;
+            protected virtual bool MustPlayerDrawPath => true;
+            public override void OnBeAdded()
+            {
+                base.OnBeAdded();
+            }
+            public override void OnEnter()
+            {
+                base.OnEnter();
+            }
+            public override void OnExit()
+            {
+                base.OnExit();
+            }
+            #endregion
+
+            #region set
+            protected void DrawPath(Color col)
+            {
+
+            }
+            protected void ClearPath()
+            {
+
+            }
+            #endregion
+
+            #region Callback
+            public virtual void OnMoveStart() { DrawPath(Color); }
+            public virtual void OnMoveEnd() 
+            {
+                
+                ClearPath(); 
+            
+            }
+            #endregion
+        }
+        #endregion
+
         #region DB
         public DBBaseTBMove GetDBData()
         {
@@ -528,5 +624,7 @@ namespace CYM.Pathfinding
             SetMoveTargetPosReal(data.MoveTargetPosReal.V3);
         }
         #endregion
+
+
     }
 }

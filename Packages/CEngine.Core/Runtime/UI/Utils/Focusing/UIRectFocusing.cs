@@ -1,13 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 namespace CYM.UI
 {
-	/// <summary>
-	/// 矩形引导组件
-	/// </summary>
-	public class UIRectFocusing : UIBaseFocusing
+    /// <summary>
+    /// 矩形引导组件
+    /// </summary>
+    public class UIRectFocusing : UIBaseFocusing
 	{
         #region prop
 		/// <summary>

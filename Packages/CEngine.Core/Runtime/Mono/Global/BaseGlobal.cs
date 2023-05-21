@@ -63,7 +63,6 @@ namespace CYM
             }
         }
         public static BaseGlobal Ins { get; protected set; }
-        public static BuildConfig BuildConfig => BuildConfig.Ins;
         public static Dictionary<Type, IUnitSpawnMgr<BaseUnit>> UnitSpawnMgrs { get; private set; } = new Dictionary<Type, IUnitSpawnMgr<BaseUnit>>();
         public static Dictionary<Type, ITDSpawnMgr<TDBaseData>> TDSpawnMgrs { get; private set; } = new Dictionary<Type, ITDSpawnMgr<TDBaseData>>();
         public static IUnitSpawnMgr<BaseUnit> PlayerSpawnMgr { get; private set; }
@@ -191,7 +190,7 @@ namespace CYM
             SetupComponent<Feedback>();
             SetupComponent<GlobalUITextMgr>();
             SetupComponent<LogFileWriter>();
-            CMail.Init(Version.GameName);
+            CMail.Init(VersionUtil.GameName);
             LuaReader.Init(BuildConfig.NameSpace);
             DOTween.Init();
             DOTween.instance.transform.SetParent(Trans);

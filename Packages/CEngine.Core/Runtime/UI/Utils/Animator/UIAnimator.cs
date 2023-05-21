@@ -6,10 +6,9 @@
 // 填写类的描述...
 //------------------------------------------------------------------------------
 using UnityEngine;
-using CYM.UI;
 using Sirenix.OdinInspector;
 using DG.Tweening;
-namespace CYM
+namespace CYM.UI
 {
     [System.Serializable]
     public class UIAnimator  

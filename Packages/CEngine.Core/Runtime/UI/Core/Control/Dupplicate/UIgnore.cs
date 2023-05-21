@@ -7,7 +7,7 @@
 //------------------------------------------------------------------------------
 using UnityEngine;
 using Sirenix.OdinInspector;
-namespace CYM
+namespace CYM.UI
 {
     [AddComponentMenu("UI/Control/UIgnore")]
     [HideMonoScript]

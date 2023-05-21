@@ -89,7 +89,7 @@ namespace CYM.Steam
         {
             get
             {
-                if (Version.IsDevelop)return true;
+                if (VersionUtil.IsDevelop)return true;
                 if (!SteamClient.IsValid)return false;
                 if (IsDifferentAppId) return false;
                 return true;
@@ -289,10 +289,10 @@ namespace CYM.Steam
         public override void PostBuilder()
         {
             base.PostBuilder();
-            var dir = Version.DirPath;
+            var dir = VersionUtil.DirPath;
             if (!FileUtil.ExistsDir(dir))
                 Directory.CreateDirectory(dir);
-            var path = Path.Combine(Version.DirPath, SysConst.File_SteamAppID);
+            var path = Path.Combine(VersionUtil.DirPath, SysConst.File_SteamAppID);
             if (!FileUtil.ExistsFile(path))
             {
                 using (File.Create(path))

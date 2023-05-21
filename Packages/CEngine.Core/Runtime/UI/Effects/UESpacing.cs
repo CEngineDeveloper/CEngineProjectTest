@@ -42,7 +42,6 @@ use HTML-like tags in your text. Try it out, you'll see what I mean. It doesn't
 break down entirely, but it doesn't really do what you'd want either.
 
 */
-using Sirenix.Serialization;
 using Sirenix.OdinInspector;
 
 namespace CYM.UI

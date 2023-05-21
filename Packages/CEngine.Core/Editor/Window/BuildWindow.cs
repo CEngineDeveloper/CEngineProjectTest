@@ -30,9 +30,9 @@ namespace CYM
         static GUIStyle TitleStyle = new GUIStyle();
         static BuildConfig BuildConfig => BuildConfig.Ins;
         static GameConfig GameConfig => GameConfig.Ins;
+        static VersionConfig VersionConfig => VersionConfig.Ins;
         static LocalConfig LocalConfig => LocalConfig.Ins;
         static DLCConfig DLCConfig => DLCConfig.Ins;
-        static UIConfig UIConfig => UIConfig.Ins;
         static LogConfig LogConfig => LogConfig.Ins;
         static PluginConfig PluginConfig => PluginConfig.Ins;
         protected static Dictionary<string, string> SceneNames { get; private set; } = new Dictionary<string, string>();
@@ -128,8 +128,8 @@ namespace CYM
             {
                 if (!LocalConfig.LastBuildTime.IsInv())
                     EditorGUILayout.LabelField("BuildTime:" + LocalConfig.LastBuildTime);
-                EditorGUILayout.LabelField(string.Format("版本:{0}", Version.GameVersion));
-                EditorGUILayout.LabelField(string.Format("完整:{0}", Version.FullVersion));
+                EditorGUILayout.LabelField(string.Format("版本:{0}", VersionUtil.GameVersion));
+                EditorGUILayout.LabelField(string.Format("完整:{0}", VersionUtil.FullVersion));
                 EditorGUILayout.LabelField("Identifier:"+PlayerSettings.applicationIdentifier);
             }
             EditorGUILayout.EndFoldoutHeaderGroup();
@@ -162,14 +162,15 @@ namespace CYM
                     RefreshAppIdentifier();
                 }
 
-                GameConfig.Major = EditorGUILayout.IntField("主版本", GameConfig.Major);
-                GameConfig.Minor = EditorGUILayout.IntField("副版本", GameConfig.Minor);
-                GameConfig.Data = EditorGUILayout.IntField("存档标", GameConfig.Data);
-                GameConfig.Prefs = EditorGUILayout.IntField("Prefs", GameConfig.Prefs);
+                VersionConfig.Version.major = (uint)EditorGUILayout.IntField("主版本", (int)VersionConfig.Version.major);
+                VersionConfig.Version.minor = (uint)EditorGUILayout.IntField("副版本", (int)VersionConfig.Version.minor);
+                VersionConfig.Version.patch = (uint)EditorGUILayout.IntField("补丁", (int)VersionConfig.Version.patch);
+                VersionConfig.Tag = (VersionTag)EditorGUILayout.EnumPopup("后缀", VersionConfig.Tag);
+                VersionConfig.Data = EditorGUILayout.IntField("存档标", VersionConfig.Data);
+                VersionConfig.Prefs = EditorGUILayout.IntField("Prefs", VersionConfig.Prefs);
 
                 EditorGUILayout.BeginHorizontal();
-                GameConfig.Tag = (VersionTag)EditorGUILayout.EnumPopup("后缀", GameConfig.Tag);
-                GameConfig.Suffix = EditorGUILayout.IntField(GameConfig.Suffix,GUILayout.Width(50));
+
                 EditorGUILayout.EndHorizontal();
 
 
@@ -378,7 +379,7 @@ namespace CYM
                 EditorUserBuildSettings.development = LocalConfig.IsUnityDevelopmentBuild = EditorGUILayout.BeginToggleGroup("Debug Build", LocalConfig.IsUnityDevelopmentBuild);
                 EditorGUILayout.EndToggleGroup();
 
-                if (Version.IsMustIL2CPP)
+                if (VersionUtil.IsMustIL2CPP)
                 {
                     EditorGUILayout.LabelField("Backend", ScriptingImplementation.IL2CPP.ToString());
                     if (ScriptingImplementation.IL2CPP != PlayerSettings.GetScriptingBackend(Builder.GetBuildTargetGroup()))
@@ -396,15 +397,15 @@ namespace CYM
                 }
 
                 ResBuildType preResBuildType = BuildConfig.ResBuildType;
-                if (Version.IsMustResBundle)
+                if (VersionUtil.IsMustResBundle)
                 {
-                    EditorGUILayout.LabelField("ResBuildType", Version.RealResBuildType.ToString());
+                    EditorGUILayout.LabelField("ResBuildType", VersionUtil.RealResBuildType.ToString());
                 }
                 else
                 {
                     BuildConfig.ResBuildType = (ResBuildType)EditorGUILayout.EnumPopup("ResBuildType", BuildConfig.ResBuildType);
                 }
-                if (preResBuildType != Version.RealResBuildType)
+                if (preResBuildType != VersionUtil.RealResBuildType)
                 {
                     DLCConfig.Refresh();
                 }
@@ -623,7 +624,7 @@ namespace CYM
                 }
                 else if (GUILayout.Button("运行"))
                 {
-                    FileUtil.StartEXE(Version.ExePath);
+                    FileUtil.StartEXE(VersionUtil.ExePath);
                 }
                 EditorGUILayout.EndHorizontal();
 
@@ -696,8 +697,8 @@ namespace CYM
                 }
                 else if (GUILayout.Button("运行游戏"))
                 {
-                    FileUtil.OpenExplorer(Version.ExePath);
-                    CLog.Info("Run:{0}", Version.ExePath);
+                    FileUtil.OpenExplorer(VersionUtil.ExePath);
+                    CLog.Info("Run:{0}", VersionUtil.ExePath);
                 }
                 else if (GUILayout.Button("保存"))
                 {
@@ -785,7 +786,7 @@ namespace CYM
         }
         public bool CheckDevBuildWarring()
         {
-            if (Version.IsDevelop)
+            if (VersionUtil.IsDevelop)
             {
                 return EditorUtility.DisplayDialog("警告!", "您确定要构建吗?因为当前是Dev版本", "确定要构建Dev版本", "取消");
             }

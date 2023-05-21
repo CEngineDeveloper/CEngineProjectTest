@@ -7,11 +7,9 @@
 //------------------------------------------------------------------------------
 
 using UnityEngine;
-using CYM;
-using CYM.UI;
 using DG.Tweening;
 
-namespace CYM
+namespace CYM.UI
 {
     [System.Serializable]
     public class UIAlphaAnimator : UIAnimator
