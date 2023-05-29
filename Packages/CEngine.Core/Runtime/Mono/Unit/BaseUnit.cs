@@ -465,7 +465,7 @@ namespace CYM
             if (Model == null)
                 return;
 
-            Bone[] bonescom = GetComponentsInChildren<Bone>();
+            BoneObj[] bonescom = GetComponentsInChildren<BoneObj>();
             if (bonescom != null)
             {
                 foreach (var item in bonescom)

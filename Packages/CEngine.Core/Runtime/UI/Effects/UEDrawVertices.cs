@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace CYM.UI
 {
-    [AddComponentMenu("UI/Effects/UEDrawVertices")]
+    [AddComponentMenu(SysConst.STR_UIEffectMenu+"UEDrawVertices")]
     [ExecuteInEditMode]
     public class UEDrawVertices : MonoBehaviour, IMeshModifier
     {

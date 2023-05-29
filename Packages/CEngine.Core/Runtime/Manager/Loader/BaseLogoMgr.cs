@@ -23,7 +23,7 @@ namespace CYM
         Image LogoImage => LogoPlayer.Image;
         Image LogoBG => LogoPlayer.BG;
         UVideo LogoVideo => LogoPlayer?.Video;
-        Logo LogoPlayer;
+        LogoObj LogoPlayer;
         CanvasGroup CanvasGroup;
         #endregion
 
@@ -32,7 +32,7 @@ namespace CYM
         protected override void OnStartLoad()
         {
             base.OnStartLoad();
-            LogoPlayer = ResourceObj.GetComponent<Logo>();
+            LogoPlayer = ResourceObj.GetComponent<LogoObj>();
             CanvasGroup = LogoPlayer.GetComponent<CanvasGroup>();
         }
         protected override void OnAllLoadEnd2()

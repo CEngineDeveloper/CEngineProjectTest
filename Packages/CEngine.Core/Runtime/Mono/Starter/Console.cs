@@ -157,6 +157,7 @@ namespace CYM
         }
     }
 
+    [AddComponentMenu(SysConst.STR_StartterMenu + nameof(Console))]
     [HideMonoScript]
     public partial class Console : BaseCoreMono
     {
@@ -216,6 +217,8 @@ namespace CYM
         }
         public static void Initialize()
         {
+            if (Ins == null)
+                return;
             IsInit = true;
             Log_queue = new Queue<LogMessage>();
             Texture2D back = new Texture2D(1, 1);

@@ -28,11 +28,11 @@ namespace CYM
 
         public static void GenerateCode()
         {
+            LocalConfig.GenerateCode();
             VersionConfig.GenerateCode();
             BuildConfig.GenerateCode();
             DLCConfig.GenerateCode();
             GameConfig.GenerateCode();
-            LocalConfig.GenerateCode();
             CursorConfig.GenerateCode();
             UIConfig.GenerateCode();
             ImportConfig.GenerateCode();
@@ -45,11 +45,11 @@ namespace CYM
         public static void Load()
         {
             Debug.Log("加载配置开始!!");
+            LocalConfig.DoLoad();
             VersionConfig.DoLoad();
             BuildConfig.DoLoad();
             DLCConfig.DoLoad();
             GameConfig.DoLoad();
-            LocalConfig.DoLoad();
             CursorConfig.DoLoad();
             UIConfig.DoLoad();
             ImportConfig.DoLoad();
@@ -60,11 +60,11 @@ namespace CYM
         }
         public static void LoadOrCreate()
         {
+            LocalConfig.DoLoadOrCreate();
             VersionConfig.DoLoadOrCreate();
             BuildConfig.DoLoadOrCreate();
             DLCConfig.DoLoadOrCreate();
             GameConfig.DoLoadOrCreate();
-            LocalConfig.DoLoadOrCreate();
             CursorConfig.DoLoadOrCreate();
             UIConfig.DoLoadOrCreate();
             ImportConfig.DoLoadOrCreate();
@@ -88,11 +88,11 @@ namespace CYM
         public static void SaveConfig()
         {
 #if UNITY_EDITOR
+            EditorUtility.SetDirty(LocalConfig.Ins);
             EditorUtility.SetDirty(VersionConfig.Ins);
             EditorUtility.SetDirty(BuildConfig.Ins);
             EditorUtility.SetDirty(DLCConfig.Ins);
             EditorUtility.SetDirty(GameConfig.Ins);
-            EditorUtility.SetDirty(LocalConfig.Ins);
             EditorUtility.SetDirty(CursorConfig.Ins);
             EditorUtility.SetDirty(UIConfig.Ins);
             EditorUtility.SetDirty(ImportConfig.Ins);

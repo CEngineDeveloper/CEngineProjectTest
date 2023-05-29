@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace CYM.UI
 {
-    [AddComponentMenu("UI/Effects/UEFlippable")]
+    [AddComponentMenu(SysConst.STR_UIEffectMenu + "UEFlippable")]
     [RequireComponent(typeof(RectTransform)), RequireComponent(typeof(Graphic)), DisallowMultipleComponent]
     public class UEFlippable : MonoBehaviour, IMeshModifier
     {

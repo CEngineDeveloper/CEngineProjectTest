@@ -12,7 +12,7 @@ using Sirenix.OdinInspector;
 namespace CYM.UI
 {
     [HideMonoScript]
-    [AddComponentMenu("UI/Effects/UEVirticalText", 14), RequireComponent(typeof(Text))]
+    [AddComponentMenu(SysConst.STR_UIEffectMenu + "UEVirticalText", 14), RequireComponent(typeof(Text))]
     [ExecuteInEditMode]
     public class UEVirticalText : BaseMeshEffect
     {

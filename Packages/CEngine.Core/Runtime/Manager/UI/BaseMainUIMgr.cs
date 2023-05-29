@@ -16,7 +16,7 @@ namespace CYM
         public override void OnAffterAwake()
         {
             base.OnAffterAwake();
-            Fade.Show(1.0f);
+            Fader.Show(1.0f);
         }
         #endregion
 

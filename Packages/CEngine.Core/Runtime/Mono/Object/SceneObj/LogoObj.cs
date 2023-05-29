@@ -12,7 +12,7 @@ using UnityEngine.UI;
 
 namespace CYM.UI
 {
-    public sealed class Logo : MonoBehaviour
+    public sealed class LogoObj : MonoBehaviour
     {
         [SerializeField]
         public Image BG;

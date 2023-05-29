@@ -11,18 +11,18 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace CYM.UI
 {
-    public class Fade : MonoBehaviour
+    public class Fader : MonoBehaviour
     {
         static CanvasScaler CanvasScaler;
         static CanvasGroup BG;
-        static Fade Ins;
+        static Fader Ins;
         static Tweener alphaTween;
 
         public static void Show(float duration)
         {
             if (Ins == null)
             {
-                Ins = GameObject.Instantiate<Fade>(Resources.Load<Fade>("BaseFade"));
+                Ins = GameObject.Instantiate<Fader>(Resources.Load<Fader>("BaseFade"));
                 Ins.transform.hideFlags = HideFlags.HideInHierarchy;
                 DontDestroyOnLoad(Ins);
                 CanvasScaler = Ins.GetComponent<CanvasScaler>();

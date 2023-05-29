@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace CYM.UI
 {
-    [AddComponentMenu("UI/Effects/UEGradient")]
+    [AddComponentMenu(SysConst.STR_UIEffectMenu + "UEGradient")]
     public class UEGradient : BaseMeshEffect
     {
         [SerializeField] private Color topColor = Color.white;

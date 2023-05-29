@@ -9,9 +9,9 @@ using UnityEngine.UI;
 
 namespace CYM
 {
-    [RequireComponent(typeof(Console))]
-    [RequireComponent(typeof(FPSCounter))]
-    [RequireComponent(typeof(ErrorCatcher))]
+    //[RequireComponent(typeof(Console))]
+    //[RequireComponent(typeof(FPSCounter))]
+    //[RequireComponent(typeof(ErrorCatcher))]
     [ExecuteInEditMode]
     [HideMonoScript]
     public class Starter : MonoBehaviour
@@ -44,11 +44,8 @@ namespace CYM
             {
                 StarterUI = Util.CreateGlobalResourceObj<StarterUI>("BaseStarterPlayer");
                 DontDestroyOnLoad(this);
-                SetupComponet<ErrorCatcher>();
                 SetupComponet<DLCDownloader>();
                 SetupComponet<DLCManager>();
-                SetupComponet<Console>();
-                SetupComponet<FPSCounter>();
                 //下载资源
                 await DLCDownloader.StartDownload();
                 //加载配置文件
@@ -60,20 +57,6 @@ namespace CYM
             }
         }
         #endregion
-
-//#if UNITY_EDITOR
-//        [Button]
-//        [DisableInPlayMode]
-//        void EnsureComponet()
-//        {
-//            if (Application.isPlaying)
-//                return;
-//            transform.hideFlags = HideFlags.NotEditable;
-//            transform.position = SysConst.VEC_GlobalPos;
-//            SetupComponet<SysConsole>();
-//            SetupComponet<FPSCounter>();
-//        }
-//#endif
 
         #region set
         void SetupComponet<T>() where T : MonoBehaviour

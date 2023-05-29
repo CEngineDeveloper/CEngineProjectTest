@@ -8,7 +8,7 @@
 //**********************************************
 namespace CYM
 {
-    public sealed class Bone : BaseMono
+    public sealed class BoneObj : BaseMono
     {
         public NodeType Type;
         public string ExtendName = SysConst.STR_Inv;

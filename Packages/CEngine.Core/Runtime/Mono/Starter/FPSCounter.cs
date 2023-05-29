@@ -3,6 +3,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 namespace CYM
 {
+	[AddComponentMenu(SysConst.STR_StartterMenu + nameof(FPSCounter))]
 	[HideMonoScript]
 	public sealed class FPSCounter : BaseCoreMono
 	{
