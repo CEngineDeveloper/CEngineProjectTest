@@ -28,8 +28,8 @@ namespace CYM
                 if (item.Value.IsIn(val))
                     return item.Key;
             }
-            if (val > Max) return EnumTool<T>.End();
-            else if (val < Min) return EnumTool<T>.Start();
+            if (val > Max) return EnumUtil<T>.End();
+            else if (val < Min) return EnumUtil<T>.Start();
             return this.LastOrDefault().Key;
         }
 

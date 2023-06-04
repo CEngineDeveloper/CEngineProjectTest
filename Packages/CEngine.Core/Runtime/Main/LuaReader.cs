@@ -254,7 +254,7 @@ namespace CYM
             var dictionary = new DiffData();
             foreach (TablePair pair in luaTable.Pairs)
             {
-                dictionary[EnumTool<GameDiffType>.Parse(pair.Key.String)] = (float)pair.Value.Number;
+                dictionary[EnumUtil<GameDiffType>.Parse(pair.Key.String)] = (float)pair.Value.Number;
             }
             return dictionary;
         }

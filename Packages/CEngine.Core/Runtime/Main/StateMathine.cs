@@ -139,7 +139,7 @@ namespace CYM
             ClearState();
             base.Init(selfUnit);
             SelfUnit = selfUnit as TUnit;
-            EnumTool<TState>.For((x) =>
+            EnumUtil<TState>.For((x) =>
             {
                 AddState(x, new TStateData());
             });
@@ -156,8 +156,8 @@ namespace CYM
         /// <param name="state"></param>
         public virtual TStateData ChangeState(TState state, bool isForce = false, bool isManual = true)
         {
-            int intCurState = EnumTool<TState>.Int(CurState);
-            int intNextState = EnumTool<TState>.Int(state);
+            int intCurState = EnumUtil<TState>.Int(CurState);
+            int intNextState = EnumUtil<TState>.Int(state);
             if (!isForce && intCurState == intNextState) return null;
             PreState = CurState;
             CurState = state;
@@ -174,7 +174,7 @@ namespace CYM
         /// </summary>
         public void SetCurState(TState state, bool isManual = true)
         {
-            int intstate = EnumTool<TState>.Int(state);
+            int intstate = EnumUtil<TState>.Int(state);
             if (!States.ContainsKey(intstate)) return;
             var newStateData = States[intstate];
             newStateData.StateMachine = this;
@@ -190,7 +190,7 @@ namespace CYM
         /// <param name="state"></param>
         public void AddState(TState type, TStateData state)
         {
-            int key = EnumTool<TState>.Int(type);
+            int key = EnumUtil<TState>.Int(type);
             state.SelfUnit = SelfUnit;
             state.StateType = CurState;
             state.OnBeAdded();
@@ -216,7 +216,7 @@ namespace CYM
         #region get
         public TStateData GetState(TState state)
         {
-            int key = EnumTool<TState>.Int(state);
+            int key = EnumUtil<TState>.Int(state);
             if (States.ContainsKey(key))
                 return States[key];
             return null;
@@ -227,15 +227,15 @@ namespace CYM
         // 是否在指定状态
         public bool IsIn(TState state)
         {
-            int intState = EnumTool<TState>.Int(CurState);
-            int intstate = EnumTool<TState>.Int(state);
+            int intState = EnumUtil<TState>.Int(CurState);
+            int intstate = EnumUtil<TState>.Int(state);
             return intState == intstate;
         }
         // 判断上一个状态
         public bool IsInPreState(TState state, int index)
         {
-            int intState = EnumTool<TState>.Int(CurState);
-            int intstate = EnumTool<TState>.Int(state);
+            int intState = EnumUtil<TState>.Int(CurState);
+            int intstate = EnumUtil<TState>.Int(state);
             return intState == intstate;
         }
         #endregion

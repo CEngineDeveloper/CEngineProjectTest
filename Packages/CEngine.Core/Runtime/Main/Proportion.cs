@@ -20,7 +20,7 @@ namespace CYM
         void Init()
         {
             Data.Clear();
-            EnumTool<T>.ForIndex(x =>
+            EnumUtil<T>.ForIndex(x =>
             {
                 Data.Add(x, 0);
             });
@@ -37,7 +37,7 @@ namespace CYM
         public void SetVal(T type, float val, bool isConst = true)
         {
             if (val == 0) return;
-            var index = EnumTool<T>.Int(type);
+            var index = EnumUtil<T>.Int(type);
             var sourceVal = Data[index];
             var adt = val - sourceVal;
             Data[index] = val;
@@ -46,7 +46,7 @@ namespace CYM
                 float average = adt / (Data.Count - 1);
                 foreach (var key in Data.Keys.ToArray())
                 {
-                    if (key == EnumTool<T>.Int(type)) continue;
+                    if (key == EnumUtil<T>.Int(type)) continue;
                     Data[key] += average;
                 }
             }
@@ -54,7 +54,7 @@ namespace CYM
 
         public float GetVal(T type)
         {
-            return Data[EnumTool<T>.Int(type)];
+            return Data[EnumUtil<T>.Int(type)];
         }
     }
 }

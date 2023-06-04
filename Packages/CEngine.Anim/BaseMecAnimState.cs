@@ -34,7 +34,7 @@ namespace CYM.Anim
             IsEnterTrigger = true;
             if (Self.AnimMgr != null)
             {
-                (Self.AnimMgr as IMecAnimMgr).ChangeState(EnumTool<TState>.Int(State), Index);
+                (Self.AnimMgr as IMecAnimMgr).ChangeState(EnumUtil<TState>.Int(State), Index);
             }
         }
 

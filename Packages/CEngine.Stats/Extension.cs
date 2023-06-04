@@ -17,7 +17,7 @@ namespace CYM.Stats
             {
                 if (item.RealVal == 0)
                     continue;
-                if (EnumTool<T>.Int(item.Type) == EnumTool<T>.Int(type))
+                if (EnumUtil<T>.Int(item.Type) == EnumUtil<T>.Int(type))
                     return item.RealVal;
 
             }
@@ -33,7 +33,7 @@ namespace CYM.Stats
             {
                 if (item.RealVal == 0)
                     continue;
-                if (EnumTool<T>.Int(item.Type) == EnumTool<T>.Int(type))
+                if (EnumUtil<T>.Int(item.Type) == EnumUtil<T>.Int(type))
                     return item;
 
             }

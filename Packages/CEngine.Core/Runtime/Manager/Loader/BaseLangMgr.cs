@@ -85,7 +85,7 @@ namespace CYM
             if (key.IsInv()) return "";
             if (curDic == null) return SysConst.STR_Unkown;
             if (data.Count <= 0) return "";
-            int lanIndex = EnumTool<LanguageType>.Int(LanguageType);
+            int lanIndex = EnumUtil<LanguageType>.Int(LanguageType);
             //获得当前的语言包
             if (curDic.Count == 0)
             {
@@ -169,7 +169,7 @@ namespace CYM
         public void Switch(LanguageType type)
         {
             LanguageType = type;
-            int lanIndex = EnumTool<LanguageType>.Int(LanguageType);
+            int lanIndex = EnumUtil<LanguageType>.Int(LanguageType);
             if (data.ContainsKey(lanIndex))
             {
                 curDic = data[lanIndex];
@@ -203,7 +203,7 @@ namespace CYM
             //跳过无效的key和Desc
             if (type == null) return;
             if (key.IsInv() || desc.IsInv()) return;
-            int lanIndex = EnumTool<LanguageType>.Int(type.Value);
+            int lanIndex = EnumUtil<LanguageType>.Int(type.Value);
             if (!lanKeys.Contains(key)) lanKeys.Add(key);
             if (!data.ContainsKey(lanIndex)) data.Add(lanIndex, new Dictionary<string, string>());
             //添加到Key

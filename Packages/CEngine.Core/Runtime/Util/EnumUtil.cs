@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using System.Reflection;
 //**********************************************
 // Discription	：Base Core Calss .All the Mono will inherit this class
@@ -13,7 +12,7 @@ using System.Reflection;
 namespace CYM
 {
     [Serializable, Unobfus]
-    public static class EnumTool<T> where T : Enum
+    public static class EnumUtil<T> where T : Enum
     {
         #region set
         public static T Start()
@@ -157,6 +156,9 @@ namespace CYM
             }
             return dictionary;
         }
-#endregion
+        public static IEnumerable<T> GetEnumValues() =>
+            (T[])Enum.GetValues(typeof(T));
+        #endregion
+
     }
 }

@@ -62,7 +62,7 @@ namespace CYM.Anim
             ClearState();
             Machine.Init(SelfBaseUnit as TUnit);
 
-            EnumTool<TState>.For((x) =>
+            EnumUtil<TState>.For((x) =>
             {
                 AddState(x, new BaseCharaState());
             });
@@ -137,11 +137,11 @@ namespace CYM.Anim
         /// <param name="state"></param>
         public void ChangeState(TState state, int index = 0)
         {
-            ChangeState(EnumTool<TState>.Int(state),index);
+            ChangeState(EnumUtil<TState>.Int(state),index);
         }
         public void ChangeState(int state, int index = 0)
         {
-            int intState = EnumTool<TState>.Int(State);
+            int intState = EnumUtil<TState>.Int(State);
             int intstate = state;
             if (intState == intstate && Index == index)
                 return;
@@ -150,7 +150,7 @@ namespace CYM.Anim
             PreState = State;
 
             Index = index;
-            State = EnumTool<TState>.Invert(state);
+            State = EnumUtil<TState>.Invert(state);
 
             Machine?.ChangeState(States[intstate]);
             Callback_OnChangeState?.Invoke(State, PreState, Index);
@@ -162,7 +162,7 @@ namespace CYM.Anim
         /// <param name="state"></param>
         public void AddState(TState type, BaseCharaState state)
         {
-            int key = EnumTool<TState>.Int(type);
+            int key = EnumUtil<TState>.Int(type);
             state.Self = SelfBaseUnit as TUnit;
             if (States.ContainsKey(key))
             {
@@ -279,8 +279,8 @@ namespace CYM.Anim
         /// <returns></returns>
         public bool IsIn(TState state)
         {
-            int intState = EnumTool<TState>.Int(State);
-            int intstate = EnumTool<TState>.Int(state);
+            int intState = EnumUtil<TState>.Int(State);
+            int intstate = EnumUtil<TState>.Int(state);
             return intState == intstate;
         }
         /// <summary>
@@ -291,8 +291,8 @@ namespace CYM.Anim
         /// <returns></returns>
         public bool IsInPreState(TState state, int index)
         {
-            int intState = EnumTool<TState>.Int(State);
-            int intstate = EnumTool<TState>.Int(state);
+            int intState = EnumUtil<TState>.Int(State);
+            int intstate = EnumUtil<TState>.Int(state);
             return intState == intstate && PreIndex == index;
         }
         #endregion

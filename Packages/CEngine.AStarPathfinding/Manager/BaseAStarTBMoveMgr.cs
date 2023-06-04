@@ -275,7 +275,7 @@ namespace CYM.Pathfinding
             if (IsMoveTargetState(MoveTarget_State))
             {
                 //自动执行的时候判断是否为默认状态(只有默认状态才能执行移动)
-                if (!isManual && EnumTool<TState>.Int(StateMachine.CurState) != 0)
+                if (!isManual && EnumUtil<TState>.Int(StateMachine.CurState) != 0)
                 {
                     CancleMoveTarget();
                     return false;
@@ -312,7 +312,7 @@ namespace CYM.Pathfinding
         public void CancleMoveTarget()
         {
             MoveTarget_IsValid = false;
-            MoveTarget_State = EnumTool<TState>.Invert(0);
+            MoveTarget_State = EnumUtil<TState>.Invert(0);
             MoveTarget_PosPreview = Vector3.zero;
             MoveTarget_PosReal = Vector3.zero;
             MoveTarget_Unit = null;
@@ -551,7 +551,7 @@ namespace CYM.Pathfinding
         }
         public void ChangeState(TState state, bool isForce = false, bool isManual = true) => StateMachine.ChangeState(state, isForce, isManual);
         public void SetState(TState state, bool isManual = true) => StateMachine.SetCurState(state, isManual);
-        public bool IsInState(TState state) => EnumTool<TState>.Int(StateMachine.CurState) == EnumTool<TState>.Int(state);
+        public bool IsInState(TState state) => EnumUtil<TState>.Int(StateMachine.CurState) == EnumUtil<TState>.Int(state);
 
         #endregion
 
@@ -606,10 +606,10 @@ namespace CYM.Pathfinding
             dbData.MoveTarget = !MoveTarget_Unit.IsInv() ? MoveTarget_Unit.ID : SysConst.INT_Inv;
             dbData.FaceTarget = !FaceTarget.IsInv() ? FaceTarget.ID : SysConst.INT_Inv;
             dbData.IsValidMoveTarget = MoveTarget_IsValid;
-            dbData.MoveTargetState = EnumTool<TState>.Int(MoveTarget_State);
+            dbData.MoveTargetState = EnumUtil<TState>.Int(MoveTarget_State);
             dbData.MoveTargetPosPreview = MoveTarget_PosPreview.ToVec3();
             dbData.MoveTargetPosReal = MoveTarget_PosReal.ToVec3();
-            dbData.CurMoveState = EnumTool<TState>.Int(StateMachine.CurState);
+            dbData.CurMoveState = EnumUtil<TState>.Int(StateMachine.CurState);
             return dbData;
         }
         public void Load(DBBaseTBMove data)

@@ -23,7 +23,7 @@ namespace CYM.AI.Objective
             public Dictionary<int, HashSet<TTarget>> Targets { get; private set; } = new Dictionary<int, HashSet<TTarget>>();
             public GlobalObjectiver()
             {
-                EnumTool<TEnum>.ForIndex(x =>
+                EnumUtil<TEnum>.ForIndex(x =>
                 {
                     int enumIndex = x;
                     Targets.Add(enumIndex, new HashSet<TTarget>());
@@ -67,7 +67,7 @@ namespace CYM.AI.Objective
                 Objectiver = objectiver;
                 Target = target;
                 Type = type;
-                EnumIndex = EnumTool<TEnum>.Int(type);
+                EnumIndex = EnumUtil<TEnum>.Int(type);
             }
             #endregion
 
@@ -135,7 +135,7 @@ namespace CYM.AI.Objective
             }
             SelfBaseUnit = selfUnit;
             OnAddConfig();
-            EnumTool<TEnum>.ForIndex(x =>
+            EnumUtil<TEnum>.ForIndex(x =>
             {
                 int enumIndex = x;
                 AssignedTask.Add(enumIndex, new HashSet<Task>());
@@ -169,9 +169,9 @@ namespace CYM.AI.Objective
             //更新空闲单位
             UpdateIdle();
             //分配任务
-            EnumTool<TEnum>.For(e =>
+            EnumUtil<TEnum>.For(e =>
             {
-                int enumIndex = EnumTool<TEnum>.Int(e);
+                int enumIndex = EnumUtil<TEnum>.Int(e);
                 //排序任务
                 TypedTask[enumIndex].Sort((x, y) => { return x.Importance > y.Importance ? -1 : 1; });
                 //给任务分配执行者
@@ -243,7 +243,7 @@ namespace CYM.AI.Objective
             AssignedTask[enumIndex].Add(objAction);
             GlobalObjer?.AddTarget(objAction);
             //删除已经被分配的空闲单位
-            EnumTool<TEnum>.ForIndex(e =>
+            EnumUtil<TEnum>.ForIndex(e =>
             {
                 TypeIdles[e].Remove(unit);
             });
@@ -268,7 +268,7 @@ namespace CYM.AI.Objective
         //下一个没有充足执行者的任务
         Task NextTask(TEnum type)
         {
-            int enumIndex = EnumTool<TEnum>.Int(type);
+            int enumIndex = EnumUtil<TEnum>.Int(type);
             var objActionData = TypedTask[enumIndex];
             if (objActionData.Count <= 0) return null;
 
@@ -288,7 +288,7 @@ namespace CYM.AI.Objective
         //创建任务
         protected Task CreateTask(TEnum type, TTarget target)
         {
-            int enumIndex = EnumTool<TEnum>.Int(type);
+            int enumIndex = EnumUtil<TEnum>.Int(type);
             if (target == null) return null;
             if (Targets.Contains(target))
             {
@@ -332,7 +332,7 @@ namespace CYM.AI.Objective
             List<TUnit> tempUnits=null;
             AllTask.Remove(objAction);
             Targets.Remove(objAction.Target);
-            EnumTool<TEnum>.ForIndex(x =>
+            EnumUtil<TEnum>.ForIndex(x =>
             {
                 TypedTask[x].Remove(objAction);
             });
@@ -349,7 +349,7 @@ namespace CYM.AI.Objective
         }
         void UpdateIdle()
         {
-            EnumTool<TEnum>.ForIndex(e =>
+            EnumUtil<TEnum>.ForIndex(e =>
             {
                 int enumIndex = e;
                 TypeIdles[enumIndex].Clear();
@@ -375,7 +375,7 @@ namespace CYM.AI.Objective
         //添加任务配置
         protected void AddConfig(TEnum type, TaskConfigData config)
         {
-            int enumIndex = EnumTool<TEnum>.Int(type);
+            int enumIndex = EnumUtil<TEnum>.Int(type);
             if (ConfigData.ContainsKey(enumIndex))
             {
                 CLog.Error("错误!重复AddConfig:{0}", type.ToString());
@@ -396,7 +396,7 @@ namespace CYM.AI.Objective
         }
         public List<Task> GetTasks(TEnum type)
         {
-            return TypedTask[EnumTool<TEnum>.Int(type)];
+            return TypedTask[EnumUtil<TEnum>.Int(type)];
         }
         //得到指定任务的所有执行者
         public HashSet<TUnit> GetExcuteUnits(Task objAction)
@@ -415,13 +415,13 @@ namespace CYM.AI.Objective
         //得到指定任务类型,并且拥有执行者的任务数量
         public int GetAsdTaskCount(TEnum type)
         {
-            int enumIndex = EnumTool<TEnum>.Int(type);
+            int enumIndex = EnumUtil<TEnum>.Int(type);
             return AssignedTask[enumIndex].Count;
         }
         //指定任务类型的数量
         public int GetTaskCount(TEnum type)
         {
-            int enumIndex = EnumTool<TEnum>.Int(type);
+            int enumIndex = EnumUtil<TEnum>.Int(type);
             return TypedTask[enumIndex].Count;
         }
         #endregion
@@ -430,7 +430,7 @@ namespace CYM.AI.Objective
         //是否有这个类型的任务
         public bool IsHaveTask(TEnum type)
         {
-            int enumIndex = EnumTool<TEnum>.Int(type);
+            int enumIndex = EnumUtil<TEnum>.Int(type);
             return TypedTask[enumIndex].Count > 0;
         }
         //指定的单位是否拥有任务
@@ -441,14 +441,14 @@ namespace CYM.AI.Objective
         //是否有空闲的单位
         public bool IsHaveIdle(TEnum type)
         {
-            return TypeIdles[EnumTool<TEnum>.Int(type)].Count > 0;
+            return TypeIdles[EnumUtil<TEnum>.Int(type)].Count > 0;
         }
         //是否达到指定类型任务的上限
         public bool IsInMaxAsdCount(TEnum type)
         {
-            int enumIndex = EnumTool<TEnum>.Int(type);
+            int enumIndex = EnumUtil<TEnum>.Int(type);
             //最后一个任务,不设置上限
-            if (enumIndex >= EnumTool<TEnum>.Length()) return false;
+            if (enumIndex >= EnumUtil<TEnum>.Length()) return false;
             //其他任务会有上限
             if (GetAsdTaskCount(type) >= ConfigData[enumIndex].MaxObjective.Invoke())
                 return true;

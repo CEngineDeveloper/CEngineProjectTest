@@ -122,7 +122,7 @@ namespace CYM.Stats
                 CLog.Error($"BaseCostCondition 错误，单位缺失：{nameof(Unit.AttrMgr)}组建");
                 return 0;
             }
-            return Unit.AttrMgr.GetVal(EnumTool<Type>.Int(type));
+            return Unit.AttrMgr.GetVal(EnumUtil<Type>.Int(type));
         }
     }
     #endregion
@@ -146,7 +146,7 @@ namespace CYM.Stats
         }
         public override string GetDesc()
         {
-            TDBaseAttrData attrData = BaseAttrMgr<Type>.GetAttrDataList()[EnumTool<Type>.Int(AttrType)];
+            TDBaseAttrData attrData = BaseAttrMgr<Type>.GetAttrDataList()[EnumUtil<Type>.Int(AttrType)];
             return GetStr("AC_IsAttrToAct", (AttrType as Enum).GetName(), CompareType.GetName(), BaseAttrMgr<Type>.GetAttrNumberStr(AttrType, val));
         }
 
@@ -158,7 +158,7 @@ namespace CYM.Stats
                 CLog.Error($"BaseCostCondition 错误，单位缺失：{nameof(Unit.AttrMgr)}组建");
                 return 0;
             }
-            return Unit.AttrMgr.GetVal(EnumTool<Type>.Int(type));
+            return Unit.AttrMgr.GetVal(EnumUtil<Type>.Int(type));
         }
         #endregion
     }
@@ -257,7 +257,7 @@ namespace CYM.Stats
         #region set
         protected void AddGroupAttr(T cur, T max, T change)
         {
-            var index = EnumTool<T>.Int(cur);
+            var index = EnumUtil<T>.Int(cur);
             var tempAttrData = attrDataList[index];
             if (tempAttrData.Type != AttrType.Dynamic)
             {
@@ -269,7 +269,7 @@ namespace CYM.Stats
         protected void AddCustomAttrVal(T type, Func<float> func)
         {
             if (func == null) return;
-            var index = EnumTool<T>.Int(type);
+            var index = EnumUtil<T>.Int(type);
             _customAttrVal[index] = func;
         }
         public void InitFrom(BaseAttrMgr<T> otherAttr)
@@ -287,7 +287,7 @@ namespace CYM.Stats
                 if (array[i] != null)
                 {
                     var item = array[i];
-                    var index = EnumTool<T>.Int(item.Type);
+                    var index = EnumUtil<T>.Int(item.Type);
                     var tempAttrData = attrDataList[index];
 
                     //检查数值合适性
@@ -371,7 +371,7 @@ namespace CYM.Stats
         }
         protected virtual void AddAttrVal(T type, float val)
         {
-            var index = EnumTool<T>.Int(type);
+            var index = EnumUtil<T>.Int(type);
             if (attrDataList != null)
             {
                 TDBaseAttrData tempAttrData = null;
@@ -406,7 +406,7 @@ namespace CYM.Stats
         public virtual void ChangeVal(T type, float val, float? minVal = null, float? maxVal = null, bool onlyDynamicVal = true)
         {
             if (val == 0) return;
-            int index = EnumTool<T>.Int(type);
+            int index = EnumUtil<T>.Int(type);
             TDBaseAttrData tempAttrData = GetAttrData(index);
 
             if (tempAttrData == null) return;
@@ -422,7 +422,7 @@ namespace CYM.Stats
         }
         public virtual void SetVal(T type, float val, float? minVal = null, float? maxVal = null)
         {
-            var index = EnumTool<T>.Int(type);
+            var index = EnumUtil<T>.Int(type);
             if (attrDataList != null)
             {
                 //截取最大最小限制
@@ -471,7 +471,7 @@ namespace CYM.Stats
             //计算百分值
             for (int i = 0; i < _percentData.Count; ++i)
             {
-                if (_percentData[i].Valid) AddAttrVal(_percentData[i].Type, _percentData[i].RealVal * _getBaseAttrVal(EnumTool<T>.Int(_percentData[i].Type)));
+                if (_percentData[i].Valid) AddAttrVal(_percentData[i].Type, _percentData[i].RealVal * _getBaseAttrVal(EnumUtil<T>.Int(_percentData[i].Type)));
             }
             //额外加成
             if (_attrConvertData != null)
@@ -483,7 +483,7 @@ namespace CYM.Stats
                         if (item.FactionType == AttrFactionType.DirectAdd)
                             AddAttrVal(item.To, GetExtraAddtion(item));
                         else if (item.FactionType == AttrFactionType.PercentAdd)
-                            AddAttrVal(item.To, GetExtraAddtion(item) * _getBaseAttrVal(EnumTool<T>.Int(item.To)));
+                            AddAttrVal(item.To, GetExtraAddtion(item) * _getBaseAttrVal(EnumUtil<T>.Int(item.To)));
                     }
                 }
             }
@@ -566,7 +566,7 @@ namespace CYM.Stats
         #region get
         public TDBaseAttrData GetAttrData(T type)
         {
-            int index = EnumTool<T>.Int(type);
+            int index = EnumUtil<T>.Int(type);
             TDBaseAttrData tempAttrData = GetAttrData(index);
             if (tempAttrData == null)
             {
@@ -609,7 +609,7 @@ namespace CYM.Stats
         //获得原始Attr属性值
         public float GetVal(T type)
         {
-            var index = EnumTool<T>.Int(type);
+            var index = EnumUtil<T>.Int(type);
             return _getCurAttrVal(index);
         }
         public float GetVal(int type)
@@ -621,13 +621,13 @@ namespace CYM.Stats
         {
             if (attrDataList == null)
                 return null;
-            return attrDataList[EnumTool<T>.Int(type)].GetIcon();
+            return attrDataList[EnumUtil<T>.Int(type)].GetIcon();
         }
         // 获得额外的加成
         protected float GetExtraAddtion(AttrConvert<T> data, float? customVal = null)
         {
             if (data == null) return 0;
-            int fromIndex = EnumTool<T>.Int(data.From);
+            int fromIndex = EnumUtil<T>.Int(data.From);
             TDBaseAttrData attrData = attrDataList[fromIndex];
             var fromVal = _getCurAttrVal(fromIndex);
             if (customVal.HasValue) fromVal = customVal.Value;
@@ -664,7 +664,7 @@ namespace CYM.Stats
             {
                 foreach (var item in _attrConvertData)
                 {
-                    if (item != null && EnumTool<T>.Int(item.From) == EnumTool<T>.Int(from))
+                    if (item != null && EnumUtil<T>.Int(item.From) == EnumUtil<T>.Int(from))
                     {
                         if (!tempVal.ContainsKey(item.To))
                             tempVal.Add(item.To, 0.0f);
@@ -692,7 +692,7 @@ namespace CYM.Stats
         public string GetAttrDesc(T type)
         {
             if (attrDataList == null) return "attrData is null:" + type.ToString();
-            var index = EnumTool<T>.Int(type);
+            var index = EnumUtil<T>.Int(type);
             if (index >= attrDataList.Count)
                 return "out of index:" + type.ToString();
             return attrDataList[index].GetDesc();
@@ -789,7 +789,7 @@ namespace CYM.Stats
             List<TDBaseAttrData> tempAttrData = GetAttrDataList();
             if (tempAttrData != null)
             {
-                var tempData = tempAttrData[EnumTool<T>.Int(Type)];
+                var tempData = tempAttrData[EnumUtil<T>.Int(Type)];
                 if (tempData.NumberType == NumberType.KMG)
                     return UIUtil.KMG(Val);
                 else if (tempData.NumberType == NumberType.Percent)
@@ -817,7 +817,7 @@ namespace CYM.Stats
         }
         public static Sprite GetAttrIcon(T type)
         {
-            return GetAttrDataList()[EnumTool<T>.Int(type)].GetIcon();
+            return GetAttrDataList()[EnumUtil<T>.Int(type)].GetIcon();
         }
         /// <summary>
         /// 获得属性颜色
@@ -829,7 +829,7 @@ namespace CYM.Stats
             List<TDBaseAttrData> tempAttrData = GetAttrDataList();
             if (tempAttrData != null)
             {
-                var tempData = tempAttrData[EnumTool<T>.Int(Type)];
+                var tempData = tempAttrData[EnumUtil<T>.Int(Type)];
                 if (tempData.BuffType == AttrBuffType.Forward)
                 {
                     if (Val > 0)
@@ -902,7 +902,7 @@ namespace CYM.Stats
             List<TDBaseAttrData> tempAttrData = GetAttrDataList();
             if (tempAttrData != null)
             {
-                var tempData = tempAttrData[EnumTool<T>.Int(Type)];
+                var tempData = tempAttrData[EnumUtil<T>.Int(Type)];
                 if (tempData.BuffType == AttrBuffType.Forward)
                 {
                     if (Val < 0)
@@ -931,9 +931,9 @@ namespace CYM.Stats
                 return;
 
             var temp = attrs;
-            EnumTool<T>.For((x) =>
+            EnumUtil<T>.For((x) =>
             {
-                int index = EnumTool<T>.Int(x);
+                int index = EnumUtil<T>.Int(x);
                 if (attrDataList.Count <= index)
                 {
                     CLog.Error("没有这个属性:{0}", x);

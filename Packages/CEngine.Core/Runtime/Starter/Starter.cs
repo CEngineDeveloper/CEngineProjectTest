@@ -46,6 +46,7 @@ namespace CYM
                 DontDestroyOnLoad(this);
                 SetupComponet<DLCDownloader>();
                 SetupComponet<DLCManager>();
+                SetupComponet<Console>();
                 //下载资源
                 await DLCDownloader.StartDownload();
                 //加载配置文件

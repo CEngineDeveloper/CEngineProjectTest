@@ -1,0 +1,18 @@
+{
+    "name": "CEngine.TransformTools.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:53fbb6c2ef56e024ba4d5c66ae1f26ca"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

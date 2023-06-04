@@ -119,7 +119,7 @@ namespace CYM.Person
                 foreach (var pConfigItem in pConfig)
                 {
                     //加入年龄Tag
-                    EnumTool<AgeRange>.For(x =>
+                    EnumUtil<AgeRange>.For(x =>
                     {
                         string tagAge = x.ToString();
                         HashList<PartInfo> temp;

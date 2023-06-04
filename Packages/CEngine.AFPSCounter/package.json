@@ -1,0 +1,15 @@
+{
+  "name": "com.cengine.afpscounter",
+  "displayName": "CEngine.AFPSCounter",
+  "version": "1.5.1",
+  "unity": "2017.4",
+  "description": "Advanced FPS Counter is a simple and flexible in-game frames per second counter with advanced features, made to let you monitor stats of your game right on the target device.",
+  "keywords": ["FPS", "Memory", "Stats", "Counter"],
+  "category": "Tools",
+  "dependencies": {
+    "com.cengine.core": "1.0.0"
+ },  
+  "author": {
+    "name": "CYM"
+  }
+}
