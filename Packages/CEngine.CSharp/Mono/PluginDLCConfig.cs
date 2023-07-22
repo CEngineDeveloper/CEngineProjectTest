@@ -9,7 +9,7 @@
 using UnityEngine;
 using CYM.DLC;
 using Sirenix.OdinInspector;
-
+#pragma warning disable CS0414
 namespace CYM
 {
     public partial class DLCConfig : ScriptConfig<DLCConfig>

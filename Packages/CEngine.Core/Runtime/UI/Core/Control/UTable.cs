@@ -19,7 +19,7 @@ namespace CYM.UI
         public Callback<int> OnTitleClick;
         public UCheckData[] TitleDatas;
     }
-    [AddComponentMenu("UI/Control/UTable")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UTable))]
     [HideMonoScript]
     public class UTable : UPres<UTableData>
     {

@@ -22,7 +22,7 @@ namespace CYM.UI
     //UIView会自动检测自生节点下的Panel,并且将第一个命名为“Main”的Panel添加到MainPanel中
     //和Control相比自带互斥,关闭回调
     //------------------------------------------------------------------------------
-    [AddComponentMenu("UI/Control/UPanel")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UPanel))]
     public class UPanel : UControl
     {
         #region Inspector

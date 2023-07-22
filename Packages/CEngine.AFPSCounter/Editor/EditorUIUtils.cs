@@ -1,5 +1,5 @@
 #if UNITY_EDITOR
-namespace CEngine.AdvancedFPSCounter.Editor.UI
+namespace CYM.AdvancedFPSCounter.Editor.UI
 {
 	using UnityEditor;
 	using UnityEngine;

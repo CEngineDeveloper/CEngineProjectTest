@@ -1,0 +1,16 @@
+{
+    "name": "CEngine.Promise",
+    "rootNamespace": "",
+    "references": [
+        "GUID:37c7be5c33b1a0941833141788850526"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

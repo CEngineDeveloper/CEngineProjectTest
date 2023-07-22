@@ -18,7 +18,7 @@ namespace CYM.UI
         public Func<string> Value;
         public Func<string> Adt;
     }
-    [AddComponentMenu("UI/Control/UTextVal")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UTextVal))]
     [HideMonoScript]
     public class UTextVal : UPres<UTextValData>
     {

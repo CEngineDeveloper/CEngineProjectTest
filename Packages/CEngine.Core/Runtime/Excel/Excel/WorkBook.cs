@@ -11,6 +11,15 @@ using ICSharpCode.SharpZipLib.Zip;
 namespace CYM.Excel
 {
     /// <summary>
+    /// A collection of <see cref="string"/> storing shared values
+    /// </summary>
+    public sealed class SharedStringCollection : ReadOnlyCollection<string>
+    {
+        public SharedStringCollection(IList<string> list) : base(list)
+        {
+        }
+    }
+    /// <summary>
     /// A collection of <see cref="WorkSheet"/>
     /// </summary>
     public sealed class WorkBook : KeyedCollection<string, WorkSheet>

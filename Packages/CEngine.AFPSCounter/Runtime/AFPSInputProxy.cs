@@ -10,7 +10,7 @@
 #define USING_INPUT_SYSTEM_NO_INPUT_SYSTEM_PACKAGE
 #endif
 
-namespace CEngine.AdvancedFPSCounter
+namespace CYM.AdvancedFPSCounter
 {
 	using System;
 	using UnityEngine;

@@ -9,6 +9,7 @@
 using UnityEngine;
 namespace CYM
 {
+    [AddComponentMenu(SysConst.STR_MenuSceneObj + nameof(CameraObj))]
     public sealed class CameraObj : SceneObj<Camera, CameraObj> 
     {
 

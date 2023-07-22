@@ -11,6 +11,7 @@ using Sirenix.OdinInspector;
 
 namespace CYM
 {
+    [AddComponentMenu(SysConst.STR_MenuSceneObj + nameof(PreloadObj))]
     [HideMonoScript]
     public class PreloadObj : MonoBehaviour
     {

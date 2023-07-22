@@ -14,12 +14,11 @@ namespace CYM
         void DoTriggerObjectEnter(Collider other, TriggerObj triggerObj, bool forceSense);
         void DoTriggerObjectExit(Collider other, TriggerObj triggerObj, bool forceSense);
     }
+    [AddComponentMenu(SysConst.STR_MenuSceneObj + nameof(TriggerObj))]
     public sealed class TriggerObj : BaseMono
     {
         [SerializeField]
         GameObject TriggerGO;
-        //[SerializeField]
-        //bool IsSense = false;
 
         ITriggerObj triggerObject;
         Collider col;

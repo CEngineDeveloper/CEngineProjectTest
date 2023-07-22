@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace CYM
 {
-    [AddComponentMenu(SysConst.STR_StartterMenu + nameof(ErrorCatcher))]
+    [AddComponentMenu(SysConst.STR_MenuStartter + nameof(ErrorCatcher))]
     [HideMonoScript]
     public class ErrorCatcher : MonoBehaviour
     {

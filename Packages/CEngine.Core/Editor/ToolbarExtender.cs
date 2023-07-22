@@ -110,8 +110,8 @@ namespace CYM
 				}
 			}
 			catch (Exception e)
-			{ 
-			
+			{
+				CLog.Error(e.Message);
 			}
 
             const float buttonWidth = 32;

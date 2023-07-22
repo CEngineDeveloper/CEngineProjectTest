@@ -7,6 +7,7 @@
 using UnityEngine;
 namespace CYM
 {
+    [AddComponentMenu(SysConst.STR_MenuSceneObj + nameof(TerrainObj))]
     public class TerrainObj : SceneObj<Terrain, TerrainObj>
     {
         public TerrainData Data { get; private set; }

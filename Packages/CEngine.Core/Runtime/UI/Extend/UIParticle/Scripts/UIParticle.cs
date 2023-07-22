@@ -58,7 +58,6 @@ namespace CYM.UI.Particle
         public Shader cullRenderShader;
         [HideInInspector]
         private GameObject maskRendererObj;
-        private bool needEditorRefresh;
         private UIParticleCanvas particleCanvas;
         private UIParticleDepthObjectInfo previousObjectInfo = new UIParticleDepthObjectInfo();
 
@@ -245,10 +244,6 @@ namespace CYM.UI.Particle
         private void RetryRefreshRenderer(bool recreateRenderer)
         {
             StartCoroutine(RetryRefreshRendererCor(recreateRenderer));
-#if UNITY_EDITOR
-            if (!Application.isPlaying)
-                needEditorRefresh = true;
-#endif
         }
 
         private IEnumerator RetryRefreshRendererCor(bool recreateRenderer)

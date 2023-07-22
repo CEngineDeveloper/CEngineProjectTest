@@ -80,7 +80,7 @@ namespace CYM.UI
         }
         #endregion
     }
-    [AddComponentMenu("UI/Control/UText")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UText))]
     [HideMonoScript]
     public class UText : UPres<UTextData>
     {

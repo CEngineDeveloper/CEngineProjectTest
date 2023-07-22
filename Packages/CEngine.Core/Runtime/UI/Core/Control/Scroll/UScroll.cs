@@ -30,7 +30,7 @@ namespace CYM.UI
         public Callback<UControl> OnCellVisibilityChanged;
         #endregion
     }
-    [AddComponentMenu("UI/Control/UScroll")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UScroll))]
     [HideMonoScript]
     public partial class UScroll : UPres<UScrollData>, 
         ICheckBoxContainer, 

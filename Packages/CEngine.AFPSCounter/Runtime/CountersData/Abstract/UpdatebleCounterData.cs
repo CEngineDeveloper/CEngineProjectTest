@@ -4,7 +4,7 @@
 //-------------------------------------------------------
 #endregion
 
-namespace CEngine.AdvancedFPSCounter.CountersData
+namespace CYM.AdvancedFPSCounter.CountersData
 {
 	using System.Collections;
 	using UnityEngine;

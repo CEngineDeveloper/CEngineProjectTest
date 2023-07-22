@@ -15,7 +15,7 @@ namespace CYM.UI
         public float MinVal = 0.0f;
         public string WVCClip = "UI_WVSlider";
     }
-    [AddComponentMenu("UI/Control/USlider")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(USlider))]
     [HideMonoScript]
     [RequireComponent(typeof(Slider))]
     public class USlider : UPres<USliderData>

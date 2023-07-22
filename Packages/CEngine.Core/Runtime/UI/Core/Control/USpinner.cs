@@ -7,6 +7,7 @@ using System;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace CYM.UI
 {
@@ -19,6 +20,7 @@ namespace CYM.UI
         public Callback<bool> OnValueChange;
         public Func<string> Value;
     }
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(USpinner))]
     public class USpinner : UPres<USpinnerData>
     {
         #region Inspector

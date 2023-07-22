@@ -12,6 +12,7 @@ using UnityEngine.UI;
 
 namespace CYM.UI
 {
+    [AddComponentMenu(SysConst.STR_MenuUITween + nameof(UITweenString))]
     public class UITweenString : UITween
     {
         #region inspector

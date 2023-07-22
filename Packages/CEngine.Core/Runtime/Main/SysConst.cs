@@ -96,8 +96,13 @@ namespace CYM
         public const string STR_AssemblyGameLogicEditor = "Assembly-CSharp-Editor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null";        
         public const string STR_AssemblyGameLogic = "Assembly-CSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null";
         public const string STR_AssemblyCEngine = "CEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null";
-        public const string STR_StartterMenu = "_"+nameof(Starter)+"/";
-        public const string STR_UIEffectMenu = "_UIEffect/";
+        public const string STR_MenuCEngine = "_CEngine/";
+        public const string STR_MenuStartter = STR_MenuCEngine + nameof(Starter)+"/";
+        public const string STR_MenuUIEffect = STR_MenuCEngine + "UIEffect/";
+        public const string STR_MenuUITween = STR_MenuCEngine + "UITween/";
+        public const string STR_MenuUIControl = STR_MenuCEngine + "UIControl/";
+        public const string STR_MenuSceneObj = STR_MenuCEngine + "SceneObj/";
+        public const string STR_MenuAloneUI = STR_MenuCEngine + "AloneUI/";
         #endregion
 
         #region 语言表配置

@@ -1,0 +1,45 @@
+{
+  "name": "com.cengine.restclient",
+  "version": "2.6.2",
+  "displayName": "CEngine.RestClient",
+  "description": "Simple HTTP and REST client for Unity based on Promises, also support Callbacks!",
+  "unity": "2017.1",
+  "unityRelease": "5f1",
+  "dependencies": {
+    "com.cengine.promise": "3.0.1",
+    "com.cengine.core": "1.0.0"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/proyecto26/RestClient.git"
+  },
+  "keywords": [
+    "Promises",
+    "Http",
+    "Rest",
+    "http-client",
+    "HttpClient",
+    "rest-client",
+    "RestClient",
+    "Request",
+    "API",
+    "Requests",
+    "APIs",
+    "JSON",
+    "Networking",
+    "message"
+  ],
+  "author": {
+    "name": "CYM",
+    "email": "jdnichollsc@hotmail.com",
+    "url": "https://github.com/proyecto26/RestClient"
+  },
+  "samples": [
+    {
+      "displayName": "Sample",
+      "description": "RestClient Sample",
+      "path": "Sample"
+    }
+  ]
+}

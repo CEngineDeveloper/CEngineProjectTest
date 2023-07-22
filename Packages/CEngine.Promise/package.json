@@ -1,0 +1,33 @@
+{
+  "name": "com.cengine.promise",
+  "version": "2.6.2",
+  "displayName": "CEngine.Promise",
+  "description": "Promise",
+  "unity": "2017.1",
+  "unityRelease": "5f1",
+  "dependencies": {
+    "com.cengine.core": "1.0.0"
+  },
+  "license": "MIT",
+  "keywords": [
+    "Promises",
+    "Http",
+    "Rest",
+    "http-client",
+    "HttpClient",
+    "rest-client",
+    "RestClient",
+    "Request",
+    "API",
+    "Requests",
+    "APIs",
+    "JSON",
+    "Networking",
+    "message"
+  ],
+  "author": {
+    "name": "CYM",
+    "email": "jdnichollsc@hotmail.com",
+    "url": "https://github.com/proyecto26/RestClient"
+  }
+}

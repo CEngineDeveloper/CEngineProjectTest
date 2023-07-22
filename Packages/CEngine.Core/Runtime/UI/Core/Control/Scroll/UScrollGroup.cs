@@ -13,7 +13,7 @@ using Sirenix.OdinInspector;
 
 namespace CYM.UI
 {
-    [AddComponentMenu("UI/Control/UScrollGroup")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UScrollGroup))]
     [HideMonoScript]
     public class UScrollGroup : UControl 
     {

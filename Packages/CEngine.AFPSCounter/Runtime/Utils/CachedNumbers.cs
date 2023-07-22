@@ -4,7 +4,7 @@
 //-------------------------------------------------------
 #endregion
 
-namespace CEngine.AdvancedFPSCounter.Utils
+namespace CYM.AdvancedFPSCounter.Utils
 {
 	using System.Globalization;
 	using System.Text;

@@ -4,7 +4,7 @@
 //-------------------------------------------------------
 #endregion
 
-namespace CEngine.AdvancedFPSCounter.Labels
+namespace CYM.AdvancedFPSCounter.Labels
 {
 	/// <summary>
 	/// Anchor, used to stick counters labels to the screen corners.

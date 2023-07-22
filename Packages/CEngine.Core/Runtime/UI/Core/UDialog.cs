@@ -11,6 +11,7 @@ using UnityEngine.EventSystems;
 using Sirenix.OdinInspector;
 namespace CYM.UI
 {
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UDialog))]
     public class UDialog : UContainer
     {
         [FoldoutGroup("FullScreen"), SerializeField]// UI界面是否为全屏

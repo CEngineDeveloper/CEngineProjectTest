@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace CYM.UI
 {
-    [AddComponentMenu("UI/Control/URawImage")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(URawImage))]
     [HideMonoScript]
     public class URawImage : UPres<UImageData> 
     {

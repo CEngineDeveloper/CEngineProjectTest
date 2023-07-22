@@ -10,7 +10,7 @@ namespace CYM.UI
         [HideInInspector]
         public Func<object, object> OnSorter = (x) => { return x; };
     }
-    [AddComponentMenu("UI/Control/UButton")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UButton))]
     [HideMonoScript]
     public class UButton : UPres<UButtonData>
     {

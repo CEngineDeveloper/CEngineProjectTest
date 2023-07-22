@@ -1,4 +1,4 @@
-﻿using HybridCLR.Editor;
+using HybridCLR.Editor;
 using HybridCLR.Editor.Commands;
 using System.Collections.Generic;
 using System.IO;
@@ -12,9 +12,8 @@ namespace CYM
     {
         public static string HybridCLRBuildCacheDir => Application.dataPath + "/Resources/Temp/HybridCLRBuildCache";
 
-        public static string AssetBundleOutputDir => $"{HybridCLRBuildCacheDir}/AssetBundleOutput";
+        public static string AssetBundleOutputDir => $"{Application.streamingAssetsPath}";
 
-        public static string AssetBundleSourceDataTempDir => $"{HybridCLRBuildCacheDir}/AssetBundleSourceData";
 
         public static List<string> AOTMetaAssemblyNames { get; } = new List<string>()
         {
@@ -38,7 +37,6 @@ namespace CYM
         {
             Directory.CreateDirectory(tempDir);
             Directory.CreateDirectory(outputDir);
-            CompileDllCommand.CompileDll(target);
 
             List<AssetBundleBuild> abs = new List<AssetBundleBuild>();
 
@@ -69,56 +67,39 @@ namespace CYM
             }
 
 
+            var hotUpdateDllAssets = new List<string>();
+
+            string hotfixDllSrcDir = SettingsUtil.GetHotUpdateDllsOutputDirByTarget(target);
+            foreach (var dll in SettingsUtil.HotUpdateAssemblyNamesExcludePreserved)
             {
-                var hotUpdateDllAssets = new List<string>();
-
-                string hotfixDllSrcDir = SettingsUtil.GetHotFixDllsOutputDirByTarget(target);
-                foreach (var dll in SettingsUtil.HotUpdateAssemblyFiles)
-                {
-                    string dllPath = $"{hotfixDllSrcDir}/{dll}";
-                    string dllBytesPath = $"{tempDir}/{dll}.bytes";
-                    File.Copy(dllPath, dllBytesPath, true);
-                    hotUpdateDllAssets.Add(dllBytesPath);
-                    Debug.Log($"[BuildAssetBundles] copy hotfix dll {dllPath} -> {dllBytesPath}");
-                }
-
-                abs.Add(new AssetBundleBuild
-                {
-                    assetBundleName = "hotupdatedlls"+SysConst.Extention_AssetBundle,
-                    assetNames = hotUpdateDllAssets.Select(s => ToRelativeAssetPath(s)).ToArray(),
-                });;
+                string dllPath = $"{hotfixDllSrcDir}/{dll}.dll";
+                string dllBytesPath = $"{tempDir}/{dll}.bytes";
+                File.Copy(dllPath, dllBytesPath, true);
+                hotUpdateDllAssets.Add(dllBytesPath);
+                Debug.Log($"[BuildAssetBundles] copy hotfix dll {dllPath} -> {dllBytesPath}");
             }
 
-            BuildPipeline.BuildAssetBundles(outputDir, abs.ToArray(), BuildAssetBundleOptions.None, target);
-
-            AssetDatabase.Refresh(ImportAssetOptions.ForceUpdate);
-
-            string streamingAssetPathDst = $"{Application.streamingAssetsPath}";
-            Directory.CreateDirectory(streamingAssetPathDst);
-
-            foreach (var ab in abs)
+            abs.Add(new AssetBundleBuild
             {
-                AssetDatabase.CopyAsset(ToRelativeAssetPath($"{outputDir}/{ab.assetBundleName}"),
-                    ToRelativeAssetPath($"{streamingAssetPathDst}/{ab.assetBundleName}"));
-            }
+                assetBundleName = "hotupdatedlls" + SysConst.Extention_AssetBundle,
+                assetNames = hotUpdateDllAssets.Select(s => ToRelativeAssetPath(s)).ToArray(),
+            });
+
+            AssetDatabase.Refresh();
+            BuildPipeline.BuildAssetBundles(outputDir, abs.ToArray(), BuildAssetBundleOptions.ForceRebuildAssetBundle, target);
+            File.Delete(Application.streamingAssetsPath+"/StreamingAssets");
+            File.Delete(Application.streamingAssetsPath + "/StreamingAssets.manifest");
+            AssetDatabase.Refresh();
         }
 
-        public static void BuildAssetBundleByTarget(BuildTarget target, bool buildAot)
+        public static void BuildAssetBundleActiveBuildTarget()
         {
-            BuildAssetBundles(AssetBundleSourceDataTempDir, AssetBundleOutputDir, target, buildAot);
+            BuildAssetBundles(HybridCLRBuildCacheDir, AssetBundleOutputDir, EditorUserBuildSettings.activeBuildTarget, true);
         }
 
-        //[MenuItem("HybridCLR/BuildBundles/BuildAll")]
-        public static void BuildSceneAssetBundleActiveBuildTarget()
+        public static void BuildAssetBundleActiveBuildTargetExcludeAOT()
         {
-            BuildAssetBundleByTarget(EditorUserBuildSettings.activeBuildTarget, true);
-        }
-
-
-        //[MenuItem("HybridCLR/BuildBundles/BuildBundle")]
-        public static void BuildSceneAssetBundleActiveBuildTargetExcludeAOT()
-        {
-            BuildAssetBundleByTarget(EditorUserBuildSettings.activeBuildTarget, false);
+            BuildAssetBundles(HybridCLRBuildCacheDir, AssetBundleOutputDir, EditorUserBuildSettings.activeBuildTarget, false);
         }
 
 

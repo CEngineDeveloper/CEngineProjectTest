@@ -239,6 +239,7 @@ MonoBehaviour:
     Duration: 0.2
     Delay: 0
     IsReset: 0
+    UseCheck: 0
     InEase: 27
     OutEase: 26
     From: 0.5
@@ -251,6 +252,7 @@ MonoBehaviour:
     Duration: 0.2
     Delay: 0
     IsReset: 0
+    UseCheck: 0
     InEase: 27
     OutEase: 26
     From: {r: 0.5, g: 0.5, b: 0.5, a: 1}
@@ -263,6 +265,7 @@ MonoBehaviour:
     Duration: 0.2
     Delay: 0
     IsReset: 0
+    UseCheck: 0
     InEase: 27
     OutEase: 26
     From: {x: 0.5, y: 0.5}
@@ -274,6 +277,7 @@ MonoBehaviour:
     Duration: 0.2
     Delay: 0
     IsReset: 0
+    UseCheck: 0
     InEase: 27
     OutEase: 26
     From: {x: 0.5, y: 0.5}
@@ -285,6 +289,7 @@ MonoBehaviour:
     Duration: 0.2
     Delay: 0
     IsReset: 0
+    UseCheck: 0
     InEase: 27
     OutEase: 26
     From: 0.5
@@ -468,8 +473,8 @@ MonoBehaviour:
   IsActiveByShow: 0
   ShowType: 0
   MutexGroup: 0
-  IsAlphaShow: 0
-  IsColorShow: 1
+  IsAlphaShow: 1
+  IsColorShow: 0
   IsPosShow: 0
   IsScaleShow: 0
   IsSimpleShow: 0
@@ -478,21 +483,23 @@ MonoBehaviour:
     IsSameDuration: 1
     OpenDuration: 0.2
     CloseDuration: 0.2
-    Duration: 0.2
+    Duration: 0.5
     Delay: 0
-    IsReset: 0
-    InEase: 27
-    OutEase: 26
-    From: 0.5
+    IsReset: 1
+    UseCheck: 0
+    InEase: 1
+    OutEase: 1
+    From: 0
     To: 1
   ColorShow:
     Target: {fileID: 0}
     IsSameDuration: 1
     OpenDuration: 0.2
     CloseDuration: 0.2
-    Duration: 0.2
+    Duration: 0.5
     Delay: 0
-    IsReset: 0
+    IsReset: 1
+    UseCheck: 0
     InEase: 1
     OutEase: 1
     From: {r: 0, g: 0, b: 0, a: 0}
@@ -505,6 +512,7 @@ MonoBehaviour:
     Duration: 0.2
     Delay: 0
     IsReset: 0
+    UseCheck: 0
     InEase: 27
     OutEase: 26
     From: {x: 0.5, y: 0.5}
@@ -516,6 +524,7 @@ MonoBehaviour:
     Duration: 0.2
     Delay: 0
     IsReset: 0
+    UseCheck: 0
     InEase: 27
     OutEase: 26
     From: {x: 0.5, y: 0.5}
@@ -527,6 +536,7 @@ MonoBehaviour:
     Duration: 0.2
     Delay: 0
     IsReset: 0
+    UseCheck: 0
     InEase: 1
     OutEase: 1
     From: 0

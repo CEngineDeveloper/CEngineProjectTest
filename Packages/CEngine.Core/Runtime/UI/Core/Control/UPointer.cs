@@ -11,6 +11,7 @@ using Sirenix.OdinInspector;
 
 namespace CYM
 {
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UPointer))]
     public class UPointer : UControl 
     {
         [SerializeField, ChildGameObjectsOnly]

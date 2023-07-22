@@ -22,7 +22,7 @@ namespace CYM.UI
         public Func<Sprite> Icon2 = null;
         public Func<Sprite> Bg2 = null;
     }
-    [HideMonoScript,AddComponentMenu("UI/Control/UCustom")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UCustom))]
     public class UCustom : UPres<UCustomData>
     {
         #region 组建

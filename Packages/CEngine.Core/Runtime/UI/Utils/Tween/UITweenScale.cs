@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace CYM.UI
 {
+    [AddComponentMenu(SysConst.STR_MenuUITween + nameof(UITweenScale))]
     public class UITweenScale : UITween
     {
         #region inspector

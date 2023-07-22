@@ -10,6 +10,8 @@ using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 
 namespace CYM.DLC
@@ -237,21 +239,21 @@ namespace CYM.DLC
         #endregion
 
         #region get all path
-        public string[] GetAllLanguages() => GetAllFilies(SysConst.Dir_Language, "*.bytes");
-        public string[] GetAllLuas() => GetAllFilies(SysConst.Dir_Lua, "*.txt");
+        public string[] GetAllLanguages() => GetAllFilies(SysConst.Dir_Language, "*.*");
+        public string[] GetAllLuas() => GetAllFilies(SysConst.Dir_Lua, "*.lua");
         public string[] GetAllTexts() => GetAllFilies(SysConst.Dir_TextAssets, "*.txt");
-        public string[] GetAllExcel() => GetAllFilies(SysConst.Dir_Excel, "*.bytes");
+        public string[] GetAllExcel() => GetAllFilies(SysConst.Dir_Excel, "*.*");
         string[] GetAllFilies(string dir,string extension)
         {
-            string fullPath = "";
+            string fullPath;
             if (IsEditorMode)
                 fullPath = Path.Combine(AssetsRootPath, dir);
             else
                 fullPath = Path.Combine(TargetPath, dir);
 
             List<string> fileList = new List<string>();
-            GetFiles(ref fileList, fullPath, extension);
-            return fileList.ToArray();
+            var ret = FileUtil.GetFiles(fullPath, extension, SearchOption.AllDirectories)?.Where(x=>!x.EndsWith(".meta"));
+            return ret?.ToArray();
         }
         #endregion
 
@@ -281,11 +283,6 @@ namespace CYM.DLC
         {
             if (ABManifest == null) return null;
             return ABManifest.GetAllDependencies(assetBundleName);
-        }
-        private void GetFiles(ref List<string> data, string path, string extend)
-        {
-            var temp = FileUtil.GetFiles(path, extend, SearchOption.AllDirectories);
-            if (temp != null) data.AddRange(temp);
         }
         private string CalcAssetRootPath(string dlcName,bool force=false)
         {

@@ -20,7 +20,7 @@ namespace CYM.UI
         public Func<List<string>> Castles;
         public Func<string> Capital = null;
     }
-    [AddComponentMenu("UI/Control/UPosMap")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UPosMap))]
     [HideMonoScript]
     public class UPosMap : UPres<UPosMapData>
     {

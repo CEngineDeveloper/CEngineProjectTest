@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace CYM.UI
 {
-    [AddComponentMenu("UI/Control/UScrollRect")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UScrollRect))]
     [HideMonoScript]
     public class UScrollRect : UPres<UData>
     {

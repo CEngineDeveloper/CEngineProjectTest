@@ -12,7 +12,7 @@ namespace CYM.UI
     {
         public Callback<Vector3> OnClickOrDragMapPos;
     }
-    [AddComponentMenu("UI/Control/UMinMap")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UMinMap))]
     [HideMonoScript][RequireComponent(typeof(CanvasRenderer))]
     public class UMinMap : UPres<UMinMapData>
     {

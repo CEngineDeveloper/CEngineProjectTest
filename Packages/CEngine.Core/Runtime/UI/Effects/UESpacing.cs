@@ -47,7 +47,7 @@ using Sirenix.OdinInspector;
 namespace CYM.UI
 {
     [HideMonoScript]
-    [AddComponentMenu(SysConst.STR_UIEffectMenu + "UELetterSpacing", 14), RequireComponent(typeof(Text))]
+    [AddComponentMenu(SysConst.STR_MenuUIEffect + "UELetterSpacing", 14), RequireComponent(typeof(Text))]
     public class UESpacing : BaseMeshEffect, ILayoutElement
     {
         [SerializeField] 

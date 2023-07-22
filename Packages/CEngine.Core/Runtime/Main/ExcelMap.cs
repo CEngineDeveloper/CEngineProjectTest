@@ -138,7 +138,7 @@ namespace CYM
             Datas.Clear();
             MapDatas.Clear();
             Params.Clear();
-            WorkBook workBook = BaseExcelMgr.ReadWorkbook(buffer);
+            WorkBook workBook = ExcelUtil.ReadWorkbook(buffer);
             if (workBook != null && workBook.Count > 0)
             {
                 foreach (var sheet in workBook)

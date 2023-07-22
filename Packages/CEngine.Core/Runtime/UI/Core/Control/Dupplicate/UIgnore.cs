@@ -9,7 +9,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 namespace CYM.UI
 {
-    [AddComponentMenu("UI/Control/UIgnore")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UIgnore))]
     [HideMonoScript]
     public class UIgnore : MonoBehaviour 
     {

@@ -10,7 +10,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using UnityEngine;
 
 namespace CYM
 {
@@ -21,7 +20,6 @@ namespace CYM
         public TData Gold { get; protected set; }
         public IDDicList<TData> Data { get; protected set; } = new IDDicList<TData>();
         public event Callback<TData> Callback_OnAdd;
-        public event Callback<TData> Callback_OnSpawnGold;
         public event Callback<TData> Callback_OnSpawn;
         public event Callback<TData> Callback_OnDespawn;
         public event Callback<TData> Callback_OnDataChanged;

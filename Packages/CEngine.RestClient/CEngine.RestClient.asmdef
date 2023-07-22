@@ -1,0 +1,17 @@
+{
+    "name": "CEngine.RestClient",
+    "rootNamespace": "",
+    "references": [
+        "GUID:37c7be5c33b1a0941833141788850526",
+        "GUID:b7ba80c9ad7e13c40924b7d308d251c4"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

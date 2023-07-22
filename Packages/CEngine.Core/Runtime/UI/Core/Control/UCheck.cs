@@ -43,7 +43,7 @@ namespace CYM.UI
         }
         #endregion
     }
-    [AddComponentMenu("UI/Control/UCheck")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UCheck))]
     [HideMonoScript]
     public class UCheck : UPres<UCheckData>
     {
@@ -306,6 +306,8 @@ namespace CYM.UI
             }
             else
             {
+                IActiveIcon?.SetActive(true);
+                IActiveBg?.SetActive(true);
                 if (IsOn)
                 {
                     IActiveIcon?.CrossFadeAlpha(Inverse ? 0.0f : 1.0f, SwitchDuration, true);
@@ -314,7 +316,7 @@ namespace CYM.UI
                 else
                 {
                     IActiveIcon?.CrossFadeAlpha(Inverse ? 1.0f : 0.0f, SwitchDuration, true);
-                    IActiveBg?.CrossFadeAlpha(Inverse ? 0.0f : 1.0f, SwitchDuration, true);
+                    IActiveBg?.CrossFadeAlpha(Inverse ? 1.0f : 0.0f, SwitchDuration, true);
                 }
             }
 

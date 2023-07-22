@@ -162,6 +162,7 @@ namespace CYM.UI
         protected Corouter MainUICoroutine => BaseGlobal.MainUICorouter;
         protected Corouter BattleCoroutine => BaseGlobal.BattleCorouter;
         protected List<DirtyAction> DirtyActions = new List<DirtyAction>();
+        UIScrollbarFixeder[] scrollbarFixeders;
         #endregion
 
         #region life
@@ -217,6 +218,8 @@ namespace CYM.UI
             {
                 BaseGlobal.ScreenMgr.Callback_OnSetPlayer += OnSetPlayer;
             }
+
+            scrollbarFixeders = GetComponentsInChildren<UIScrollbarFixeder>(true);
         }
         public override void OnDestroy()
         {
@@ -485,7 +488,7 @@ namespace CYM.UI
         {
             Util.Invoke(() => SetDirtyAll(), delay);
         }
-        public virtual void Refresh() => IsDirtyRefresh = false;
+        public override void Refresh() => IsDirtyRefresh = false;
         public virtual void RefreshCell() => IsDirtyCell = false;
         public virtual void RefreshData() => IsDirtyData = false;
         public virtual void RefreshShow() => IsDirtyShow = false;
@@ -633,6 +636,11 @@ namespace CYM.UI
                 RectTrans.Translate(data.delta);
                 ClampToWindow();
                 IsDragged = true;
+                //foreach (var item in scrollbarFixeders)
+                //{
+                //    item.ForceUpdate();
+                //    item.UpdateVal();
+                //}
                 // 限制当前面板在父节点中的区域位置  
             }
         }

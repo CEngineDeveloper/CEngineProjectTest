@@ -28,7 +28,7 @@ namespace CYM.UI
     }
 
     //Index:-1为空，0同意，1拒绝，2未知
-    [AddComponentMenu("UI/Control/UState")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UState))]
     [HideMonoScript]
     public class UState : UPres<UStateData>
     {

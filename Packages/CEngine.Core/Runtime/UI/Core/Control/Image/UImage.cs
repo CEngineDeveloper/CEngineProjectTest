@@ -13,10 +13,8 @@ namespace CYM.UI
         public Func<Sprite> Frame;
         public string FrameStr;
     }
-    [AddComponentMenu("UI/Control/UImage")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UImage))]
     [HideMonoScript]
-
-    //[RequireComponent(typeof(Image))]
     public class UImage : UPres<UImageData>
     {
         #region 组建

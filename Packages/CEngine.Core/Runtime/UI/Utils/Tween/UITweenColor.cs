@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 namespace CYM.UI
 {
+    [AddComponentMenu(SysConst.STR_MenuUITween + nameof(UITweenColor))]
     public class UITweenColor : UITween
     {
         #region inspector

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using CYM.DLC;
+using CYM.Excel;
 //**********************************************
 // Class Name	: CYMBaseLanguage
 // Discription	：None
@@ -236,7 +237,7 @@ namespace CYM
         {
             //Load Resources Language
             var textAssets = Resources.Load<TextAsset>("SysLanguage");
-            LoadLanguageData(textAssets.bytes);
+            LoadLangugeData(textAssets.bytes,textAssets.name);
 
             //加载DLC 的 Language
             foreach (var dlc in DLCManager.LoadedDLCItems.Values)
@@ -244,9 +245,11 @@ namespace CYM
                 if (VersionUtil.IsEditorOrConfigMode)
                 {
                     string[] fileList = dlc.GetAllLanguages();
+                    if (fileList == null)
+                        continue;
                     foreach (var item in fileList)
                     {
-                        LoadLanguageData(File.ReadAllBytes(item));
+                        LoadLangugeData(File.ReadAllBytes(item), item);
                         yield return new WaitForEndOfFrame();
                     }
                 }
@@ -257,7 +260,12 @@ namespace CYM
                     {
                         foreach (var txt in assetBundle.LoadAllAssets<TextAsset>())
                         {
-                            LoadLanguageData(txt.bytes);
+                            LoadLangugeData(txt.bytes,txt.name);
+                            yield return new WaitForEndOfFrame();
+                        }
+                        foreach (var txt in assetBundle.LoadAllAssets<BytesAsset>())
+                        {
+                            LoadLangugeData(txt.Bytes, txt.name);
                             yield return new WaitForEndOfFrame();
                         }
                     }
@@ -268,97 +276,115 @@ namespace CYM
             yield break;
         }
 
-        void LoadLanguageData(byte[] buffer)
+        void LoadLangugeData(byte[] buffer,string name)
         {
-            var workbook = BaseExcelMgr.ReadWorkbook(buffer);
-            if (workbook == null)
+            if (ExcelUtil.IsBinary(buffer))
             {
-                CLog.Error("无法读取下面文件");
-                return;
-            }
-            //读取每一个Sheet
-            foreach (var sheet in workbook)
-            {
-                if (sheet.Count <= 0)
-                    continue;
-                if (sheet.Name.StartsWith(SysConst.Prefix_Lang_Notes))
-                    continue;
-                string lastedCategory = "";
-                int NumberOfRows = sheet.Rows.Count;
-                int NumberOfCols = sheet.Rows[0].Count;
-                if (NumberOfRows <= 0 || NumberOfCols <= 0) continue;
-                //读取行
-                for (int rowIndex = 0; rowIndex < NumberOfRows; ++rowIndex)
+                var workbook = ExcelUtil.ReadWorkbook(buffer);
+                if (workbook == null)
                 {
-                    #region key
-                    //读取第一行
-                    if (rowIndex == 0)
+                    CLog.Error($"无法读取Excel文件:{name}");
+                    return;
+                }
+                //读取每一个Sheet
+                foreach (var table in workbook)
+                {
+                    CLog.Info($"读取xlsx:{name}");
+                    ParseTable(table, name);
+                }
+            }
+            else
+            {
+                var doc = ExcelUtil.ReadCSV(buffer);
+                if (doc == null)
+                {
+                    CLog.Error($"无法读取CSV文件:{name}");
+                    return;
+                }
+                CLog.Info("开始解析csv:" + name);
+                ParseTable(doc, name);
+            }
+        }
+
+        void ParseTable(Table table,string name)
+        {
+            if (table.Count <= 0)
+                return;
+            if (table is WorkSheet sheet)
+            {
+                if (sheet.Name.StartsWith(SysConst.Prefix_Lang_Notes))
+                    return;
+            }
+            string lastedCategory = "";
+            int NumberOfRows = table.Rows.Count;
+            int NumberOfCols = table.Rows[0].Count;
+            if (NumberOfRows <= 0 || NumberOfCols <= 0) return;
+            //读取行
+            for (int rowIndex = 0; rowIndex < NumberOfRows; ++rowIndex)
+            {
+                #region key
+                //读取第一行
+                if (rowIndex == 0)
+                {
+                    for (int colIndex = 0; colIndex < NumberOfCols; ++colIndex)
                     {
-                        for (int colIndex = 0; colIndex < NumberOfCols; ++colIndex)
+                        string tempStr = table.Rows[rowIndex][colIndex].ToString();
+                        if (tempStr.IsInv()) continue;
+                        if (!FirstRowStrs.ContainsKey(tempStr))
                         {
-                            string tempStr = sheet.Rows[rowIndex][colIndex].ToString();
-                            if (tempStr.IsInv()) continue;
-                            if (!FirstRowStrs.ContainsKey(tempStr))
+                            continue;
+                        }
+                    }
+                }
+                #endregion
+                #region 读取翻译
+                //读取非首行
+                else
+                {
+                    string key = "";
+                    for (int colIndex = 0; colIndex < NumberOfCols; ++colIndex)
+                    {
+                        if (table.Rows[rowIndex].Count <= colIndex) continue;
+                        if (colIndex - 1 >= BuildConfig.Language.Count) continue;
+                        //读取key
+                        if (colIndex == 0)
+                        {
+                            key = table.Rows[rowIndex][colIndex].ToString();
+                            //跳过注释
+                            if (key.StartsWith(SysConst.Prefix_Lang_Notes))
                             {
-                                //CLog.Error("语言包错误!无效的首行:" + tempStr + ",TableName:" + sheet.Name + ",ID:" + sheet.ID);
-                                //foreach (var item in FirstRowStrs)
-                                //{
-                                //    CLog.Error("首行:" + item.Key.ToString());
-                                //}
+                                continue;
+                            }
+                            //跳过分类
+                            else if (key.StartsWith(SysConst.Prefix_Lang_Category))
+                            {
+                                lastedCategory = key.Remove(0, 1);
+                                continue;
+                            }
+                            //自动ID
+                            else if (key == SysConst.Prefix_Lang_AutoID)
+                            {
+                                key = IDUtil.GenString();
+                            }
+                            //跳过无效的字符
+                            else if (key.IsInv())
+                            {
                                 continue;
                             }
                         }
-                    }
-                    #endregion
-                    #region 读取翻译
-                    //读取非首行
-                    else
-                    {
-                        string key = "";
-                        for (int colIndex = 0; colIndex < NumberOfCols; ++colIndex)
+                        //读取desc
+                        else
                         {
-                            if (sheet.Rows[rowIndex].Count <= colIndex) continue;
-                            if (colIndex - 1 >= BuildConfig.Language.Count) continue;
-                            //读取key
-                            if (colIndex == 0)
-                            {
-                                key = sheet.Rows[rowIndex][colIndex].ToString();
-                                //跳过注释
-                                if (key.StartsWith(SysConst.Prefix_Lang_Notes))
-                                {
-                                    continue;
-                                }
-                                //跳过分类
-                                else if (key.StartsWith(SysConst.Prefix_Lang_Category))
-                                {
-                                    lastedCategory = key.Remove(0, 1);
-                                    continue;
-                                }
-                                //自动ID
-                                else if (key == SysConst.Prefix_Lang_AutoID)
-                                {
-                                    key = IDUtil.GenString();
-                                }
-                                //跳过无效的字符
-                                else if (key.IsInv())
-                                {
-                                    continue;
-                                }
-                            }
-                            //读取desc
-                            else
-                            {
-                                string firstRowKey = sheet.Rows[0][colIndex].ToString();
-                                if (!FirstRowStrs.ContainsKey(firstRowKey))
-                                    CLog.Error("语言包错误!无效的首行:" + firstRowKey);
-                                string desc = sheet.Rows[rowIndex][colIndex].ToString();
-                                if (desc.IsInv()) continue;
-                                Add(FirstRowStrs[firstRowKey], key, desc, "", lastedCategory);
-                            }
+                            string firstRowKey = table.Rows[0][colIndex].ToString();
+                            if (!FirstRowStrs.ContainsKey(firstRowKey))
+                                CLog.Error("语言包错误!无效的首行:" + firstRowKey);
+                            string desc = table.Rows[rowIndex][colIndex].ToString();
+                            if (desc.IsInv()) continue;
+                            Add(FirstRowStrs[firstRowKey], key, desc, "", lastedCategory);
                         }
                     }
-                    #endregion
                 }
+                #endregion
             }
         }
 

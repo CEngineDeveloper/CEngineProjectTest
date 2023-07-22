@@ -14,7 +14,7 @@ using CYM.DLC;
 using UnityEditor;
 using System;
 using System.Reflection;
-
+#pragma warning disable CS0414
 namespace CYM
 {
     public partial class DLCConfig : ScriptConfig<DLCConfig>

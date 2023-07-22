@@ -12,6 +12,7 @@ using System.Security.Cryptography;
 using Newtonsoft.Json;
 using System.Reflection;
 using UnityEditor.Compilation;
+using HybridCLR.Editor;
 
 namespace CYM
 {
@@ -29,7 +30,6 @@ namespace CYM
         #region prop
         static GUIStyle TitleStyle = new GUIStyle();
         static BuildConfig BuildConfig => BuildConfig.Ins;
-        static GameConfig GameConfig => GameConfig.Ins;
         static VersionConfig VersionConfig => VersionConfig.Ins;
         static LocalConfig LocalConfig => LocalConfig.Ins;
         static DLCConfig DLCConfig => DLCConfig.Ins;
@@ -41,7 +41,6 @@ namespace CYM
         protected static string FoldStyle = "AnimItemBackground";
         protected static string SceneButtonStyle = "ButtonMid;";
         static GUIStyle TitleStyleData;
-        static HybridCLRGlobalSettings HybridCLRGlobalSettings;
         static InstallerController HybridCLRInstallerController;
         #endregion
 
@@ -65,15 +64,24 @@ namespace CYM
             TitleStyle.fixedWidth = 100;
             EnsureLanguge();
             RefreshSceneNames();
+            RefreshHybridCLR();
             PluginConfig.Refresh();
             DLCConfig.Refresh();
             HybridCLRInstallerController = new InstallerController();
-            HybridCLRGlobalSettings = Resources.Load<HybridCLRGlobalSettings>(nameof(HybridCLRGlobalSettings));
             Ins.titleContent = new GUIContent("Build");
             Ins.Repaint();
             RefreshPlugin();
             PlatformSDK.RefreshDistribution();
             CLog.Info("打开开发者界面");
+        }
+        static void RefreshHybridCLR()
+        {
+            HybridCLRSettings.Instance.hotUpdateAssemblies = new string[] { "Assembly-CSharp" };
+            HybridCLRSettings.Instance.hotUpdateDllCompileOutputRootDir = "HybridCLRData/HotUpdateDlls";
+            HybridCLRSettings.Instance.strippedAOTDllOutputRootDir = "HybridCLRData/AssembliesPostIl2CppStrip";
+            HybridCLRSettings.Instance.outputLinkFile = "Resources/Temp/Generated/link.xml";
+            HybridCLRSettings.Instance.outputAOTGenericReferenceFile = "Resources/Temp/Generated/AOTGenericReferences.cs";
+            HybridCLRSettings.Save();
         }
         public static void RefreshPlugin()
         {
@@ -468,7 +476,7 @@ namespace CYM
             EditorGUILayout.BeginVertical(VerticalStyle);
             if (LocalConfig.FoldHotFix = EditorGUILayout.BeginFoldoutHeaderGroup(LocalConfig.FoldHotFix, "热更"))
             {
-                BuildConfig.IsHotFix = HybridCLRGlobalSettings.enable = EditorGUILayout.BeginToggleGroup("Enable HotFix", BuildConfig.IsHotFix);
+                BuildConfig.IsHotFix = HybridCLRSettings.Instance.enable = EditorGUILayout.BeginToggleGroup("Enable HotFix", BuildConfig.IsHotFix);
                 BuildConfig.TestIP = EditorGUILayout.TextField("Hotfix Test IP", BuildConfig.TestIP);
                 BuildConfig.PublicIP = EditorGUILayout.TextField("Hotfix Public IP", BuildConfig.PublicIP);
                 GUILayout.BeginHorizontal();
@@ -492,68 +500,18 @@ namespace CYM
                 EditorGUILayout.BeginVertical();
                 if (HybridCLRInstallerController.HasInstalledHybridCLR())
                 {
-                    EditorGUILayout.Space();
-                    LocalConfig.FoldHotFixGenerate = EditorGUILayout.Toggle("Show Generate Detail", LocalConfig.FoldHotFixGenerate, (GUIStyle)"SoloToggle");
-                    EditorGUILayout.Space();
-                    if (GUILayout.Button("CompileDll"))
+                    if (GUILayout.Button("GenerateAll"))
                     {
-                        CompileDllCommand.CompileDllActiveBuildTarget();
+                        PrebuildCommand.GenerateAll();
                     }
-
-                    if (!LocalConfig.FoldHotFixGenerate)
+                    if (GUILayout.Button("BuildHotFix"))
                     {
-                        if (GUILayout.Button("GenerateAll"))
-                        {
-                            PrebuildCommand.GenerateAll();
-                        }
+                        HybridCLRBuilder.BuildAssetBundleActiveBuildTarget();
                     }
-                    else
+                    if (GUILayout.Button("BuildAll"))
                     {
-                        if (GUILayout.Button("LinkXml"))
-                        {
-                            LinkGeneratorCommand.GenerateLinkXml();
-                        }
-                        if (GUILayout.Button("MethodBridge"))
-                        {
-                            MethodBridgeGeneratorCommand.GenerateMethodBridge();
-                        }
-                        if (GUILayout.Button("AOTGenericReference"))
-                        {
-                            AOTReferenceGeneratorCommand.GenerateAOTGenericReference();
-                        }
-                        if (GUILayout.Button("ReversePInvokeWrapper"))
-                        {
-                            ReversePInvokeWrapperGeneratorCommand.GenerateReversePInvokeWrapper();
-                        }
-                    }
-
-                    if (GUILayout.Button("Build HotFix Bundle"))
-                    {
-                        HybridCLRBuilder.BuildSceneAssetBundleActiveBuildTarget();
-                    }
-                    if (GUILayout.Button("Build HotFix All"))
-                    {
-                        BuildHotFix();
-                    }
-                    if (GUILayout.Button("Build All"))
-                    {
-                        if (CheckEorr()) return;
-                        if (!CheckDevBuildWarring()) return;
-                        if (!CheckAuthority()) return;
-                        if (!CheckKey()) return;
-                        RefreshData();
-
-                        BuildHotFix();
-
-                        Builder.BuildNativeBundle();
-                        Builder.BuildEXE();
-                        SaveDownloadFile();
-                        EditorUtility.DisplayDialog("提示!", $"恭喜! 一键打包已经打包完成!!", "确定");
-                        CLog.Green($"恭喜! 一键打包已经打包完成!!");
-                        EditorApplication.Beep();
-                    }
-                    if (GUILayout.Button("Generate Download List"))
-                    {
+                        PrebuildCommand.GenerateAll();
+                        HybridCLRBuilder.BuildAssetBundleActiveBuildTarget();
                         SaveDownloadFile();
                     }
                 }
@@ -570,14 +528,6 @@ namespace CYM
             }
             EditorGUILayout.EndFoldoutHeaderGroup();
             EditorGUILayout.EndVertical();
-        }
-        static void BuildHotFix()
-        {
-            if (!HybridCLRGlobalSettings.enable)
-                return;
-            CompileDllCommand.CompileDllActiveBuildTarget();
-            PrebuildCommand.GenerateAll();
-            HybridCLRBuilder.BuildSceneAssetBundleActiveBuildTarget();
         }
         #endregion
 
@@ -743,6 +693,7 @@ namespace CYM
                 else if (GUILayout.Button("Prefs")) PrefsWindow.ShowWindow();
                 else if (GUILayout.Button("ColorPicker")) ColorPickerWindow.ShowWindow();
                 else if (GUILayout.Button("UnityTexture")) UnityTextureWindow.ShowWindow();
+                else if (GUILayout.Button("EditorIcon")) EditorIconsWindows.ShowWindow();
                 else if (GUILayout.Button("Screenshot")) ScreenshotWindow.ShowWindow();
                 else if (GUILayout.Button("Console")) ScriptConfigWindow.ShowConfigWindow(TestConfig.Ins);
             }
@@ -780,7 +731,8 @@ namespace CYM
         }
         public static void Save()
         {
-            EditorUtility.SetDirty(HybridCLRGlobalSettings);
+            //EditorUtility.SetDirty(HybridCLRGlobalSettings);
+            HybridCLRSettings.Save();
             ScriptConfigHub.SaveConfig();
             AssetDatabase.Refresh();
         }
@@ -898,9 +850,11 @@ namespace CYM
                     .Where(file => !file.ToLower().EndsWith("json"))
                     .ToList();
 
+            float curProgress = 0;
             Dictionary<string, DownloadData> predonwload = new Dictionary<string, DownloadData>();
             foreach (var item in pathes)
             {
+                EditorUtility.DisplayProgressBar("处理清单中",item, curProgress/ pathes.Count);
                 string md5Hash = "";
                 using (FileStream fs = File.OpenRead(item))
                 {
@@ -912,7 +866,9 @@ namespace CYM
 
                 var filename = item.Replace(findPath + "\\", "");
                 predonwload.Add(filename, new DownloadData { IsPredownload = true, HashCode = md5Hash });
+                curProgress++;
             }
+            EditorUtility.ClearProgressBar();
             var serdata = JsonConvert.SerializeObject(predonwload, Formatting.Indented);
             File.WriteAllText(Path.Combine(Application.streamingAssetsPath, SysConst.File_Download), serdata);
             AssetDatabase.Refresh();

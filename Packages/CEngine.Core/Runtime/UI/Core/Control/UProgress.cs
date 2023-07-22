@@ -18,7 +18,7 @@ namespace CYM.UI
         public bool IsTween = false;
         public float TweenDuration = 1.0f;
     }
-    [AddComponentMenu("UI/Control/UProgress")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UProgress))]
     [HideMonoScript]
     public class UProgress : UPres<UProgressData>
     {

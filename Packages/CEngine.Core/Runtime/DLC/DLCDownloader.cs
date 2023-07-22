@@ -53,7 +53,19 @@ namespace CYM.DLC
         #endregion
 
         #region get
-        public static float DownloadProgress => (float)DownloadedAssets.Count / (float)ServerPredonwloadAssets.Count;
+        public static bool IsNeedDownload()
+        {
+            return ServerPredonwloadAssets.Count != 0;
+        }
+        public static float DownloadProgress
+        {
+            get
+            {
+                if (ServerPredonwloadAssets.Count == 0)
+                    return 1;
+                return (float)DownloadedAssets.Count / (float)ServerPredonwloadAssets.Count;
+            }
+        }
         static string GetBundleNetPath(string filename)
         {
             string uri = FullNetPath + filename;
@@ -137,7 +149,7 @@ namespace CYM.DLC
                 UnityWebRequest request;
                 request = UnityWebRequest.Get(path);
                 yield return request.SendWebRequest();
-                if (!request.isNetworkError && !request.isHttpError)
+                if (request.result == UnityWebRequest.Result.Success)//!request.isNetworkError && !request.isHttpError
                 {
                     ServerPredonwloadAssets = JsonConvert.DeserializeAnonymousType(request.downloadHandler.text, ServerPredonwloadAssets);
                     Debug.Log($"Read Download Config Success!!{path}");
@@ -170,7 +182,7 @@ namespace CYM.DLC
             }
             request = UnityWebRequest.Get(uri);
             yield return request.SendWebRequest();
-            if (!request.isNetworkError && !request.isHttpError)   
+            if (request.result == UnityWebRequest.Result.Success)   
             {
                 if (!DownloadedUnityWebRequest.ContainsKey(item))
                 {

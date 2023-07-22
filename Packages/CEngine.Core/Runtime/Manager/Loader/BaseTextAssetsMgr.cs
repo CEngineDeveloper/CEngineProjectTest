@@ -22,7 +22,10 @@ namespace CYM
             {
                 if (VersionUtil.IsEditorOrConfigMode)
                 {
-                    foreach (var file in dlc.GetAllTexts())
+                    var files = dlc.GetAllTexts();
+                    if (files == null)
+                        continue;
+                    foreach (var file in files)
                     {
                         string fileName = Path.GetFileName(file);
                         Data.Add(fileName, File.ReadAllText(file));

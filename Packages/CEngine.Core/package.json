@@ -9,7 +9,7 @@
     "changelogUrl": "https://www.baidu.com/",
     "licensesUrl": "https://www.baidu.com/",
     "dependencies": {
-      "com.focus-creative-games.hybridclr_unity": "0.3.4",
+      "com.code-philosophy.hybridclr": "3.2.1",
       "com.unity.burst": "1.7.4",
       "com.unity.collections": "1.2.4",
       "com.unity.inputsystem": "1.5.0",

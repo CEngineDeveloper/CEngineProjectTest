@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace CYM.UI
 {
+    [AddComponentMenu(SysConst.STR_MenuUITween + nameof(UITweenPosition))]
     public class UITweenPosition : UITween
     {
         #region inspector

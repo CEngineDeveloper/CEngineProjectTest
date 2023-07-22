@@ -37,7 +37,6 @@ namespace CYM
         public event Callback<BaseUnit> Callback_OnRightUp;
         public event Callback<BaseUnit> Callback_OnLeftClick;
         public event Callback<BaseUnit> Callback_OnRightClick;
-        public event Callback Callback_OnInputMapChanged;
         public event Callback Callback_OnAnyKeyDown;
         #endregion
 
@@ -118,7 +117,7 @@ namespace CYM
                 return Time.time - LongPressTimeFlag;
             }
         }
-        public static float PreLongPressTime { get; private set; }
+        //public static float PreLongPressTime { get; private set; }
         #endregion
 
         #region pub prop
@@ -175,8 +174,8 @@ namespace CYM
         {
             if (LongPressTime >= duration)
                 return true;
-            if (PreLongPressTime >= duration)
-                return true;
+            //if (PreLongPressTime >= duration)
+            //    return true;
             return false;
         }
         public static bool IsSelectUnit(BaseUnit unit)
@@ -681,7 +680,7 @@ namespace CYM
             {
                 if (Input.touchCount != 1 || Input.touches[0].phase == UnityEngine.TouchPhase.Ended)
                 {
-                    if (PreLongPressTime < 0.2f ||
+                    if (//PreLongPressTime < 0.2f ||
                         LongPressTime<0.2f)
                     {
                         if (IsLastHitUI)
@@ -771,12 +770,12 @@ namespace CYM
         {
             if (GetUp(false))
             {
-                PreLongPressTime = LongPressTimeFlag;
+                //PreLongPressTime = LongPressTimeFlag;
                 LongPressTimeFlag = 0;
             }
             if (GetDown(false))
             {
-                PreLongPressTime = 0;
+                //PreLongPressTime = 0;
                 LongPressTimeFlag = Time.time;
             }
         }
@@ -1168,6 +1167,8 @@ namespace CYM
         {
             get
             {
+                if (!Application.isMobilePlatform)
+                    return Vector2.zero;
                 if (Input.touchCount > 0) 
                     return Input.touches[0].position;
                 return Vector2.zero;
@@ -1175,6 +1176,8 @@ namespace CYM
         }
         static public bool GetTouchStationary(bool checkUI = true)
         {
+            if (!Application.isMobilePlatform)
+                return false;
             if ((IsStayInUI) && checkUI) return false;
             if (Input.touchCount != 1) return false;
             else if (Input.touches[0].phase == UnityEngine.TouchPhase.Stationary) return true;
@@ -1182,6 +1185,8 @@ namespace CYM
         }
         static public bool GetTouchDown(bool checkUI = true)
         {
+            if (!Application.isMobilePlatform)
+                return false;
             if ((IsStayInUI) && checkUI) return false;
             if (Input.touchCount != 1) return false;
             else if (Input.touches[0].phase == UnityEngine.TouchPhase.Began) return true;
@@ -1189,6 +1194,8 @@ namespace CYM
         }
         static public bool GetTouchUp(bool checkUI = true)
         {
+            if (!Application.isMobilePlatform)
+                return false;
             if ((IsStayInUI) && checkUI) return false;
             if (Input.touchCount != 1) return false;
             else if (Input.touches[0].phase == UnityEngine.TouchPhase.Ended) return true;
@@ -1196,6 +1203,8 @@ namespace CYM
         }
         public static bool GetTouchPress(float duration=0.5f, bool checkUI = true)
         {
+            if (!Application.isMobilePlatform)
+                return false;
             if ((IsStayInUI) && checkUI) return false;
             if (GetTouchStationary() && IsSameTouchPt())
             {
@@ -1206,6 +1215,8 @@ namespace CYM
         }
         public static bool GetTouchCount(int count)
         {
+            if (!Application.isMobilePlatform)
+                return false;
             if (count <= 0)
                 return false;
             return Input.touchCount >= count;

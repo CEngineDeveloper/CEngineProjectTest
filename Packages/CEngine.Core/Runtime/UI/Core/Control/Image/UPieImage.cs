@@ -17,7 +17,7 @@ namespace CYM.UI
     {
         public Func<List<float>> Value;
     }
-    [HideMonoScript,AddComponentMenu("UI/Control/UPieImage")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UPieImage))]
     public class UPieImage : UPres<UPieImageData>
     {
         [SerializeField, ChildGameObjectsOnly]

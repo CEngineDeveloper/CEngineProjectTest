@@ -5,7 +5,7 @@
 #endregion
 
 #pragma warning disable 169
-namespace CEngine.AdvancedFPSCounter
+namespace CYM.AdvancedFPSCounter
 {
     using System.Collections.Generic;
 
@@ -32,7 +32,7 @@ namespace CEngine.AdvancedFPSCounter
 		// ----------------------------------------------------------------------------
 		// constants
 		// ----------------------------------------------------------------------------
-		private const string MenuPath = SysConst.STR_StartterMenu + "Advanced FPS Counter";
+		private const string MenuPath = SysConst.STR_MenuStartter + "Advanced FPS Counter";
 		private const string ComponentName = "Advanced FPS Counter";
 
 #if UNITY_EDITOR
@@ -824,12 +824,12 @@ namespace CEngine.AdvancedFPSCounter
 
 			/* editor-only checks */
 
-#if UNITY_EDITOR
-			if (!IsPlacedCorrectly())
-			{
-				Debug.LogWarning(LogPrefix + "incorrect placement detected! Please, use \"" + GameObjectMenuGroup + MenuPath + "\" menu to fix it!", this);
-			}
-#endif
+//#if UNITY_EDITOR
+//			if (!IsPlacedCorrectly())
+//			{
+//				Debug.LogWarning(LogPrefix + "incorrect placement detected! Please, use \"" + GameObjectMenuGroup + MenuPath + "\" menu to fix it!", this);
+//			}
+//#endif
 
 			/* initialization */
 

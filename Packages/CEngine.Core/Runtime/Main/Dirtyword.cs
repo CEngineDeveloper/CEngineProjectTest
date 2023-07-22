@@ -203,7 +203,7 @@ namespace CYM
             if (buffer == null)
                 return;
             HashSet<string> dirtyWord = new HashSet<string>();
-            WorkBook workBook = BaseExcelMgr.ReadWorkbook(buffer);
+            WorkBook workBook = ExcelUtil.ReadWorkbook(buffer);
             if (workBook != null && workBook.Count > 0)
             {
                 foreach (var sheet in workBook)

@@ -4,7 +4,7 @@
 //-------------------------------------------------------
 #endregion
 
-namespace CEngine.AdvancedFPSCounter.Labels
+namespace CYM.AdvancedFPSCounter.Labels
 {
 	using UnityEngine;
 

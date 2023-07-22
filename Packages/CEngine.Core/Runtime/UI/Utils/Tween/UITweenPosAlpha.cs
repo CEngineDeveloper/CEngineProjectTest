@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace CYM.UI
 {
+    [AddComponentMenu(SysConst.STR_MenuUITween + nameof(UITweenPosAlpha))]
     public class UITweenPosAlpha : UITween
     {
         #region inspector

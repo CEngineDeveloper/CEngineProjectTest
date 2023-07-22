@@ -9,6 +9,7 @@
 using UnityEngine;
 namespace CYM
 {
+    [AddComponentMenu(SysConst.STR_MenuSceneObj + nameof(SunObj))]
     public sealed class SunObj : SceneObj<Light, SunObj> 
     {
     }

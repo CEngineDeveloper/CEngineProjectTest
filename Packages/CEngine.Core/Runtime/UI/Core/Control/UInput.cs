@@ -9,7 +9,7 @@ namespace CYM.UI
         public Callback<string> OnValueChange;
         public Callback<string> OnEndEdit;
     }
-    [AddComponentMenu("UI/Control/UInput")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UInput))]
     [HideMonoScript]
     [RequireComponent(typeof(InputField))]
     public class UInput : UPres<UInputData>

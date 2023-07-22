@@ -45,5 +45,10 @@ namespace CYM.ScriptTemplates
         {
             return !(left == right);
         }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }

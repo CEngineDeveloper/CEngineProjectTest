@@ -14,7 +14,7 @@ namespace CYM.UI
         public Callback<int> OnValueChanged;
         public Func<int> Value;
     }
-    [AddComponentMenu("UI/Control/UDropdown")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UDropdown))]
     [HideMonoScript]
     [RequireComponent(typeof(Dropdown))]
     public class UDropdown : UPres<UDropdownData>

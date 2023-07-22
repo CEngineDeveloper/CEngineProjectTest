@@ -48,6 +48,8 @@ namespace CYM
                 if (VersionUtil.IsEditorOrConfigMode)
                 {
                     string[] fileList = dlc.GetAllCSharp();
+                    if (fileList == null)
+                        continue;
                     foreach (var item in fileList)
                     {
                         Sources += File.ReadAllText(item) + "\n";

@@ -33,7 +33,7 @@ namespace CYM.UI
         Show,   //默认显示
         Close,  //默认关闭
     }
-    [AddComponentMenu("UI/Control/UControl")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UControl))]
     [HideMonoScript]
     [DisallowMultipleComponent]
     public class UControl : UIBehaviour, IUIDirty

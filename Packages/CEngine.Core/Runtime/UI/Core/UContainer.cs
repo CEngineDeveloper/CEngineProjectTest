@@ -13,7 +13,7 @@ using UnityEngine;
 namespace CYM.UI
 {
     //Control 容器,单纯的容器,不具备窗口的概念
-    [AddComponentMenu("UI/Control/UContainer")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl+nameof(UContainer))]
     public class UContainer : UControl
     {
         #region Inspector

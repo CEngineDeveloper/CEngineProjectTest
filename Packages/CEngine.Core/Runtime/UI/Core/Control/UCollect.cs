@@ -8,6 +8,7 @@ using System;
 using Sirenix.OdinInspector;
 namespace CYM.UI
 {
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UCollect))]
     public class UCollect : UPres<UData>
     {
         [Serializable]

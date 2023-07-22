@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace CYM.UI
 {
-    [AddComponentMenu(SysConst.STR_UIEffectMenu + "UENicerOutline")]
+    [AddComponentMenu(SysConst.STR_MenuUIEffect + "UENicerOutline")]
     public class UEOutline : BaseMeshEffect
     {
         [SerializeField]

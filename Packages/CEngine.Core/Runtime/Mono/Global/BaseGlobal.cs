@@ -79,7 +79,6 @@ namespace CYM
         #region 内置自动添加的组件
         public static BaseLoaderMgr LoaderMgr { get; protected set; }
         public static BaseGRMgr GRMgr { get; protected set; }
-        public static BaseLogoMgr LogoMgr { get; protected set; }
         public static BaseLuaMgr LuaMgr { get; protected set; }
         public static BaseTextAssetsMgr TextAssetsMgr { get; protected set; }
         public static BaseExcelMgr ExcelMgr { get; protected set; }
@@ -140,7 +139,6 @@ namespace CYM
             OnReplaceInnerComponet();
             AddComponent<BaseLoaderMgr>();
             AddComponent<BaseGRMgr>();
-            AddComponent<BaseLogoMgr>();
             AddComponent<BaseLuaMgr>();
             AddComponent<BaseTextAssetsMgr>();
             AddComponent<BaseExcelMgr>();
@@ -184,7 +182,7 @@ namespace CYM
             FileUtil.EnsureDirectory(SysConst.Path_LocalDB);
             FileUtil.EnsureDirectory(SysConst.Path_CloudDB);
             //添加必要的组件
-            SetupComponent<UIVideoer>();
+            SetupComponent<VideoerUGUI>();
             SetupComponent<Videoer>();
             SetupComponent<Prefers>();
             SetupComponent<Feedback>();
@@ -454,7 +452,6 @@ namespace CYM
 
             if (ret is BaseLoaderMgr && LoaderMgr == null) LoaderMgr = ret as BaseLoaderMgr;
             else if (ret is BaseGRMgr && GRMgr == null) GRMgr = ret as BaseGRMgr;
-            else if (ret is BaseLogoMgr && LogoMgr == null) LogoMgr = ret as BaseLogoMgr;
             else if (ret is BaseExcelMgr && ExcelMgr == null) ExcelMgr = ret as BaseExcelMgr;
             else if (ret is BaseLuaMgr && LuaMgr == null) LuaMgr = ret as BaseLuaMgr;
             else if (ret is BaseTextAssetsMgr && TextAssetsMgr == null) TextAssetsMgr = ret as BaseTextAssetsMgr;

@@ -9,6 +9,7 @@
 using UnityEngine;
 namespace CYM
 {
+    [AddComponentMenu(SysConst.STR_MenuSceneObj + nameof(WindZoneObj))]
     public sealed class WindZoneObj : SceneObj<WindZone, WindZoneObj> 
     {
 

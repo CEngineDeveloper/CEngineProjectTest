@@ -13,7 +13,7 @@ namespace CYM.UI
     {
         public Func<float> GetRate;
     }
-    [AddComponentMenu("UI/Control/UStarRate")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UStarRate))]
     [HideMonoScript]
     public class UStarRate : UPres<UStarRateData>
     {

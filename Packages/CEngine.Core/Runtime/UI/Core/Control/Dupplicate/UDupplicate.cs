@@ -51,7 +51,7 @@ namespace CYM.UI
             return 0;
         }
     }
-    [AddComponentMenu("UI/Control/UDupplicate")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UDupplicate))]
     [HideMonoScript]
     public partial class UDupplicate : UPres<UDupplicateData>, ICheckBoxContainer
     {

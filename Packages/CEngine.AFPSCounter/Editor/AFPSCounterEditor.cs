@@ -1,5 +1,5 @@
 #if UNITY_EDITOR
-namespace CEngine.AdvancedFPSCounter.Editor
+namespace CYM.AdvancedFPSCounter.Editor
 {
 	using UI;
 	using Labels;

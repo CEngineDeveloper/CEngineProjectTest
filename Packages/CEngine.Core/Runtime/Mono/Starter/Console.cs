@@ -157,7 +157,7 @@ namespace CYM
         }
     }
 
-    [AddComponentMenu(SysConst.STR_StartterMenu + nameof(Console))]
+    [AddComponentMenu(SysConst.STR_MenuStartter + nameof(Console))]
     [HideMonoScript]
     public partial class Console : BaseCoreMono
     {

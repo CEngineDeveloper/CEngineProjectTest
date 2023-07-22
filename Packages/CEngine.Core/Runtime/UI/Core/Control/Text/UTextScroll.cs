@@ -8,7 +8,7 @@ using Sirenix.OdinInspector;
 using UnityEngine.UI;
 namespace CYM.UI
 {
-    [AddComponentMenu("UI/Control/UTextScroll")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UTextScroll))]
     [HideMonoScript]
     public class UTextScroll : UText
     {

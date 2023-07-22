@@ -206,10 +206,10 @@ namespace CYM.Ver
             return obj.GetType() == GetType() && Equals((Version) obj);
         }
 
-        //public override int GetHashCode()
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
 
         public override string ToString()
         {

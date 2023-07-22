@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+#if UNITY_2022
+using System.Linq.Expressions;
+#endif
 using System.Reflection;
 //**********************************************
 // Discription	：Base Core Calss .All the Mono will inherit this class
@@ -67,11 +70,11 @@ namespace CYM
         }
 #endregion
 
-#region life
+
 #if UNITY_2022
         static readonly Func<T, int> _wrapper;
         static readonly Func<int, T> _wrapperInvert;
-        static EnumTool()
+        static EnumUtil()
         {
             var p = Expression.Parameter(typeof(T), null);
             var c = Expression.ConvertChecked(p, typeof(int));
@@ -82,7 +85,7 @@ namespace CYM
             _wrapperInvert = Expression.Lambda<Func<int, T>>(c2, p2).Compile();
         }
 #endif
-#endregion
+
 
 #region extend
         private static Dictionary<string, Dictionary<string, string>> _enumCache;

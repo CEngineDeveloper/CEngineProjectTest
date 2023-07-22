@@ -18,10 +18,8 @@ namespace CYM.UI
         public Func<VideoClip> Video;
         public string VideoStr;
     }
-    [AddComponentMenu("UI/Control/UVideo")]
+    [AddComponentMenu(SysConst.STR_MenuUIControl + nameof(UVideo))]
     [HideMonoScript]
-    //[RequireComponent(typeof(VideoPlayer))]
-    //[RequireComponent(typeof(UnityEngine.UI.RawImage))]
     public class UVideo : UPres<UVideoData>
     {
         #region Inspector

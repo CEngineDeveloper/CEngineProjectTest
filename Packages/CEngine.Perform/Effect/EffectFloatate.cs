@@ -7,10 +7,10 @@ namespace CYM.Perform
         float bobSpeed = 3.0f;  //Bob speed
         [SerializeField]
         float bobHeight = 0.5f; //Bob height
-        [SerializeField]
-        float bobOffset = 0.0f;
+        //[SerializeField]
+        //float bobOffset = 0.0f;
 
-        [SerializeField]
+        [SerializeField] 
         float PrimaryRot = 80.0f;  //First axies degrees per second
         [SerializeField]
         float SecondaryRot = 40.0f; //Second axies degrees per second

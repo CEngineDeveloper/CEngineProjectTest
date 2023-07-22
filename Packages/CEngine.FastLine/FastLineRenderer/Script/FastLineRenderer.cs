@@ -932,8 +932,16 @@ namespace DigitalRuby.FastLineRenderer
                 //r.enabled = r2.enabled = true;
                 glowRenderer.enabled = (GlowIntensityMultiplier > 0.0f);
                 noGlowRenderer.enabled = true;
-                glowRenderer.sharedMaterial = Material;
-                noGlowRenderer.sharedMaterial = MaterialNoGlow;
+                if (Application.isEditor)
+                {
+                    glowRenderer.material = Material;
+                    noGlowRenderer.material = MaterialNoGlow;
+                }
+                else
+                {
+                    glowRenderer.sharedMaterial = Material;
+                    noGlowRenderer.sharedMaterial = MaterialNoGlow;
+                }
                 glowRenderer.sortingLayerName = noGlowRenderer.sortingLayerName = SortLayerName;
                 glowRenderer.sortingOrder = noGlowRenderer.sortingOrder = SortOrderInLayer;
             }
@@ -1179,7 +1187,14 @@ namespace DigitalRuby.FastLineRenderer
                 previousMaterial = Material;
                 foreach (MeshRenderer meshRenderer in meshRenderersGlow)
                 {
-                    meshRenderer.sharedMaterial = Material;
+                    if(Application.isEditor)
+                    {
+                        meshRenderer.material = Material;
+                    }
+                    else
+                    {
+                        meshRenderer.sharedMaterial = Material;
+                    }
                 }
                 if (canvasRenderer != null)
                 {
@@ -1193,7 +1208,14 @@ namespace DigitalRuby.FastLineRenderer
                 previousMaterialNoGlow = MaterialNoGlow;
                 foreach (MeshRenderer meshRenderer in meshRenderersNoGlow)
                 {
-                    meshRenderer.sharedMaterial = MaterialNoGlow;
+                    if (Application.isEditor)
+                    {
+                        meshRenderer.material = MaterialNoGlow;
+                    }
+                    else
+                    {
+                        meshRenderer.sharedMaterial = MaterialNoGlow;
+                    }
                 }
                 if (canvasRenderer != null)
                 {

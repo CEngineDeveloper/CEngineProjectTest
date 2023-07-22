@@ -8,11 +8,8 @@
 
 using CYM.DLC;
 using CYM.Excel;
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
 using System.IO;
 using UnityEngine;
 
@@ -31,41 +28,6 @@ namespace CYM
         public event Callback Callback_OnParseStart;
         #endregion
 
-        #region static excel
-        public static WorkBook ReadWorkbook(byte[] buffer)
-        {
-            try
-            {
-                var book = new WorkBook(buffer);
-                return book;
-            }
-            catch (Exception e)
-            {
-                CLog.Error(e.ToString());
-                return null;
-            }
-            finally
-            {
-            }
-        }
-        public static WorkBook ReadWorkbook(string path)
-        {
-            try
-            {
-                var book = new WorkBook(path);
-                return book;
-            }
-            catch (Exception e)
-            {
-                CLog.Error(e.ToString());
-                return null;
-            }
-            finally
-            {
-            }
-        }
-        #endregion
-
         #region loader
         public IEnumerator Load()
         {
@@ -77,6 +39,8 @@ namespace CYM
                 if (VersionUtil.IsEditorOrConfigMode)
                 {
                     string[] fileList = dlc.GetAllExcel();
+                    if (fileList == null)
+                        continue;
                     foreach (var item in fileList)
                     {
                         LoadExcelData(File.ReadAllBytes(item), Path.GetFileNameWithoutExtension(item));
@@ -111,20 +75,28 @@ namespace CYM
             if (luaMgr == null)
                 return;
             stopwatch.Start();
-            WorkBook book = new WorkBook(buffer);
-            if (book == null || book.Count<=0)
+            if (ExcelUtil.IsBinary(buffer))
             {
-                CLog.Error("错误！无法读取Excel："+ tableName);
+                WorkBook book = ExcelUtil.ReadWorkbook(buffer);
+                if (book == null || book.Count <= 0)
+                {
+                    CLog.Error("错误！无法读取Excel：" + tableName);
+                }
+                foreach (var item in book)
+                {
+                    if (!item.Name.StartsWith(SysConst.Prefix_Lang_Notes))
+                        OnConvert(item, tableName);
+                }
             }
-            foreach (var item in book)
+            else
             {
-                if(!item.Name.StartsWith(SysConst.Prefix_Lang_Notes))
-                    OnConvert(item, tableName);
+                var doc = ExcelUtil.ReadCSV(buffer);
+                OnConvert(doc, tableName);
             }
             stopwatch.Stop();
             CLog.Info($"加载数据表：{tableName},Time：{stopwatch.Elapsed.TotalSeconds}");
         }
-        private void OnConvert(WorkSheet sheet,string tableName)
+        private void OnConvert(Table table,string tableName)
         {
             int excludeRow = StartRowCount;
             var luaMgr = BaseLuaMgr.GetTDConfig(tableName);
@@ -135,11 +107,11 @@ namespace CYM
                 {
                     var map = luaMgr.TableMapper.Exclude(excludeRow);
                     map.SafeMode = true;
-                    data = sheet.Convert(map);
+                    data = table.Convert(map);
                 }
                 else
                 {
-                    data = sheet.Convert(luaMgr.DataType, excludeRow, true) ;
+                    data = table.Convert(luaMgr.DataType, excludeRow, true) ;
                 }
                 luaMgr.AddAlterRangeFromObj(data);
             }

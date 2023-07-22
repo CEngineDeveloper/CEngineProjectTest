@@ -18,6 +18,7 @@ namespace CYM
 {
     public partial class EditorUtil
     {
+
         //
         // Useful constants
         //

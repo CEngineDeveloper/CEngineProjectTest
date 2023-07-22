@@ -4,7 +4,7 @@
 //-------------------------------------------------------
 #endregion
 
-namespace CEngine.AdvancedFPSCounter
+namespace CYM.AdvancedFPSCounter
 {
 	/// <summary>
 	/// Enumeration of possible AFPSCounter.OperationMode values.

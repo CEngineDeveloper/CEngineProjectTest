@@ -19,10 +19,6 @@ namespace CYM
     }
     public partial class Util 
     {
-        #region static
-        static DateTime DateTime1970 = new DateTime(1970, 1, 1, 0, 0, 0, 0);
-        static TimeSpan TimeSpan = new TimeSpan();
-        #endregion
 
         #region get ray cast pos
         /// <summary>
@@ -589,6 +585,21 @@ namespace CYM
             if (postProcessVolume && postProcessVolume.profile)
                 postProcessVolume.profile.TryGetSettings(out ret);
             return ret;
+        }
+        public static string PlatformName
+        {
+            get
+            {
+#if UNITY_STANDALONE
+                return "STANDALONE";
+#elif UNITY_ANDROID
+            return "ANDROID";
+#elif UNITY_IOS
+            return "IOS";
+#else
+            return "Other";
+#endif
+            }
         }
         #endregion
 

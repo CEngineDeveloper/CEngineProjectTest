@@ -384,6 +384,8 @@ namespace CYM
                     if (VersionUtil.IsEditorOrConfigMode)
                     {
                         var files = dlc.GetAllLuas();
+                        if (files == null)
+                            continue;
                         for (int i = 0; i < files.Length; ++i)
                         {
                             DoString(File.ReadAllText(files[i]), files[i]);

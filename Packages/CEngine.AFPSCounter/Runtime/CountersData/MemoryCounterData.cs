@@ -8,7 +8,7 @@
 #define ENABLE_GFX_MEMORY
 #endif
 
-namespace CEngine.AdvancedFPSCounter.CountersData
+namespace CYM.AdvancedFPSCounter.CountersData
 {
 	using System.Collections;
 	using UnityEngine;

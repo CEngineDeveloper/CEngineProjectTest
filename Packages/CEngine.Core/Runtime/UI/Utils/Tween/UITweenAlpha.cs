@@ -9,6 +9,7 @@ using UnityEngine;
 using DG.Tweening;
 namespace CYM.UI
 {
+    [AddComponentMenu(SysConst.STR_MenuUITween + nameof(UITweenAlpha))]
     public class UITweenAlpha : UITween
     {
         #region inspector
