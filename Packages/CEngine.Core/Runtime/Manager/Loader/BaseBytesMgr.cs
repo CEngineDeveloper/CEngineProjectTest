@@ -7,9 +7,9 @@ using UnityEngine;
 
 namespace CYM
 {
-    public sealed class BaseTextAssetsMgr : BaseGFlowMgr, ILoader
+    public sealed class BaseBytesMgr : BaseGFlowMgr, ILoader
     {
-        public Dictionary<string, string> Data { get; private set; } = new Dictionary<string, string>();
+        public Dictionary<string, byte[]> Data { get; private set; } = new Dictionary<string, byte[]>();
         public event Callback Callback_OnParseStart;
         public event Callback Callback_OnParseEnd;
 
@@ -22,26 +22,31 @@ namespace CYM
             {
                 if (VersionUtil.IsEditorOrConfigMode)
                 {
-                    var files = dlc.GetAllTexts();
+                    var files = dlc.GetAllBytes();
                     if (files == null)
                         continue;
                     foreach (var file in files)
                     {
                         string fileName = Path.GetFileName(file);
-                        Data.Add(fileName, File.ReadAllText(file));
-                        BaseGlobal.LoaderMgr.ExtraLoadInfo = "Load Text " + fileName;
+                        Data.Add(fileName, File.ReadAllBytes(file));
+                        BaseGlobal.LoaderMgr.ExtraLoadInfo = "Load bytes " + fileName;
                         yield return new WaitForEndOfFrame();
                     }
                 }
                 else
                 {
-                    var assetBundle = DLCManager.LoadRawBundle(dlc.Name,SysConst.BN_Text);
+                    var assetBundle = DLCManager.LoadRawBundle(dlc.Name,SysConst.BN_Bytes);
                     if (assetBundle != null)
                     {
                         foreach (var textAssets in assetBundle.LoadAllAssets<TextAsset>())
                         {
-                            Data.Add(textAssets.name, File.ReadAllText(textAssets.text));
-                            BaseGlobal.LoaderMgr.ExtraLoadInfo = "Load Text " + textAssets.name;
+                            Data.Add(textAssets.name, textAssets.bytes);
+                            BaseGlobal.LoaderMgr.ExtraLoadInfo = "Load bytes " + textAssets.name;
+                        }
+                        foreach (var textAssets in assetBundle.LoadAllAssets<BytesAsset>())
+                        {
+                            Data.Add(textAssets.name, textAssets.Bytes);
+                            BaseGlobal.LoaderMgr.ExtraLoadInfo = "Load bytes " + textAssets.name;
                         }
                     }
                 }
@@ -52,7 +57,7 @@ namespace CYM
         }
         public string GetLoadInfo()
         {
-            return "Load TextAssets";
+            return "Load bytes";
         }
         #endregion
 
@@ -61,7 +66,7 @@ namespace CYM
         /// 获得text
         /// </summary>
         /// <returns></returns>
-        public string GetText(string id)
+        public byte[] GetBytes(string id)
         {
             if (!Data.ContainsKey(id))
                 return null;

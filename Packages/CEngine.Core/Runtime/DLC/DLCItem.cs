@@ -241,7 +241,7 @@ namespace CYM.DLC
         #region get all path
         public string[] GetAllLanguages() => GetAllFilies(SysConst.Dir_Language, "*.*");
         public string[] GetAllLuas() => GetAllFilies(SysConst.Dir_Lua, "*.lua");
-        public string[] GetAllTexts() => GetAllFilies(SysConst.Dir_TextAssets, "*.txt");
+        public string[] GetAllBytes() => GetAllFilies(SysConst.Dir_Bytes, "*.*");
         public string[] GetAllExcel() => GetAllFilies(SysConst.Dir_Excel, "*.*");
         string[] GetAllFilies(string dir,string extension)
         {

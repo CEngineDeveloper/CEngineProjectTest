@@ -448,7 +448,7 @@ namespace CYM.UI
             //延迟点击
             if (Data.OnDelayClick != null)
             {
-                Util.Invoke(() =>
+                Delayer.Invoke(() =>
                 {
                     Data.OnDelayClick.Invoke(this, eventData);
                     Data.OnDelayClick = null;

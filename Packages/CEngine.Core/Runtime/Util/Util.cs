@@ -537,13 +537,6 @@ namespace CYM
         }
         #endregion
 
-        #region invoke
-        public static IJob Invoke(Action action, float delay=0.5f)
-        {
-            return SuperInvoke.Run(action, delay);
-        }
-        #endregion
-
         #region ray cast
         public static bool ScreenRayCast(out RaycastHit hit, LayerMask layer)
         {

@@ -1,10 +1,11 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using Invoke;
 
 namespace CYM
 {
-    public class FrameTimer : MonoBehaviour
+    public class Delayer : MonoBehaviour
     {
         #region data
         class DelayedEditorAction
@@ -32,19 +33,19 @@ namespace CYM
         #endregion
 
         #region ins
-        private static FrameTimer _ins;
-        private static FrameTimer Ins
+        private static Delayer _ins;
+        private static Delayer Ins
         {
             get
             {
                 if (_ins == null)
                 {
-                    _ins = GameObject.FindObjectOfType<FrameTimer>();
+                    _ins = GameObject.FindObjectOfType<Delayer>();
 
                     if (_ins == null && !IsQuitting)
                     {
-                        var timerGO = new GameObject("FrameTimer");
-                        _ins = timerGO.AddComponent<FrameTimer>();
+                        var timerGO = new GameObject("Delayer");
+                        _ins = timerGO.AddComponent<Delayer>();
 
                         GameObject.DontDestroyOnLoad(timerGO);
                     }
@@ -68,15 +69,6 @@ namespace CYM
         {
             Application.quitting += () => IsQuitting = true;
         }
-
-//#if UNITY_EDITOR
-//        static List<DelayedEditorAction> delayedEditorActions = new List<DelayedEditorAction>();
-
-//        static FrameTimer()
-//        {
-//            UnityEditor.EditorApplication.update += EditorUpdate;
-//        }
-//#endif
         #endregion
 
         #region get
@@ -92,31 +84,6 @@ namespace CYM
         #endregion
 
         #region update
-        static void EditorUpdate()
-        {
-//#if UNITY_EDITOR
-//            if (Application.isPlaying) return;
-
-//            var actionsToExecute = delayedEditorActions.Where(dea => UnityEditor.EditorApplication.timeSinceStartup >= dea.TimeToExecute).ToList();
-
-//            if (actionsToExecute.Count == 0) return;
-
-//            foreach (var actionToExecute in actionsToExecute)
-//            {
-//                try
-//                {
-//                    if (actionToExecute.ActionTarget != null || actionToExecute.ForceEvenIfTargetIsGone) // don't execute if the target is gone
-//                    {
-//                        actionToExecute.Action.Invoke();
-//                    }
-//                }
-//                finally
-//                {
-//                    delayedEditorActions.Remove(actionToExecute);
-//                }
-//            }
-//#endif
-        }
         private void Update()
         {
             List<DelayedAction> actionsToExecute = null;
@@ -166,12 +133,13 @@ namespace CYM
             {
                 Ins.delayedActions.Add(new DelayedAction { timeToExecute = Time.unscaledTime + delay, action = action, target = actionTarget, forceEvenIfTargetIsInactive = forceEvenIfObjectIsInactiveP });
             }
-//#if UNITY_EDITOR
-//            else
-//            {
-//                delayedEditorActions.Add(new DelayedEditorAction(UnityEditor.EditorApplication.timeSinceStartup + delay, action, actionTarget, forceEvenIfObjectIsInactiveP));
-//            }
-//#endif
+        }
+        public static void DelayedCall(float delay, Action action,bool forceEvenIfObjectIsInactiveP = false)
+        {
+            if (Application.isPlaying)
+            {
+                Ins.delayedActions.Add(new DelayedAction { timeToExecute = Time.unscaledTime + delay, action = action, target = Ins, forceEvenIfTargetIsInactive = forceEvenIfObjectIsInactiveP });
+            }
         }
 
         /// <summary>
@@ -182,6 +150,17 @@ namespace CYM
         public static void AtEndOfFrame(Action action, MonoBehaviour actionTarget, bool forceEvenIfObjectIsInactive = false)
         {
             DelayedCall(0, action, actionTarget, forceEvenIfObjectIsInactive);
+        }
+        public static void AtEndOfFrame(Action action, bool forceEvenIfObjectIsInactive = false)
+        {
+            DelayedCall(0, action, Ins, forceEvenIfObjectIsInactive);
+        }
+        #endregion
+
+        #region utile
+        public static IJob Invoke(Action action, float delay = 0.5f)
+        {
+            return SuperInvoke.Run(action, delay);
         }
         #endregion
     }

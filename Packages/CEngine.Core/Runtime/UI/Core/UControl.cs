@@ -636,7 +636,7 @@ namespace CYM.UI
         }
         public void SetDirtyAll(float delay)
         {
-            Util.Invoke(() => SetDirtyAll(), delay);
+            Delayer.Invoke(() => SetDirtyAll(), delay);
         }
         public bool IsDirtyRefresh { get; protected set; } = false;
         public bool IsDirtyCell { get; protected set; } = false;

@@ -381,7 +381,7 @@ namespace CYM.UI
             delay = Mathf.Clamp(delay, 0, float.MaxValue);
             closeInvoke?.Kill();
             if (delay == 0) Show(false);
-            else closeInvoke = Util.Invoke(() => Show(false), delay);
+            else closeInvoke = Delayer.Invoke(() => Show(false), delay);
         }
         #endregion
 
@@ -486,7 +486,7 @@ namespace CYM.UI
         }
         public void SetDirtyAll(float delay)
         {
-            Util.Invoke(() => SetDirtyAll(), delay);
+            Delayer.Invoke(() => SetDirtyAll(), delay);
         }
         public override void Refresh() => IsDirtyRefresh = false;
         public virtual void RefreshCell() => IsDirtyCell = false;

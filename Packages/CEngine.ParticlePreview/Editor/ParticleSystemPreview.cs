@@ -523,7 +523,6 @@ namespace CYM.ParticlePreview
             m_RootInstance.transform.rotation = bodyRot;
             m_RootInstance.transform.localScale = Vector3.one * scale * 0.25f;
         }
-
         /// <summary>
         /// 最后的销毁方法
         /// 不能被Unity自动调用，目前只能在点下一个对象时，调用销毁
@@ -535,7 +534,6 @@ namespace CYM.ParticlePreview
             DestroyPreviewInstances();
             if (m_PreviewUtility != null)
             {
-                //Debug.Log("OnDestroy");
                 m_PreviewUtility.Cleanup();
                 m_PreviewUtility = null;
             }

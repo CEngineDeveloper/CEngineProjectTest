@@ -64,7 +64,7 @@ namespace CYM
         public const string BN_Excel = "excel";
         public const string BN_Language = "language";
         public const string BN_Lua = "lua";
-        public const string BN_Text = "text";
+        public const string BN_Bytes = "bytes";
         public const string BN_Config = "config";
         #endregion
 
@@ -96,18 +96,20 @@ namespace CYM
         public const string STR_AssemblyGameLogicEditor = "Assembly-CSharp-Editor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null";        
         public const string STR_AssemblyGameLogic = "Assembly-CSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null";
         public const string STR_AssemblyCEngine = "CEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null";
-        public const string STR_MenuCEngine = "_CEngine/";
+        public const string STR_MenuCEngine = "CEngine/";
         public const string STR_MenuStartter = STR_MenuCEngine + nameof(Starter)+"/";
         public const string STR_MenuUIEffect = STR_MenuCEngine + "UIEffect/";
         public const string STR_MenuUITween = STR_MenuCEngine + "UITween/";
         public const string STR_MenuUIControl = STR_MenuCEngine + "UIControl/";
         public const string STR_MenuSceneObj = STR_MenuCEngine + "SceneObj/";
         public const string STR_MenuAloneUI = STR_MenuCEngine + "AloneUI/";
+        public const string STR_MenuUICamera = STR_MenuCEngine + "UICamera/";
+        public const string STR_MenuUIRaycast = STR_MenuCEngine + "UIRaycast/";
         #endregion
 
         #region 语言表配置
         //注释前缀
-        public const string Prefix_Lang_Notes = "#";
+        public const string Prefix_Notes = "#";
         //分类前缀
         public const string Prefix_Lang_Category = "@";
         //自动id
@@ -192,7 +194,7 @@ namespace CYM
         //ScriptTemplate
         public const string Dir_ScriptTemplate = "ScriptTemplate";
         //text assets文件夹
-        public static readonly string Dir_TextAssets = "Text";
+        public static readonly string Dir_Bytes = "Bytes";
         //cs 文件夹
         public static readonly string Dir_CSharp = "CSharp";
         //excel 文件夹
@@ -290,7 +292,7 @@ namespace CYM
 
         #region Resource 路径
         public static readonly string Path_ResourcesTexture = Path.Combine(Path_Resources, Dir_Texture);
-        public static readonly string Path_ResourcesText = Path.Combine(Path_Resources, Dir_TextAssets);
+        public static readonly string Path_ResourcesText = Path.Combine(Path_Resources, Dir_Bytes);
         public static readonly string Path_ResourcesTemp = Path.Combine(Path_Resources, Dir_Temp);
         public static readonly string Path_ResourcesSystem = Path.Combine(Path_Resources, Dir_System);
         public static readonly string Path_ResourcesScriptTemplate = Path.Combine(Path_Resources, Dir_ScriptTemplate);

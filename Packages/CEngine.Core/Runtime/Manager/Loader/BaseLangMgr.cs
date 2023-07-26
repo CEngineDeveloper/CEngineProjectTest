@@ -312,7 +312,7 @@ namespace CYM
                 return;
             if (table is WorkSheet sheet)
             {
-                if (sheet.Name.StartsWith(SysConst.Prefix_Lang_Notes))
+                if (sheet.Name.StartsWith(SysConst.Prefix_Notes))
                     return;
             }
             string lastedCategory = "";
@@ -351,7 +351,7 @@ namespace CYM
                         {
                             key = table.Rows[rowIndex][colIndex].ToString();
                             //跳过注释
-                            if (key.StartsWith(SysConst.Prefix_Lang_Notes))
+                            if (key.StartsWith(SysConst.Prefix_Notes))
                             {
                                 continue;
                             }

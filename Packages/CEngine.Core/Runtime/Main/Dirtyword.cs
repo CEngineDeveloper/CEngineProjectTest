@@ -208,7 +208,7 @@ namespace CYM
             {
                 foreach (var sheet in workBook)
                 {
-                    if (sheet.Name.StartsWith(SysConst.Prefix_Lang_Notes))
+                    if (sheet.Name.StartsWith(SysConst.Prefix_Notes))
                         continue;
                     foreach (var row in sheet)
                     {

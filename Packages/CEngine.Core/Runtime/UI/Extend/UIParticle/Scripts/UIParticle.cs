@@ -68,7 +68,7 @@ namespace CYM.UI.Particle
 
         protected void OnEnable()
         {
-            Util.Invoke(() => {
+            Delayer.Invoke(() => {
                 particleCanvas = GetComponentInParent<UIParticleCanvas>();
                 RefreshRenderer(true);
                 particleCanvas.RegisterUIParticleDepthObject(this);

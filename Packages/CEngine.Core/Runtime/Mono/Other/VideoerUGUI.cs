@@ -73,7 +73,7 @@ namespace CYM
         {
             float fadeTime = 0.5f;
             RawImage.CrossFadeAlpha(0, fadeTime, true);
-            Util.Invoke(()=> {
+            Delayer.Invoke(()=> {
                 VedioGO.SetActive(false);
                 VideoPlayer?.Stop();
                 BaseGlobal.AudioMgr?.MuteMusic(false);

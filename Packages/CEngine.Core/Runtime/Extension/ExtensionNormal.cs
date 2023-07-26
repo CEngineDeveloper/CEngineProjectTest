@@ -265,7 +265,7 @@ namespace CYM
             if (delay == 0)
                 (layoutGroup.transform as RectTransform).RebuildLayout();
             else
-                Util.Invoke(() => (layoutGroup.transform as RectTransform).RebuildLayout(), delay);
+                Delayer.Invoke(() => (layoutGroup.transform as RectTransform).RebuildLayout(), delay);
         }
         public static void RebuildLayout(this RectTransform rectTrans)
         {

@@ -503,7 +503,7 @@ namespace CYM.UI
             {
                 openInvoke?.Kill();
                 closeInvoke?.Kill();
-                openInvoke = Util.Invoke(() =>
+                openInvoke = Delayer.Invoke(() =>
                 {
                     //所有的Tooltip均为互斥
                     if (CurShow != null && CurShow != this)
@@ -524,7 +524,7 @@ namespace CYM.UI
                 }
                 else
                 {
-                    closeInvoke = Util.Invoke(() => base.Show(b, useGroup, force), 0.01f);
+                    closeInvoke = Delayer.Invoke(() => base.Show(b, useGroup, force), 0.01f);
                 }
             }
             isTipShow = b;

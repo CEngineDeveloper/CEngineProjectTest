@@ -188,7 +188,7 @@ namespace CYM.UI
         }
         public void SetDirtyAll(float delay)
         {
-            Util.Invoke(() => SetDirtyAll(), delay);
+            Delayer.Invoke(() => SetDirtyAll(), delay);
         }
 
         public void SetDirtyShow()

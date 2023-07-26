@@ -46,10 +46,13 @@ namespace CYM.ParticlePreview
         {
             m_ShowParticlePreview = true;
         }
-
+        private void OnDestroy()
+        {
+            preview?.OnDestroy();
+        }
         void OnDisable()
         {
-            preview.OnDestroy();
+            preview?.OnDestroy();
             //DestroyImmediate(baseEditor);
         }
 

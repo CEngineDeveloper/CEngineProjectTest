@@ -145,7 +145,7 @@ namespace CYM
                 {
                     try
                     {
-                        if (sheet.Name.StartsWith(SysConst.Prefix_Lang_Notes))
+                        if (sheet.Name.StartsWith(SysConst.Prefix_Notes))
                             continue;
 
                         string mapKey = sheet.Name;

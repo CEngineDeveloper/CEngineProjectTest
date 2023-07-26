@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace CYM.UI
 {
+    [AddComponentMenu(SysConst.STR_MenuUIRaycast + nameof(UIRectangularRaycastFilter))]
     [RequireComponent(typeof(RectTransform))]
     public class UIRectangularRaycastFilter : MonoBehaviour, ICanvasRaycastFilter
     {

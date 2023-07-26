@@ -47,7 +47,7 @@ namespace CYM.UI
                 {
                     t.Key.SetStarted();
                     t.Key.HardUpdateDisplay();
-                    FrameTimer.AtEndOfFrame(() => t.Key.UpdateDisplay(), t.Key);
+                    Delayer.AtEndOfFrame(() => t.Key.UpdateDisplay(), t.Key);
                 }
                 else
                 {

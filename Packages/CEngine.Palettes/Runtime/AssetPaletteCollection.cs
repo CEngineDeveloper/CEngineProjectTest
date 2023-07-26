@@ -6,7 +6,7 @@ namespace CYM.AssetPalette
     /// <summary>
     /// Stores prefab palettes.
     /// </summary>
-    [CreateAssetMenu(fileName = "Prefab Palette Collection", menuName = "ScriptableObject/Prefab Palette Collection")]
+    [CreateAssetMenu(fileName = "Prefab Palette Collection", menuName = "ScriptConfig/Prefab Palette Collection")]
     public class AssetPaletteCollection : ScriptableObject 
     {
         [SerializeReference] private List<PaletteFolder> folders = new List<PaletteFolder>();

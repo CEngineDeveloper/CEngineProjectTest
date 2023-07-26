@@ -57,6 +57,11 @@ namespace CYM
                             LoadExcelData(txt.bytes, txt.name);
                             yield return new WaitForEndOfFrame();
                         }
+                        foreach (var txt in assetBundle.LoadAllAssets<BytesAsset>())
+                        {
+                            LoadExcelData(txt.Bytes, txt.name);
+                            yield return new WaitForEndOfFrame();
+                        }
                     }
                 }
                 yield return new WaitForEndOfFrame();
@@ -84,7 +89,7 @@ namespace CYM
                 }
                 foreach (var item in book)
                 {
-                    if (!item.Name.StartsWith(SysConst.Prefix_Lang_Notes))
+                    if (!item.Name.StartsWith(SysConst.Prefix_Notes))
                         OnConvert(item, tableName);
                 }
             }

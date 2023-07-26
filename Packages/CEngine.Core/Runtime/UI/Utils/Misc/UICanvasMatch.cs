@@ -49,7 +49,7 @@ namespace CYM.UI
             if (CanvasScaler != null)
             {
                 CanvasScaler.enabled = false;
-                Util.Invoke(() => {
+                Delayer.Invoke(() => {
                     CanvasScaler.enabled = true;
                     Threshold = BuildConfig.Ins.Height / BuildConfig.Ins.Width;
                 }, 0.02f);

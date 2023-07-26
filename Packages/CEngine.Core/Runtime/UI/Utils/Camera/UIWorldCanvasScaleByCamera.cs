@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace CYM.UI
 {
+    [AddComponentMenu(SysConst.STR_MenuUICamera + nameof(UIWorldCanvasScaleByCamera))]
     [ExecuteInEditMode]
     public class UIWorldCanvasScaleByCamera : MonoBehaviour
     {

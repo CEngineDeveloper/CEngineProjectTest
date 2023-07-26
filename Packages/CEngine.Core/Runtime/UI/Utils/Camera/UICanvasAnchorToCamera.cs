@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace CYM.UI
 {
+    [AddComponentMenu(SysConst.STR_MenuUICamera + nameof(UICanvasAnchorToCamera))]
     [ExecuteInEditMode]
     [RequireComponent(typeof(RectTransform))]
     public class UICanvasAnchorToCamera : MonoBehaviour

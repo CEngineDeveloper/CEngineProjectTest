@@ -349,8 +349,8 @@ namespace CYM.UI
             Cleanup();
 
             //UpdateDisplay();
-            FrameTimer.AtEndOfFrame(() => UpdateDisplay(), this);
-            FrameTimer.DelayedCall(0.05f, () => { this.color = color; }, this, true);
+            Delayer.AtEndOfFrame(() => UpdateDisplay(), this);
+            Delayer.DelayedCall(0.05f, () => { this.color = color; }, this, true);
         }
 
         private void _Destroy(UnityEngine.Object o)
@@ -372,17 +372,17 @@ namespace CYM.UI
                 //imageComponent.sprite = null;
             }
 
-            FrameTimer.AtEndOfFrame(() => SetStarted(), this, true);
-            FrameTimer.AtEndOfFrame(() => OnEnable(), this);
+            Delayer.AtEndOfFrame(() => SetStarted(), this, true);
+            Delayer.AtEndOfFrame(() => OnEnable(), this);
 
             // Some models (particularly, models with rigs) can cause Unity to crash if they are instantiated this early (for some reason)
             // as such, we must delay very briefly to avoid this before rendering
-            FrameTimer.DelayedCall(0.01f, () =>
+            Delayer.DelayedCall(0.01f, () =>
             {
                 Cleanup();
                 UpdateDisplay();
 
-                FrameTimer.DelayedCall(0.05f, () => { this.color = color; }, this, true);
+                Delayer.DelayedCall(0.05f, () => { this.color = color; }, this, true);
             }, this, true);
         }
 
@@ -431,7 +431,7 @@ namespace CYM.UI
             // If Start hasn't been called yet, then this has been called too early.
             // Start() will call this when it is time
             if (!started) return;
-            FrameTimer.AtEndOfFrame(() => UpdateDisplay(true), this);
+            Delayer.AtEndOfFrame(() => UpdateDisplay(true), this);
 #if UNITY_EDITOR
             EditorApplication.playModeStateChanged += InEditorCleanup;
 #endif
@@ -463,7 +463,7 @@ namespace CYM.UI
             {
                 Cleanup();
 
-                FrameTimer.AtEndOfFrame(() =>
+                Delayer.AtEndOfFrame(() =>
                 {
                     Cleanup();
                 }, this, true);
@@ -768,7 +768,7 @@ namespace CYM.UI
         {
             if (_target != null) Cleanup();
 
-            FrameTimer.AtEndOfFrame(() => UpdateDisplay(), this);
+            Delayer.AtEndOfFrame(() => UpdateDisplay(), this);
         }
 
         private void UpdateTargetPositioningAndScale()

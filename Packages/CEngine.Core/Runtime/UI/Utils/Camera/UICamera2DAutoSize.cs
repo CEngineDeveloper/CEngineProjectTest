@@ -14,6 +14,7 @@ namespace CYM.UI
         FixedWidth,
         FixedHeight,
     }
+    [AddComponentMenu(SysConst.STR_MenuUICamera + nameof(UICamera2DAutoSize))]
     public class UICamera2DAutoSize : MonoBehaviour
     {
         public Camera2DScaleType scaleMode = Camera2DScaleType.FixedWidth;

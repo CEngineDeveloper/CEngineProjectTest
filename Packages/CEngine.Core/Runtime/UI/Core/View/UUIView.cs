@@ -688,7 +688,7 @@ namespace CYM.UI
         {
             base.OnOpen(baseView, useGroup);
             openDelayJob?.Kill();
-            openDelayJob = Util.Invoke(() => OnOpenDelay(baseView,useGroup), 0.01f);
+            openDelayJob = Delayer.Invoke(() => OnOpenDelay(baseView,useGroup), 0.01f);
         }
         protected override void OnClose(bool useGroup)
         {

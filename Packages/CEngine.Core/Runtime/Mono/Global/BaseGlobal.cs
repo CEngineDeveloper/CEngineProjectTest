@@ -80,7 +80,7 @@ namespace CYM
         public static BaseLoaderMgr LoaderMgr { get; protected set; }
         public static BaseGRMgr GRMgr { get; protected set; }
         public static BaseLuaMgr LuaMgr { get; protected set; }
-        public static BaseTextAssetsMgr TextAssetsMgr { get; protected set; }
+        public static BaseBytesMgr BytesMgr { get; protected set; }
         public static BaseExcelMgr ExcelMgr { get; protected set; }
         public static BaseLangMgr LangMgr { get; protected set; }
         public static BaseConditionMgr ACM { get; protected set; }
@@ -140,7 +140,7 @@ namespace CYM
             AddComponent<BaseLoaderMgr>();
             AddComponent<BaseGRMgr>();
             AddComponent<BaseLuaMgr>();
-            AddComponent<BaseTextAssetsMgr>();
+            AddComponent<BaseBytesMgr>();
             AddComponent<BaseExcelMgr>();
             AddComponent<BaseLangMgr>();
             AddComponent<BaseConditionMgr>();
@@ -454,7 +454,7 @@ namespace CYM
             else if (ret is BaseGRMgr && GRMgr == null) GRMgr = ret as BaseGRMgr;
             else if (ret is BaseExcelMgr && ExcelMgr == null) ExcelMgr = ret as BaseExcelMgr;
             else if (ret is BaseLuaMgr && LuaMgr == null) LuaMgr = ret as BaseLuaMgr;
-            else if (ret is BaseTextAssetsMgr && TextAssetsMgr == null) TextAssetsMgr = ret as BaseTextAssetsMgr;
+            else if (ret is BaseBytesMgr && BytesMgr == null) BytesMgr = ret as BaseBytesMgr;
             else if (ret is BaseLangMgr && LangMgr == null) LangMgr = ret as BaseLangMgr;
             else if (ret is BaseConditionMgr && ACM == null) ACM = ret as BaseConditionMgr;
             else if (ret is BaseBGMMgr && BGMMgr == null) BGMMgr = ret as BaseBGMMgr;

@@ -15,7 +15,7 @@ namespace CYM.UI
         float delay = 0.02f;
         private void OnEnable()
         {
-            Util.Invoke(()=> {
+            Delayer.Invoke(()=> {
                 LayoutRebuilder.ForceRebuildLayoutImmediate((transform as RectTransform));
             }, delay);
         }

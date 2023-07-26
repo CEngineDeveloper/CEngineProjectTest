@@ -6,6 +6,7 @@ using UnityEditor;
 
 namespace CYM.UI
 {
+    [AddComponentMenu(SysConst.STR_MenuUIRaycast + nameof(UIMaskRaycastFilter))]
     [ExecuteInEditMode, RequireComponent(typeof(RectTransform)), RequireComponent(typeof(Image))]
     public class UIMaskRaycastFilter : MonoBehaviour, ICanvasRaycastFilter
     {

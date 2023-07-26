@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace CYM.UI
 {
+    [AddComponentMenu(SysConst.STR_MenuUICamera + nameof(UICanvasAspectResize))]
     [ExecuteInEditMode]
     [RequireComponent(typeof(RectTransform))]
     public class UICanvasAspectResize : MonoBehaviour
