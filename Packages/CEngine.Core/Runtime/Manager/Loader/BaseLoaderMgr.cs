@@ -72,6 +72,7 @@ namespace CYM
                 BaseGlobal.LangMgr,
                 BaseGlobal.LuaMgr,
                 BaseGlobal.ExcelMgr,
+                BaseGlobal.TextMgr,
                 BaseGlobal.BytesMgr,
             };
             CustomLoaders.RemoveAll(x => loaders.Contains(x));

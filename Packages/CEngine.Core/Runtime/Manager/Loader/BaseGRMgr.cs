@@ -21,12 +21,17 @@ namespace CYM
     /// </summary>
     public sealed class BaseGRMgr : BaseGFlowMgr, ILoader
     {
-#region member variable
+        #region Callback val
+        public event Callback Callback_OnParseStart;
+        public event Callback Callback_OnParseEnd;
+        #endregion
+
+        #region member variable
         private DLCConfig DLCConfig => DLCConfig.Ins;
         public static Dictionary<string, IRsCacher> BundleCachers { get; private set; } = new Dictionary<string, IRsCacher>();
-#endregion
+        #endregion
 
-#region get
+        #region get
         public GameObject GetResources(string path, bool instance = false)
         {
             var temp = Resources.Load<GameObject>(path);
@@ -53,9 +58,9 @@ namespace CYM
             }
             return temp;
         }
-#endregion
+        #endregion
 
-#region Callback
+        #region Callback
         protected override void OnBattleUnLoaded()
         {
             base.OnBattleUnLoaded();
@@ -70,6 +75,7 @@ namespace CYM
         }
         public IEnumerator Load()
         {
+            Callback_OnParseStart?.Invoke();
             var dlcItemConfigs = GetDLCItemConfigs();
 
             foreach (var item in dlcItemConfigs)
@@ -108,7 +114,9 @@ namespace CYM
             }
 
             if(BuildConfig.Ins.IsWarmupAllShaders)
-                Shader.WarmupAllShaders(); 
+                Shader.WarmupAllShaders();
+
+            Callback_OnParseEnd?.Invoke();
             yield break;
 
             // 获得DLC的根目录
@@ -136,12 +144,12 @@ namespace CYM
         {
             return "Load Resources";
         }
-#endregion
+        #endregion
 
-#region 语法糖
+        #region 语法糖
         public Material FontRendering =>BaseGlobal.RsMaterial.Get("FontRendering");
         public Material ImageGrey =>BaseGlobal.RsMaterial.Get("ImageGrey");
-#endregion
+        #endregion
     }
 
 }

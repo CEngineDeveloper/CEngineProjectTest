@@ -9,7 +9,9 @@
 namespace CYM
 {
     public partial class SysConst
-    {
+    {        
+        //cs 文件夹
+        public const string Dir_CSharp = "CSharp";
         public const string BN_CSharp = "csharp";
     }
 }

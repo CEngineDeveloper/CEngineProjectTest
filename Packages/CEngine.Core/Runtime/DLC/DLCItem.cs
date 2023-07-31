@@ -243,6 +243,7 @@ namespace CYM.DLC
         public string[] GetAllLuas() => GetAllFilies(SysConst.Dir_Lua, "*.lua");
         public string[] GetAllBytes() => GetAllFilies(SysConst.Dir_Bytes, "*.*");
         public string[] GetAllExcel() => GetAllFilies(SysConst.Dir_Excel, "*.*");
+        public string[] GetAllText() => GetAllFilies(SysConst.Dir_Text, "*.*");
         string[] GetAllFilies(string dir,string extension)
         {
             string fullPath;

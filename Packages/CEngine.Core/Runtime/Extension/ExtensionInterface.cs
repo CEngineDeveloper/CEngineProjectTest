@@ -38,6 +38,8 @@ namespace CYM
     {
         IEnumerator Load();
         string GetLoadInfo();
+        event Callback Callback_OnParseStart;
+        event Callback Callback_OnParseEnd;
     }
     #endregion
 

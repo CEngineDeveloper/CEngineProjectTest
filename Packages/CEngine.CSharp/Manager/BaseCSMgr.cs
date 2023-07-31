@@ -16,7 +16,7 @@ using UnityEngine;
 
 namespace CYM
 {
-    public class BaseCSMgr : BaseGFlowMgr, ILoader
+    public sealed class BaseCSMgr : BaseGFlowMgr, ILoader
     {
         #region callback val
         public event Callback Callback_OnParseEnd;

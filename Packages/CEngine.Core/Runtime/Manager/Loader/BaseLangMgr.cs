@@ -24,6 +24,8 @@ namespace CYM
         /// 切换语言的时候
         /// </summary>
         public event Callback Callback_OnSwitchLanguage;
+        public event Callback Callback_OnParseStart;
+        public event Callback Callback_OnParseEnd;
         #endregion
 
         #region Prop
@@ -235,6 +237,7 @@ namespace CYM
         private void OnAddDynamicDic() { }
         public IEnumerator Load()
         {
+            Callback_OnParseStart?.Invoke();
             //Load Resources Language
             var textAssets = Resources.Load<TextAsset>("SysLanguage");
             LoadLangugeData(textAssets.bytes,textAssets.name);
@@ -273,6 +276,7 @@ namespace CYM
             }
 
             OnAddDynamicDic();
+            Callback_OnParseEnd?.Invoke();
             yield break;
         }
 

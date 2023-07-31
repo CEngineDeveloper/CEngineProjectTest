@@ -61,10 +61,14 @@ namespace CYM
         public const string BN_Common = "common";
         public const string BN_Animator = "animator";
         public const string BN_System = "system";
+        #endregion
+
+        #region config bundle name
         public const string BN_Excel = "excel";
         public const string BN_Language = "language";
         public const string BN_Lua = "lua";
         public const string BN_Bytes = "bytes";
+        public const string BN_Text = "text";
         public const string BN_Config = "config";
         #endregion
 
@@ -170,15 +174,9 @@ namespace CYM
 
         #region dir
         //texture文件夹
-        public static readonly string Dir_Texture = "Texture";
+        public const string Dir_Texture = "Texture";
         //temp文件夹
-        public static readonly string Dir_Temp = "Temp";
-        //lua文件夹
-        public static readonly string Dir_Lua = "Lua";
-        //语言文件包
-        public const string Dir_Language = "Language";
-        //配置文件
-        public const string Dir_Config = "Config";
+        public const string Dir_Temp = "Temp";
         public const string Dir_Util = "Util";
         public const string Dir_System = "System";
         //Const文件
@@ -190,37 +188,46 @@ namespace CYM
         public const string Dir_UnitMgr = "UnitMgr";
         public const string Dir_UnitMono = "UnitMono";
         //ui
-        public static readonly string Dir_UI = "UI";
+        public const string Dir_UI = "UI";
         //ScriptTemplate
         public const string Dir_ScriptTemplate = "ScriptTemplate";
-        //text assets文件夹
-        public static readonly string Dir_Bytes = "Bytes";
-        //cs 文件夹
-        public static readonly string Dir_CSharp = "CSharp";
-        //excel 文件夹
-        public static readonly string Dir_Excel = "Excel";
         //bundles
-        public static readonly string Dir_Bundles = "_Bundles";
+        public const string Dir_Bundles = "_Bundles";
         //dlc目录
-        public static readonly string Dir_Dlc = "_Dlc";
+        public const string Dir_Dlc = "_Dlc";
         //Art
-        public static readonly string Dir_Art = "_Arts";
+        public const string Dir_Art = "_Arts";
         //Art
-        public static readonly string Dir_Res = "_Res";
+        public const string Dir_Res = "_Res";
         //Funcs
-        public static readonly string Dir_Funcs = "_Funcs";
+        public const string Dir_Funcs = "_Funcs";
         //Tests
-        public static readonly string Dir_Tests = "_Tests";
+        public const string Dir_Tests = "_Tests";
         //Gizmos
-        public static readonly string Dir_Gizmos = "Gizmos";
+        public const string Dir_Gizmos = "Gizmos";
         //CYMUni
-        public static readonly string Dir_CEngine = "CEngine";
+        public const string Dir_CEngine = "CEngine";
         //Resources
-        public static readonly string Dir_Resources = "Resources";
+        public const string Dir_Resources = "Resources";
         //Editor
-        public static readonly string Dir_Editor = "Editor";
+        public const string Dir_Editor = "Editor";
         //Plugin
-        public static readonly string Dir_Plugins = "Plugins";
+        public const string Dir_Plugins = "Plugins";
+        #endregion
+
+        #region config dir
+        //配置文件
+        public const string Dir_Config = "Config";
+        //lua文件夹
+        public static readonly string Dir_Lua = "Lua";
+        //语言文件包
+        public const string Dir_Language = "Language";
+        //text assets文件夹
+        public const string Dir_Bytes = "Bytes";
+        //excel 文件夹
+        public const string Dir_Excel = "Excel";
+        //text 文件夹
+        public const string Dir_Text = "Text";
         #endregion
 
         #region format

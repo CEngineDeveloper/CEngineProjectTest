@@ -33,6 +33,7 @@ namespace CYM
         [DLCCopy][SerializeField, FoldoutGroup("Copy Rule"), ReadOnly] BuildRuleType Language = BuildRuleType.Whole;
         [DLCCopy][SerializeField, FoldoutGroup("Copy Rule"), ReadOnly] BuildRuleType Excel = BuildRuleType.Whole;
         [DLCCopy][SerializeField, FoldoutGroup("Copy Rule"), ReadOnly] BuildRuleType Bytes = BuildRuleType.Whole;
+        [DLCCopy][SerializeField, FoldoutGroup("Copy Rule"), ReadOnly] BuildRuleType Text = BuildRuleType.Whole;
         //图片资源
         [DLCBundle][SerializeField, FoldoutGroup("System Rule")] BuildRuleType BG = BuildRuleType.Whole;
         [DLCBundle][SerializeField, FoldoutGroup("System Rule")] BuildRuleType Icon = BuildRuleType.Whole;

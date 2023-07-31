@@ -81,6 +81,7 @@ namespace CYM
         public static BaseGRMgr GRMgr { get; protected set; }
         public static BaseLuaMgr LuaMgr { get; protected set; }
         public static BaseBytesMgr BytesMgr { get; protected set; }
+        public static BaseTextMgr TextMgr { get; protected set; }
         public static BaseExcelMgr ExcelMgr { get; protected set; }
         public static BaseLangMgr LangMgr { get; protected set; }
         public static BaseConditionMgr ACM { get; protected set; }
@@ -140,6 +141,7 @@ namespace CYM
             AddComponent<BaseLoaderMgr>();
             AddComponent<BaseGRMgr>();
             AddComponent<BaseLuaMgr>();
+            AddComponent<BaseTextMgr>();
             AddComponent<BaseBytesMgr>();
             AddComponent<BaseExcelMgr>();
             AddComponent<BaseLangMgr>();
@@ -454,6 +456,7 @@ namespace CYM
             else if (ret is BaseGRMgr && GRMgr == null) GRMgr = ret as BaseGRMgr;
             else if (ret is BaseExcelMgr && ExcelMgr == null) ExcelMgr = ret as BaseExcelMgr;
             else if (ret is BaseLuaMgr && LuaMgr == null) LuaMgr = ret as BaseLuaMgr;
+            else if (ret is BaseTextMgr && TextMgr == null) TextMgr = ret as BaseTextMgr;
             else if (ret is BaseBytesMgr && BytesMgr == null) BytesMgr = ret as BaseBytesMgr;
             else if (ret is BaseLangMgr && LangMgr == null) LangMgr = ret as BaseLangMgr;
             else if (ret is BaseConditionMgr && ACM == null) ACM = ret as BaseConditionMgr;
