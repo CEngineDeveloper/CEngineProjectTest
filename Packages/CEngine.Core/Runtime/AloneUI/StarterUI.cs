@@ -63,7 +63,11 @@ namespace CYM
         #region set
         public static IEnumerator Show()
         {
-            CurPercent=0.0f;
+            if (BuildConfig.Ins == null)
+                yield break;
+            if (BuildConfig.Ins?.StarterUIPrefab == null)
+                yield break;
+            CurPercent =0.0f;
             string key = BuildConfig.Ins?.StarterUIPrefab?.name;
             Create(key??"BaseStarterPlayer");
             CanvasGroup.alpha = 1.0f;

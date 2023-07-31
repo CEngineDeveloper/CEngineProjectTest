@@ -65,7 +65,7 @@ namespace CYM.DevConsole{
                     _settings = Resources.Load<Settings>("DevConsoleSettings");
                     if (_settings == null)
                     {
-                        Debug.LogError("没有配置：DevConsoleSettings");
+                        Debug.LogError("需要创建：Resources/DevConsoleSettings");
                         return null;
                     }
                     settingsCopy = Instantiate(settings);

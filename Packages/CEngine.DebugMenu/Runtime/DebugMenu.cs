@@ -83,6 +83,8 @@ namespace CYM.DebugMenu
 
         private void OnDisable()
         {
+            if(config == null)
+                return;
             ToggleAction(config.toggle, false);
             ToggleAction(config.up, false);
             ToggleAction(config.down, false);
@@ -103,6 +105,8 @@ namespace CYM.DebugMenu
 
         private void Update()
         {
+            if (config == null)
+                return;
             if (config.toggle.WasPressedThisFrame())
             {
                 visible = !visible;

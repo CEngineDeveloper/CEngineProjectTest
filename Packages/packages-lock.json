@@ -1,5 +1,13 @@
 {
   "dependencies": {
+    "com.cengine.afpscounter": {
+      "version": "file:CEngine.AFPSCounter",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.cengine.core": "1.0.0"
+      }
+    },
     "com.cengine.ai": {
       "version": "file:CEngine.AI",
       "depth": 0,
@@ -30,7 +38,7 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
-        "com.focus-creative-games.hybridclr_unity": "0.3.4",
+        "com.code-philosophy.hybridclr": "3.2.1",
         "com.unity.burst": "1.7.4",
         "com.unity.collections": "1.2.4",
         "com.unity.inputsystem": "1.5.0",
@@ -47,6 +55,14 @@
       "source": "embedded",
       "dependencies": {
         "com.cengine.core": "1.0.0"
+      }
+    },
+    "com.cengine.debugmenu": {
+      "version": "file:CEngine.DebugMenu",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.inputsystem": "1.3.0"
       }
     },
     "com.cengine.devconsole": {
@@ -139,6 +155,14 @@
         "com.cengine.core": "1.0.0"
       }
     },
+    "com.cengine.particlepreview": {
+      "version": "file:CEngine.ParticlePreview",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.cengine.core": "1.0.0"
+      }
+    },
     "com.cengine.perform": {
       "version": "file:CEngine.Perform",
       "depth": 0,
@@ -160,6 +184,23 @@
       "depth": 0,
       "source": "embedded",
       "dependencies": {
+        "com.cengine.core": "1.0.0"
+      }
+    },
+    "com.cengine.promise": {
+      "version": "file:CEngine.Promise",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.cengine.core": "1.0.0"
+      }
+    },
+    "com.cengine.restclient": {
+      "version": "file:CEngine.RestClient",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.cengine.promise": "3.0.1",
         "com.cengine.core": "1.0.0"
       }
     },
@@ -217,6 +258,14 @@
         "com.cengine.core": "1.0.0"
       }
     },
+    "com.cengine.transformtools": {
+      "version": "file:CEngine.TransformTools",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.cengine.core": "1.0.0"
+      }
+    },
     "com.cengine.voice": {
       "version": "file:CEngine.Voice",
       "depth": 0,
@@ -225,15 +274,24 @@
         "com.cengine.core": "1.0.0"
       }
     },
-    "com.focus-creative-games.hybridclr_unity": {
+    "com.code-philosophy.hybridclr": {
       "version": "https://gitee.com/focus-creative-games/hybridclr_unity.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "8eb94be37e2072064ddd84f04ca4d6e21b149aed"
+      "hash": "c3f6325e4af43abd430cce8b3f10908580303358"
+    },
+    "com.unity.ai.navigation": {
+      "version": "1.1.3",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.ai": "1.0.0"
+      },
+      "url": "https://packages.unity.cn"
     },
     "com.unity.burst": {
-      "version": "1.7.4",
+      "version": "1.8.7",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -268,7 +326,7 @@
       "url": "https://packages.unity.cn"
     },
     "com.unity.inputsystem": {
-      "version": "1.5.1",
+      "version": "1.6.3",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -284,7 +342,7 @@
       "url": "https://packages.unity.cn"
     },
     "com.unity.nuget.newtonsoft-json": {
-      "version": "3.2.0",
+      "version": "3.2.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
@@ -459,17 +517,6 @@
     "com.unity.modules.uielements": {
       "version": "1.0.0",
       "depth": 0,
-      "source": "builtin",
-      "dependencies": {
-        "com.unity.modules.ui": "1.0.0",
-        "com.unity.modules.imgui": "1.0.0",
-        "com.unity.modules.jsonserialize": "1.0.0",
-        "com.unity.modules.uielementsnative": "1.0.0"
-      }
-    },
-    "com.unity.modules.uielementsnative": {
-      "version": "1.0.0",
-      "depth": 1,
       "source": "builtin",
       "dependencies": {
         "com.unity.modules.ui": "1.0.0",
