@@ -9,7 +9,11 @@ namespace CYM
         static PluginGlobal PluginHUD = new PluginGlobal
         {
             OnInstall = (g) => {
-                HUDUIMgr = g.AddComponent<BaseHUDUIMgr>();
+                //HUDUIMgr = g.AddComponent<BaseHUDUIMgr>();
+            },
+            OnPostAddComponet = (x) => 
+            {
+                if(x is BaseHUDUIMgr) HUDUIMgr = x as BaseHUDUIMgr;
             }
         };
 

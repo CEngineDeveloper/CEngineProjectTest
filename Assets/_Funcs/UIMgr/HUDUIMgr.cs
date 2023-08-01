@@ -6,6 +6,7 @@
 
 using CYM;
 using CYM.UI;
+using CYM.HUD;
 namespace Gamelogic
 {
     public class HUDUIMgr : BaseHUDUIMgr
