@@ -82,7 +82,7 @@ namespace CYM
         #endregion
 
         #region static obj
-        public static UHUDBar HoverHUDBar { get; private set; } = null;
+        public static UControl HoverHUDBar { get; private set; } = null;
         public static BaseUnit PreLastMouseOverUnit { get; private set; } = null;
         public static BaseUnit LastMouseOverUnit { get; private set; } = null;
         public static BaseUnit HoverUnit { get; private set; } = null;
@@ -788,7 +788,7 @@ namespace CYM
         #endregion
 
         #region set
-        public static void SetHoverHUDBar(UHUDBar bar)
+        public static void SetHoverHUDBar(UControl bar)
         {
             if (bar != null)
             {

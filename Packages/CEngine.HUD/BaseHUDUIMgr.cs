@@ -8,7 +8,7 @@
 
 using UnityEngine;
 using CYM.UI;
-namespace CYM
+namespace CYM.HUD
 {
     public class BaseHUDUIMgr : BaseUIMgr
     {

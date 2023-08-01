@@ -93,7 +93,6 @@ namespace CYM
         #endregion
 
         #region 内置UI组件
-        public static BaseHUDUIMgr HUDUIMgr { get; protected set; }
         public static BaseCommonUIMgr CommonUIMgr { get; protected set; }
         public static BaseMainUIMgr MainUIMgr { get; protected set; }
         public static BaseBattleUIMgr BattleUIMgr { get; protected set; }
@@ -467,7 +466,6 @@ namespace CYM
             else if (ret is BaseLoggerMgr && LoggerMgr == null) LoggerMgr = ret as BaseLoggerMgr;
 
             //UI组件
-            else if (ret is BaseHUDUIMgr && HUDUIMgr == null) HUDUIMgr = ret as BaseHUDUIMgr;
             else if (ret is BaseCommonUIMgr && CommonUIMgr == null) CommonUIMgr = ret as BaseCommonUIMgr;
             else if (ret is BaseMainUIMgr && MainUIMgr == null) MainUIMgr = ret as BaseMainUIMgr;
             else if (ret is BaseBattleUIMgr && BattleUIMgr == null) BattleUIMgr = ret as BaseBattleUIMgr;
