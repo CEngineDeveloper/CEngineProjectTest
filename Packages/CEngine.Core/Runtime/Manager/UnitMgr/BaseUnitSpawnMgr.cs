@@ -92,8 +92,11 @@ namespace CYM
             ITDConfig = BaseLuaMgr.GetTDConfig(ConfigType);
             if (IsGlobal)
             {
-                BaseGlobal.BattleMgr.Callback_OnUnLoaded += OnBattleUnLoaded;
-                BaseGlobal.BattleMgr.Callback_OnLoadedScene += OnBattleLoadedScene;
+                if (BaseGlobal.BattleMgr != null)
+                {
+                    BaseGlobal.BattleMgr.Callback_OnUnLoaded += OnBattleUnLoaded;
+                    BaseGlobal.BattleMgr.Callback_OnLoadedScene += OnBattleLoadedScene;
+                }
                 BaseGlobal.LoaderMgr.Callback_OnAllLoadEnd2 += OnAllLoadEnd2;
             }
         }
