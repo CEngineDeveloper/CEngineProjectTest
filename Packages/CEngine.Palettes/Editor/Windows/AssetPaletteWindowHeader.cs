@@ -226,7 +226,7 @@ namespace CYM.AssetPalette.Windows
             // Make the path relative to the project.
             path = "Assets" + path.Replace(Application.dataPath, string.Empty);
 
-            Directory.CreateDirectory(path);
+            //Directory.CreateDirectory(path);
 
             AssetPaletteCollection newCollection = CreateInstance<AssetPaletteCollection>();
             AssetDatabase.CreateAsset(newCollection, path);

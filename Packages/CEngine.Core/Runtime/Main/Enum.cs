@@ -151,6 +151,7 @@ namespace CYM
         Japanese = 3,
         Spanish = 4,
         Classical = 5,
+        Russian=6,
     }
     #endregion
 }

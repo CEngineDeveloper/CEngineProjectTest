@@ -9,8 +9,17 @@
 using UnityEngine;
 using CYM;
 using CYM.UI;
+using System.Collections;
+using System;
+using System.Collections.Generic;
+
 namespace CYM.Example
 {
+    public class CustomData
+    {
+        public string Name = "";
+        public int Value = 0;
+    }
     public class UExampleView : UStaticUIView<UExampleView> 
     {
         #region Inspector
@@ -34,6 +43,12 @@ namespace CYM.Example
         UProgress UProgress;
         [SerializeField]
         USlider USlider;
+        [SerializeField]
+        UScroll UScroll;
+        #endregion
+
+        #region private
+        List<CustomData> CustomDatas = new List<CustomData>();
         #endregion
 
         #region life
@@ -50,6 +65,35 @@ namespace CYM.Example
             UInput.Init(new UInputData { });
             UProgress.Init(new UProgressData { Value = ()=>0.5f });
             USlider.Init(new USliderData { Value = ()=>0.3f });
+            UScroll.Init(GetScrollData,OnScrollRefresh);
+
+            for (int i = 0; i < 100; ++i)
+            {
+                CustomDatas.Add(new CustomData() { Name = "Name" + i, Value = i });
+            }
+        }
+
+        private void OnScrollRefresh(object arg1, object arg2)
+        {
+            UCustom press = arg1 as UCustom;
+            CustomData data = arg2 as CustomData;
+            press.NameText1 = data.Name;
+            press.Data.OnClick = (_, _) =>
+            {
+                if (MathUtil.IsOdd(data.Value))
+                {
+                    CLog.Yellow("点击了:" + data.Name);
+                }
+                else
+                {
+                    CLog.Cyan("点击了:" + data.Name);
+                }
+            };
+        }
+
+        private IList GetScrollData()
+        {
+            return CustomDatas;
         }
         #endregion
     }
